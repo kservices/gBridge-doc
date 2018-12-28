@@ -5,4 +5,4 @@ install:
   - pip install sphinx sphinx_rtd_theme
 script: make html
 after_success:
-  - ./ghpages-push.sh
+  - bash ghpages-push.sh
