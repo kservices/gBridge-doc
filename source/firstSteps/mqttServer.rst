@@ -86,7 +86,7 @@ When your own Mosquitto instance receives data from the gBridge servers, that ma
 
    Any data from gBridge is proxied by your local Mosquitto instance and then forwarded to your local devices. This works the other way around, too.
 
-The following configuration works with Mosquitto. Place it at the end of your Mosquitto configuration (often under :code:`/etc/mosquitto/mosquitto.conf`) or in a separate file, that will be included. Replace the parameters in curly brackets with your appropriate information.
+The following configuration works with Mosquitto. Place it at the end of your Mosquitto configuration (often under :code:`/etc/mosquitto/mosquitto.conf`) or in a separate file, that will be included. Replace the parameters in curly brackets with your appropriate information. Use a random combination of alphanumeric characters for "randomstring" - it doesn't matter, as long as it is unique.
 
 .. code-block:: aconf
 
@@ -97,6 +97,7 @@ The following configuration works with Mosquitto. Place it at the end of your Mo
     cleansession true
     remote_username {gbridge-mqtt-username}
     remote_password {gbridge-mqtt-password}
+    remote_clientid gbridge-u{userid}-{randomstring}
 
     topic gBridge/u{gbridge-userid}/+/+ both 0 "" ""
     topic gBridge/u{gbridge-userid}/+/+/set both 0 "" ""

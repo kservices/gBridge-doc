@@ -1,4 +1,4 @@
-FHEM examples
+FHEM integration
 =======================
 
 This page will be filled with a couple of examples that explain the integration of gBridge in FHEM.

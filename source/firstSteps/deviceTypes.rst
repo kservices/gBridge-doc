@@ -66,7 +66,7 @@ Scene
 
 Example Commands
 .....................
-* Active/ Start {scene name}
+* Activate/ Start {scene name}
 
 Thermostat
 -------------------
