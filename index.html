@@ -28,7 +28,7 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Getting Started" href="firstSteps/gettingStarted.html" /> 
+    <link rel="next" title="Support Guidelines" href="firstSteps/supportGuidelines.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -77,16 +77,20 @@
               
             
             
-              <p class="caption"><span class="caption-text">First steps:</span></p>
+              <p class="caption"><span class="caption-text">First steps</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="firstSteps/supportGuidelines.html">Support Guidelines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="firstSteps/gettingStarted.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="firstSteps/deviceMechanism.html">Device Mechanism</a></li>
 <li class="toctree-l1"><a class="reference internal" href="firstSteps/deviceTypes.html">Device Types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="firstSteps/mqttServer.html">Hosted MQTT server</a></li>
-<li class="toctree-l1"><a class="reference internal" href="exampleUsage/fhem.html">FHEM examples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="exampleUsage/communityManuals.html">Community Manuals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="selfHosted/hostItYourself.html">Self-Hosted gBridge</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Integration</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="integration/fhem.html">FHEM integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="integration/communityManuals.html">Community Manuals</a></li>
 </ul>
 
             
@@ -151,16 +155,20 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="introduction">
+  <div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last">gBridge documentation has moved to <a class="reference external" href="https://doc.gbridge.io">https://doc.gbridge.io</a>.</p>
+</div>
+<div class="section" id="introduction">
 <h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
-<p><em>Kappelt gBridge</em> allows you to control (almost) every smart home device with Google Assistant. It provides a bridge between Google Assistant and MQTT.</p>
+<p><em>gBridge.io</em> allows you to control (almost) every smart home device with Google Assistant. It provides a bridge between Google Assistant and MQTT.</p>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
-<p><em>Kappelt gBridge</em> is an open source application. However, I provide an inexpensive hosted appliance of gBridge.
+<p><em>gBridge.io</em> is an open source application. However, I provide an inexpensive hosted appliance of gBridge.
 <strong>This is a great way of supporting my work</strong> - and you don’t have to care about installation, debugging and maintenance.</p>
 <p class="last">Interested? Have a look at <a class="reference external" href="https://about.gbridge.kappelt.net">https://about.gbridge.kappelt.net</a>.</p>
 </div>
-<p>It acts like a smart home device provider, that is listed in the Google Home app. But there are no real devices by Kappelt gBridge - there are virtual devices defined by you in your user account’s dashboard.
+<p>It acts like a smart home device provider, that is listed in the Google Home app. But there are no real devices by gBridge.io - there are virtual devices defined by you in your user account’s dashboard.
 When you interact with a virtual device you’ve defined (“Hey Google, turn on the lights in the living room”), gBridge will publish an MQTT message.</p>
 <p>This MQTT message can finally be handled by most smart home applications and might be further processed there.</p>
 <p>All set? <a class="reference internal" href="firstSteps/gettingStarted.html"><span class="doc">Let’s get started</span></a></p>
@@ -168,9 +176,14 @@ When you interact with a virtual device you’ve defined (“Hey Google, turn on
 <a class="reference internal image-reference" href="_images/works-with-assistant.png"><img alt="Works with Assistant" src="_images/works-with-assistant.png" style="width: 50%;" /></a>
 </div>
 <div class="toctree-wrapper compound">
-<p class="caption"><span class="caption-text">First steps:</span></p>
+<p class="caption"><span class="caption-text">First steps</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="firstSteps/supportGuidelines.html">Support Guidelines</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="firstSteps/supportGuidelines.html#support-channels">Support Channels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="firstSteps/supportGuidelines.html#self-hosted-gbridge">Self Hosted gBridge</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="firstSteps/gettingStarted.html">Getting Started</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="firstSteps/gettingStarted.html#register-a-new-account">Register a new account</a></li>
 <li class="toctree-l2"><a class="reference internal" href="firstSteps/gettingStarted.html#a-first-device">A first device</a></li>
@@ -199,12 +212,6 @@ When you interact with a virtual device you’ve defined (“Hey Google, turn on
 <li class="toctree-l2"><a class="reference internal" href="firstSteps/mqttServer.html#using-own-mosquitto-as-a-bridge">Using own Mosquitto as a Bridge</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="exampleUsage/fhem.html">FHEM examples</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="exampleUsage/fhem.html#mqtt-server-connection">MQTT server connection</a></li>
-<li class="toctree-l2"><a class="reference internal" href="exampleUsage/fhem.html#basic-on-off-and-brightness">Basic On/Off and Brightness</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="exampleUsage/communityManuals.html">Community Manuals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="selfHosted/hostItYourself.html">Self-Hosted gBridge</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="selfHosted/hostItYourself.html#prerequisites">Prerequisites</a></li>
 <li class="toctree-l2"><a class="reference internal" href="selfHosted/hostItYourself.html#set-up-google-action">Set up Google Action</a></li>
@@ -213,6 +220,17 @@ When you interact with a virtual device you’ve defined (“Hey Google, turn on
 <li class="toctree-l2"><a class="reference internal" href="selfHosted/hostItYourself.html#test-it">Test it</a></li>
 </ul>
 </li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">Integration</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="integration/fhem.html">FHEM integration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="integration/fhem.html#mqtt-server-connection">MQTT server connection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integration/fhem.html#basic-on-off-and-brightness">Basic On/Off and Brightness</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="integration/communityManuals.html">Community Manuals</a></li>
 </ul>
 </div>
 </div>
@@ -225,7 +243,7 @@ When you interact with a virtual device you’ve defined (“Hey Google, turn on
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="firstSteps/gettingStarted.html" class="btn btn-neutral float-right" title="Getting Started" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="firstSteps/supportGuidelines.html" class="btn btn-neutral float-right" title="Support Guidelines" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
     </div>
@@ -239,11 +257,11 @@ When you interact with a virtual device you’ve defined (“Hey Google, turn on
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. <jinja2.runtime.BlockReference object at 0x2aec03561550> 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. <jinja2.runtime.BlockReference object at 0x2b2174d37588> 
 
 <br>
 <a href="https://github.com/kservices/gBridge">gBridge on Github</a><br>
-Learn more about Kappelt gBridge? See <a href="https://about.gbridge.kappelt.net" target="_blank">https://about.gbridge.kappelt.net</a>
+Learn more about gBridge.io? See <a href="https://about.gbridge.kappelt.net" target="_blank">https://about.gbridge.kappelt.net</a>
 
  
 

@@ -28,7 +28,7 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="FHEM examples" href="../exampleUsage/fhem.html" />
+    <link rel="next" title="Self-Hosted gBridge" href="../selfHosted/hostItYourself.html" />
     <link rel="prev" title="Device Types" href="deviceTypes.html" /> 
 
   
@@ -78,9 +78,10 @@
               
             
             
-              <p class="caption"><span class="caption-text">First steps:</span></p>
+              <p class="caption"><span class="caption-text">First steps</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="supportGuidelines.html">Support Guidelines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gettingStarted.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="deviceMechanism.html">Device Mechanism</a></li>
 <li class="toctree-l1"><a class="reference internal" href="deviceTypes.html">Device Types</a></li>
@@ -96,9 +97,12 @@
 <li class="toctree-l2"><a class="reference internal" href="#using-own-mosquitto-as-a-bridge">Using own Mosquitto as a Bridge</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../exampleUsage/fhem.html">FHEM examples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../exampleUsage/communityManuals.html">Community Manuals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../selfHosted/hostItYourself.html">Self-Hosted gBridge</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Integration</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../integration/fhem.html">FHEM integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/communityManuals.html">Community Manuals</a></li>
 </ul>
 
             
@@ -275,7 +279,7 @@
 <a class="reference internal image-reference" href="../_images/scheme-mosquitto-bridge.png"><img alt="Local request for gBridge are proxied through your local mosquitto server." src="../_images/scheme-mosquitto-bridge.png" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-text">Any data from gBridge is proxied by your local Mosquitto instance and then forwarded to your local devices. This works the other way around, too.</span></p>
 </div>
-<p>The following configuration works with Mosquitto. Place it at the end of your Mosquitto configuration (often under <code class="code docutils literal notranslate"><span class="pre">/etc/mosquitto/mosquitto.conf</span></code>) or in a separate file, that will be included. Replace the parameters in curly brackets with your appropriate information.</p>
+<p>The following configuration works with Mosquitto. Place it at the end of your Mosquitto configuration (often under <code class="code docutils literal notranslate"><span class="pre">/etc/mosquitto/mosquitto.conf</span></code>) or in a separate file, that will be included. Replace the parameters in curly brackets with your appropriate information. Use a random combination of alphanumeric characters for “randomstring” - it doesn’t matter, as long as it is unique.</p>
 <div class="highlight-aconf notranslate"><div class="highlight"><pre><span></span><span class="nb">connection</span> kappelt-gbridge
 <span class="nb">address</span> mqtt.gbridge.kappelt.net:8883
 <span class="nb">bridge_attempt_unsubscribe</span> true
@@ -283,6 +287,7 @@
 <span class="nb">cleansession</span> true
 <span class="nb">remote_username</span> {gbridge-mqtt-username}
 <span class="nb">remote_password</span> {gbridge-mqtt-password}
+<span class="nb">remote_clientid</span> gbridge-u{userid}-{randomstring}
 
 <span class="nb">topic</span> gBridge/u{gbridge-userid}/+/+ both <span class="m">0</span> <span class="s2">&quot;&quot;</span> <span class="s2">&quot;&quot;</span>
 <span class="nb">topic</span> gBridge/u{gbridge-userid}/+/+/set both <span class="m">0</span> <span class="s2">&quot;&quot;</span> <span class="s2">&quot;&quot;</span>
@@ -316,7 +321,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../exampleUsage/fhem.html" class="btn btn-neutral float-right" title="FHEM examples" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../selfHosted/hostItYourself.html" class="btn btn-neutral float-right" title="Self-Hosted gBridge" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="deviceTypes.html" class="btn btn-neutral" title="Device Types" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -332,11 +337,11 @@
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. <jinja2.runtime.BlockReference object at 0x2aec0355a860> 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. <jinja2.runtime.BlockReference object at 0x2b2174e3a080> 
 
 <br>
 <a href="https://github.com/kservices/gBridge">gBridge on Github</a><br>
-Learn more about Kappelt gBridge? See <a href="https://about.gbridge.kappelt.net" target="_blank">https://about.gbridge.kappelt.net</a>
+Learn more about gBridge.io? See <a href="https://about.gbridge.kappelt.net" target="_blank">https://about.gbridge.kappelt.net</a>
 
  
 

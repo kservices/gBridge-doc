@@ -297,7 +297,7 @@ You should now see the empty account dashboard:
    The first page after logging in.
 
 .. warning::
-    **Immediately** change your password under "Hi {YOUR-MAIL}", "My Account".
+    **Immediately** change your password under "Hi {YOUR-NAME}", "My Account".
 
 Configure your webserver
 --------------------------------
