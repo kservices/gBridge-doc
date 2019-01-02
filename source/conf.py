@@ -19,8 +19,8 @@
 
 # -- Project information -----------------------------------------------------
 
-project = u'Kappelt gBridge'
-copyright = u'2018, Peter Kappelt'
+project = u'gBridge.io'
+copyright = u'2019, Kappelt kServices'
 author = u'Peter Kappelt'
 
 # The short X.Y version
@@ -63,7 +63,7 @@ master_doc = 'index'
 #
 # This is also used if you do content translation via gettext catalogs.
 # Usually you set "language" from the command line for these cases.
-language = None
+language = 'en'
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
@@ -85,7 +85,9 @@ html_theme = 'sphinx_rtd_theme'
 # further.  For a list of options available for each theme, see the
 # documentation.
 #
-# html_theme_options = {}
+html_theme_options = {
+    'style_external_links': True
+}
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
@@ -101,6 +103,10 @@ html_static_path = ['_static']
 # 'searchbox.html']``.
 #
 # html_sidebars = {}
+
+html_logo = '_static/kappelt-round-border.svg'
+
+html_favicon = '_static/kappelt.ico'
 
 
 # -- Options for HTMLHelp output ---------------------------------------------

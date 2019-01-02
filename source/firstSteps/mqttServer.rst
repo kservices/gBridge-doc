@@ -29,7 +29,8 @@ MQTT over TLS can be reached by :code:`mqtts://mqtt.gbridge.kappelt.net`
 
 The server uses certificates signed by Let's Encrypt. This CA is trusted by most systems, your shouldn't need to do anything more than specifying your system's CA directory.
 
-For many linux-based systems, trusted certificates are located under :code:`/etc/ssl/certs/`. For example, when using :code:`mosquitto_sub`  or :code:`mosquitto_pub`, you just need to give the parameter :code:`--capath /etc/ssl/certs/`
+| For many linux-based systems, trusted certificates are located under :code:`/etc/ssl/certs/`. For example, when using :code:`mosquitto_sub`  or :code:`mosquitto_pub`, you just need to give the parameter :code:`--capath /etc/ssl/certs/`.
+| Certificate directories on other distributions might be :code:`/usr/local/share/certs`, :code:`/etc/pki/tls/certs`, :code:`/etc/openssl/certs`
 
 MQTT over secure websockets
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -102,6 +103,7 @@ The following configuration works with Mosquitto. Place it at the end of your Mo
     topic gBridge/u{gbridge-userid}/+/+ both 0 "" ""
     topic gBridge/u{gbridge-userid}/+/+/set both 0 "" ""
     #you might need to change the path of the CA files
+    #This one is valid for most Debian based systems
     bridge_capath /etc/ssl/certs/
     bridge_tls_version tlsv1.2
 
