@@ -8,10 +8,12 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Device Types &mdash; Kappelt gBridge 1.0.0 documentation</title>
+  <title>Device Types &mdash; gBridge.io 1.0.0 documentation</title>
   
 
   
+  
+    <link rel="shortcut icon" href="../_static/kappelt.ico"/>
   
   
   
@@ -48,9 +50,12 @@
           
 
           
-            <a href="../index.html" class="icon icon-home"> Kappelt gBridge
+            <a href="../index.html" class="icon icon-home"> gBridge.io
           
 
+          
+            
+            <img src="../_static/kappelt-round-border.svg" class="logo" alt="Logo"/>
           
           </a>
 
@@ -85,27 +90,11 @@
 <li class="toctree-l1"><a class="reference internal" href="gettingStarted.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="deviceMechanism.html">Device Mechanism</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Device Types</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#light">Light</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#recommended-traits">Recommended Traits</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#example-commands">Example Commands</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#outlet">Outlet</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#recommended-trait">Recommended Trait</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id1">Example Commands</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="#light">Light</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#outlet">Outlet</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#switch">Switch</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#scene">Scene</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id2">Recommended Trait</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id3">Example Commands</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#thermostat">Thermostat</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id4">Recommended Trait</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id5">Example Commands</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="#scene">Scene</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#thermostat">Thermostat</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="mqttServer.html">Hosted MQTT server</a></li>
@@ -113,8 +102,15 @@
 </ul>
 <p class="caption"><span class="caption-text">Integration</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../integration/tasmota.html">Sonoff Tasmota integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/nodered.html">Node-RED integration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../integration/fhem.html">FHEM integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/domoticz.html">Domoticz integration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../integration/communityManuals.html">Community Manuals</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../developers/api.html">User API</a></li>
 </ul>
 
             
@@ -129,14 +125,14 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">Kappelt gBridge</a>
+          <a href="../index.html">gBridge.io</a>
         
       </nav>
 
 
       <div class="wy-nav-content">
         
-        <div class="rst-content">
+        <div class="rst-content style-external-links">
         
           
 
@@ -218,13 +214,11 @@
 </table>
 <div class="section" id="light">
 <h2>Light<a class="headerlink" href="#light" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="recommended-traits">
-<h3>Recommended Traits<a class="headerlink" href="#recommended-traits" title="Permalink to this headline">¶</a></h3>
-<p>On and Off, Brightness</p>
-</div>
-<div class="section" id="example-commands">
-<h3>Example Commands<a class="headerlink" href="#example-commands" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
+<dl class="docutils">
+<dt>Recommended Traits</dt>
+<dd>On and Off, Brightness</dd>
+<dt>Example Commands</dt>
+<dd><ul class="first last simple">
 <li>Turn on/ off {light name}</li>
 <li>Dim {light name}</li>
 <li>Brighten (the) {light name}</li>
@@ -233,21 +227,21 @@
 <li>Turn on/ off lights in {room name}</li>
 <li>Is {light name} turned on?</li>
 </ul>
-</div>
+</dd>
+</dl>
 </div>
 <div class="section" id="outlet">
 <span id="devicetypeoutlet"></span><h2>Outlet<a class="headerlink" href="#outlet" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="recommended-trait">
-<h3>Recommended Trait<a class="headerlink" href="#recommended-trait" title="Permalink to this headline">¶</a></h3>
-<p>On and Off</p>
-</div>
-<div class="section" id="id1">
-<h3>Example Commands<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
+<dl class="docutils">
+<dt>Recommended Trait</dt>
+<dd>On and Off</dd>
+<dt>Example Commands</dt>
+<dd><ul class="first last simple">
 <li>Turn on/ off {plug/ outlet name}</li>
 <li>Is {plug/ outlet name} turned on?</li>
 </ul>
-</div>
+</dd>
+</dl>
 </div>
 <div class="section" id="switch">
 <h2>Switch<a class="headerlink" href="#switch" title="Permalink to this headline">¶</a></h2>
@@ -255,26 +249,23 @@
 </div>
 <div class="section" id="scene">
 <h2>Scene<a class="headerlink" href="#scene" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id2">
-<h3>Recommended Trait<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
-<p>Scene</p>
-</div>
-<div class="section" id="id3">
-<h3>Example Commands<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
+<dl class="docutils">
+<dt>Recommended Trait</dt>
+<dd>Scene</dd>
+<dt>Example Commands</dt>
+<dd><ul class="first last simple">
 <li>Activate/ Start {scene name}</li>
 </ul>
-</div>
+</dd>
+</dl>
 </div>
 <div class="section" id="thermostat">
 <h2>Thermostat<a class="headerlink" href="#thermostat" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id4">
-<h3>Recommended Trait<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
-<p>Temperature Setting</p>
-</div>
-<div class="section" id="id5">
-<h3>Example Commands<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
+<dl class="docutils">
+<dt>Recommended Trait</dt>
+<dd>Temperature Setting</dd>
+<dt>Example Commands</dt>
+<dd><ul class="first last simple">
 <li>Make it warmer/ cooler</li>
 <li>Raise/ lower the Temperature</li>
 <li>Raise/ lower the temp x degrees</li>
@@ -282,7 +273,8 @@
 <li>How warm is it in here?</li>
 <li>What’s the humidity of {thermostat name} (<em>if humidity is enabled</em>)</li>
 </ul>
-</div>
+</dd>
+</dl>
 </div>
 </div>
 
@@ -306,11 +298,11 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Peter Kappelt
+        &copy; Copyright 2019, Kappelt kServices
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. <jinja2.runtime.BlockReference object at 0x2b2174e494a8> 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. <jinja2.runtime.BlockReference object at 0x2b1e71224748> 
 
 <br>
 <a href="https://github.com/kservices/gBridge">gBridge on Github</a><br>

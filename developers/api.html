@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Community Manuals &mdash; gBridge.io 1.0.0 documentation</title>
+  <title>User API &mdash; gBridge.io 1.0.0 documentation</title>
   
 
   
@@ -30,8 +30,7 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="User API" href="../developers/api.html" />
-    <link rel="prev" title="Domoticz integration" href="domoticz.html" /> 
+    <link rel="prev" title="Community Manuals" href="../integration/communityManuals.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -94,16 +93,16 @@
 <li class="toctree-l1"><a class="reference internal" href="../selfHosted/hostItYourself.html">Self-Hosted gBridge</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Integration</span></p>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="tasmota.html">Sonoff Tasmota integration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="nodered.html">Node-RED integration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="fhem.html">FHEM integration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="domoticz.html">Domoticz integration</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Community Manuals</a></li>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../integration/tasmota.html">Sonoff Tasmota integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/nodered.html">Node-RED integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/fhem.html">FHEM integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/domoticz.html">Domoticz integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/communityManuals.html">Community Manuals</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Developers</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../developers/api.html">User API</a></li>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">User API</a></li>
 </ul>
 
             
@@ -149,13 +148,13 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>Community Manuals</li>
+      <li>User API</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/integration/communityManuals.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/developers/api.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -168,20 +167,10 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="community-manuals">
-<h1>Community Manuals<a class="headerlink" href="#community-manuals" title="Permalink to this headline">¶</a></h1>
-<p>This page contains a list of interesting articles/ manuals of users of gBridge.</p>
-<ul>
-<li><p class="first">Vance: <a class="reference external" href="http://va.nce.me/Google_Home_light_control_via_mqtt.html">http://va.nce.me/Google_Home_light_control_via_mqtt.html</a></p>
-<p>Vance describes his experiences while integrating gBridge in his setup.
-Please note the part about “Topic translation” is not necessary anymore, since custom MQTT topics were implemented into gBridge.</p>
-</li>
-</ul>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p>It would be great if you could send me a short mail (to gbridge(at)kappelt.net) if you’ve found useful online resource referencing gBridge.</p>
-<p class="last">These could be integrated into the documentation or be noted on this page, in order to help other users getting started.</p>
-</div>
+  <div class="section" id="user-api">
+<h1>User API<a class="headerlink" href="#user-api" title="Permalink to this headline">¶</a></h1>
+<p>An User-API is currently in development.</p>
+<p>A preliminary version (that isn’t yet fully tested and doesn’t cover all features) is available, but not yet documented. Have a look at the <a class="reference external" href="https://github.com/giejay/domoticz-gbridge-plugin">Domoticz gBridge Plugin</a> for a reference code that uses this API.</p>
 </div>
 
 
@@ -192,10 +181,8 @@ Please note the part about “Topic translation” is not necessary anymore, sin
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../developers/api.html" class="btn btn-neutral float-right" title="User API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
-      
-        <a href="domoticz.html" class="btn btn-neutral" title="Domoticz integration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../integration/communityManuals.html" class="btn btn-neutral" title="Community Manuals" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -208,7 +195,7 @@ Please note the part about “Topic translation” is not necessary anymore, sin
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. <jinja2.runtime.BlockReference object at 0x2b1e71066390> 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. <jinja2.runtime.BlockReference object at 0x2b1e710ffa90> 
 
 <br>
 <a href="https://github.com/kservices/gBridge">gBridge on Github</a><br>

@@ -1,0 +1,294 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Sonoff Tasmota integration &mdash; gBridge.io 1.0.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/kappelt.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Node-RED integration" href="nodered.html" />
+    <link rel="prev" title="Self-Hosted gBridge" href="../selfHosted/hostItYourself.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> gBridge.io
+          
+
+          
+            
+            <img src="../_static/kappelt-round-border.svg" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">First steps</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../firstSteps/supportGuidelines.html">Support Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../firstSteps/gettingStarted.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../firstSteps/deviceMechanism.html">Device Mechanism</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../firstSteps/deviceTypes.html">Device Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../firstSteps/mqttServer.html">Hosted MQTT server</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../selfHosted/hostItYourself.html">Self-Hosted gBridge</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Integration</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Sonoff Tasmota integration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#configure-local-broker">Configure Local Broker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configure-your-tasmota-device">Configure your Tasmota device</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#create-a-gbridge-virtual-device">Create a gBridge virtual device</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#done">Done</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="nodered.html">Node-RED integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fhem.html">FHEM integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="domoticz.html">Domoticz integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="communityManuals.html">Community Manuals</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../developers/api.html">User API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">gBridge.io</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Sonoff Tasmota integration</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/integration/tasmota.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="sonoff-tasmota-integration">
+<h1>Sonoff Tasmota integration<a class="headerlink" href="#sonoff-tasmota-integration" title="Permalink to this headline">¶</a></h1>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Many thanks to Michael Hirsch (mikizvi at gmail dot com), who has prepared and developed the necessary steps for this integration guide.</p>
+</div>
+<p>This manual shows you how to link your Tasmota devices (e.g. Sonoffs, Shellys and others) with gBridge, thus control them with Google Assistant/ Google Home.</p>
+<div class="section" id="configure-local-broker">
+<h2>Configure Local Broker<a class="headerlink" href="#configure-local-broker" title="Permalink to this headline">¶</a></h2>
+<p>The Tasmota firmware doesn’t support encrypted MQTT natively (only through detours, when compiling own firmware versions while removing other features to free the necessary flash space).
+Since unencrypted MQTT communication over the internet is generally a bad idea, I recommend to setup an MQTT broker as a bridge in your local network. You can read about the idea behind this here: <a class="reference internal" href="../firstSteps/mqttServer.html#mqttserver-mosquittobridge"><span class="std std-ref">Using own Mosquitto as a Bridge</span></a>.</p>
+<p>For linking Tasmota, you can start with the broker configuration shown in the <a class="reference internal" href="../firstSteps/mqttServer.html#mqttserver-mosquittobridge"><span class="std std-ref">Mosquitto Bridge guide</span></a>. Add those lines:</p>
+<div class="highlight-aconf notranslate"><div class="highlight"><pre><span></span><span class="nb">topic</span> cmnd/# in <span class="m">0</span> {local_prefix}/ gBridge/u{userid}/
+<span class="nb">topic</span> stat/# out <span class="m">0</span> {local_prefix}/ gBridge/u{userid}/
+</pre></div>
+</div>
+<p>Replace <code class="code docutils literal notranslate"><span class="pre">{local_prefix}</span></code> with the prefix for your devices, it is <code class="code docutils literal notranslate"><span class="pre">sonoff</span></code> for the stock Tasmota firmware. Replace <code class="code docutils literal notranslate"><span class="pre">{userid}</span></code> with the user id of your gBridge account, that is shown in your account’s dashboard.</p>
+<p>The following config is an example for the user gbridge-u7 with the local Tasmota prefix <code class="code docutils literal notranslate"><span class="pre">sonoff</span></code></p>
+<div class="highlight-aconf notranslate"><div class="highlight"><pre><span></span><span class="nb">connection</span> kappelt-gbridge
+<span class="nb">address</span> mqtt.gbridge.kappelt.net:8883
+<span class="nb">bridge_attempt_unsubscribe</span> true
+<span class="nb">bridge_protocol_version</span> mqttv31
+<span class="nb">cleansession</span> true
+<span class="nb">remote_username</span> gbridge-u7
+<span class="nb">remote_password</span> mysupersecretpassword
+<span class="nb">remote_clientid</span> gbridge-u7-dsifjgrsfj
+
+<span class="nb">topic</span> gBridge/u7/+/+ both <span class="m">0</span> <span class="s2">&quot;&quot;</span> <span class="s2">&quot;&quot;</span>
+<span class="nb">topic</span> gBridge/u7/+/+/set both <span class="m">0</span> <span class="s2">&quot;&quot;</span> <span class="s2">&quot;&quot;</span>
+<span class="nb">topic</span> cmnd/# in <span class="m">0</span> sonoff/ gBridge/u7/
+<span class="nb">topic</span> stat/# out <span class="m">0</span> sonoff/ gBridge/u7/
+<span class="nb">bridge_capath</span> <span class="sx">/etc/ssl/certs/</span>
+<span class="nb">bridge_tls_version</span> tlsv1.2
+</pre></div>
+</div>
+</div>
+<div class="section" id="configure-your-tasmota-device">
+<h2>Configure your Tasmota device<a class="headerlink" href="#configure-your-tasmota-device" title="Permalink to this headline">¶</a></h2>
+<p>You don’t need to do anything special with your Tasmota devices. Just set them to connect to your MQTT Broker that has been configured to work as a bridge. Give it an unique name.</p>
+</div>
+<div class="section" id="create-a-gbridge-virtual-device">
+<h2>Create a gBridge virtual device<a class="headerlink" href="#create-a-gbridge-virtual-device" title="Permalink to this headline">¶</a></h2>
+<p>Log in to the gBridge dashboard. Create a new device, select Outlet, Switch or Light as the type, choose only OnOff for supported traits.</p>
+<p>Give a name you’d like Google to listen to for this device. You can always change it later on.</p>
+<p>After saving the device, click the edit button again in order to modify the MQTT topics. Use <code class="code docutils literal notranslate"><span class="pre">cmnd/{tasmota-name}/power</span></code> for the action topic and <code class="code docutils literal notranslate"><span class="pre">stat/{tasmota-name}/POWER</span></code> as the status topic (note the case difference). Replace <code class="code docutils literal notranslate"><span class="pre">{tasmota-name}</span></code> with the device name you’ve set for the Sonoff device.</p>
+</div>
+<div class="section" id="done">
+<h2>Done<a class="headerlink" href="#done" title="Permalink to this headline">¶</a></h2>
+<p>Thats it! You can now control your device with Google Assistant!</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="nodered.html" class="btn btn-neutral float-right" title="Node-RED integration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../selfHosted/hostItYourself.html" class="btn btn-neutral" title="Self-Hosted gBridge" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Kappelt kServices
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. <jinja2.runtime.BlockReference object at 0x2b1e7118ff60> 
+
+<br>
+<a href="https://github.com/kservices/gBridge">gBridge on Github</a><br>
+Learn more about gBridge.io? See <a href="https://about.gbridge.kappelt.net" target="_blank">https://about.gbridge.kappelt.net</a>
+
+ 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

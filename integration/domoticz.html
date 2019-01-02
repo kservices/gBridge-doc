@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Community Manuals &mdash; gBridge.io 1.0.0 documentation</title>
+  <title>Domoticz integration &mdash; gBridge.io 1.0.0 documentation</title>
   
 
   
@@ -30,8 +30,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="User API" href="../developers/api.html" />
-    <link rel="prev" title="Domoticz integration" href="domoticz.html" /> 
+    <link rel="next" title="Community Manuals" href="communityManuals.html" />
+    <link rel="prev" title="FHEM integration" href="fhem.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -98,8 +98,11 @@
 <li class="toctree-l1"><a class="reference internal" href="tasmota.html">Sonoff Tasmota integration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="nodered.html">Node-RED integration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="fhem.html">FHEM integration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="domoticz.html">Domoticz integration</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Community Manuals</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Domoticz integration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#setup">Setup</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="communityManuals.html">Community Manuals</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Developers</span></p>
 <ul>
@@ -149,13 +152,13 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>Community Manuals</li>
+      <li>Domoticz integration</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/integration/communityManuals.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/integration/domoticz.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -168,19 +171,49 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="community-manuals">
-<h1>Community Manuals<a class="headerlink" href="#community-manuals" title="Permalink to this headline">¶</a></h1>
-<p>This page contains a list of interesting articles/ manuals of users of gBridge.</p>
+  <div class="section" id="domoticz-integration">
+<h1>Domoticz integration<a class="headerlink" href="#domoticz-integration" title="Permalink to this headline">¶</a></h1>
+<p>Gert-Jan “giejay” Compagner has developed a plugin for Domoticz that allows easy integration: <a class="reference external" href="https://github.com/giejay/domoticz-gbridge-plugin">https://github.com/giejay/domoticz-gbridge-plugin</a></p>
+<div class="section" id="setup">
+<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h2>
+<p>Always look in giejay’s repository for up-to-date setup instructions.</p>
+<p>Currently, you need to follow these steps:</p>
 <ul>
-<li><p class="first">Vance: <a class="reference external" href="http://va.nce.me/Google_Home_light_control_via_mqtt.html">http://va.nce.me/Google_Home_light_control_via_mqtt.html</a></p>
-<p>Vance describes his experiences while integrating gBridge in his setup.
-Please note the part about “Topic translation” is not necessary anymore, since custom MQTT topics were implemented into gBridge.</p>
+<li><p class="first">Clone the repository in the plugin folder of your Domoticz instance:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> domoticz/plugins
+git clone https://github.com/giejay/domoticz-gbridge-plugin.git
+</pre></div>
+</div>
+</li>
+<li><p class="first">Restart Domoticz</p>
+</li>
+<li><p class="first">Add a new “gBridge” item in the hardware page. Enter these settings for the hosted gBridge service:</p>
 </li>
 </ul>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p>It would be great if you could send me a short mail (to gbridge(at)kappelt.net) if you’ve found useful online resource referencing gBridge.</p>
-<p class="last">These could be integrated into the documentation or be noted on this page, in order to help other users getting started.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">MQTT server address:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body">mqtt.gbridge.kappelt.net:8883</td>
+</tr>
+<tr class="field-even field"><th class="field-name">MQTT username:</th><td class="field-body">gbridge-u{userid} <em>(Shown in “My Account” in your accounts dashboard)</em></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">MQTT password:</th><td class="field-body">As set. Is your gBridge account’s password by default, but may be set independently in your account’s dashboard.</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">MQTT base topic:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body">gBridge/u{userid}</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">gBridge URL:</th><td class="field-body"><a class="reference external" href="https://gbridge.kappelt.net">https://gbridge.kappelt.net</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">gBridge Username:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body">Your account’s mail address</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">gBridge Password:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body">Your account’s password</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 
@@ -192,10 +225,10 @@ Please note the part about “Topic translation” is not necessary anymore, sin
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../developers/api.html" class="btn btn-neutral float-right" title="User API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="communityManuals.html" class="btn btn-neutral float-right" title="Community Manuals" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="domoticz.html" class="btn btn-neutral" title="Domoticz integration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="fhem.html" class="btn btn-neutral" title="FHEM integration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -208,7 +241,7 @@ Please note the part about “Topic translation” is not necessary anymore, sin
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. <jinja2.runtime.BlockReference object at 0x2b1e71066390> 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. <jinja2.runtime.BlockReference object at 0x2b1e7115b748> 
 
 <br>
 <a href="https://github.com/kservices/gBridge">gBridge on Github</a><br>

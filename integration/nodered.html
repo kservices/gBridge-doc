@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Community Manuals &mdash; gBridge.io 1.0.0 documentation</title>
+  <title>Node-RED integration &mdash; gBridge.io 1.0.0 documentation</title>
   
 
   
@@ -30,8 +30,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="User API" href="../developers/api.html" />
-    <link rel="prev" title="Domoticz integration" href="domoticz.html" /> 
+    <link rel="next" title="FHEM integration" href="fhem.html" />
+    <link rel="prev" title="Sonoff Tasmota integration" href="tasmota.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -96,10 +96,14 @@
 <p class="caption"><span class="caption-text">Integration</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="tasmota.html">Sonoff Tasmota integration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="nodered.html">Node-RED integration</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Node-RED integration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#mqtt-broker-setup">MQTT broker setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#test-it">Test it</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="fhem.html">FHEM integration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="domoticz.html">Domoticz integration</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Community Manuals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="communityManuals.html">Community Manuals</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Developers</span></p>
 <ul>
@@ -149,13 +153,13 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>Community Manuals</li>
+      <li>Node-RED integration</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/integration/communityManuals.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/integration/nodered.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -168,19 +172,40 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="community-manuals">
-<h1>Community Manuals<a class="headerlink" href="#community-manuals" title="Permalink to this headline">¶</a></h1>
-<p>This page contains a list of interesting articles/ manuals of users of gBridge.</p>
-<ul>
-<li><p class="first">Vance: <a class="reference external" href="http://va.nce.me/Google_Home_light_control_via_mqtt.html">http://va.nce.me/Google_Home_light_control_via_mqtt.html</a></p>
-<p>Vance describes his experiences while integrating gBridge in his setup.
-Please note the part about “Topic translation” is not necessary anymore, since custom MQTT topics were implemented into gBridge.</p>
-</li>
-</ul>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p>It would be great if you could send me a short mail (to gbridge(at)kappelt.net) if you’ve found useful online resource referencing gBridge.</p>
-<p class="last">These could be integrated into the documentation or be noted on this page, in order to help other users getting started.</p>
+  <div class="section" id="node-red-integration">
+<h1>Node-RED integration<a class="headerlink" href="#node-red-integration" title="Permalink to this headline">¶</a></h1>
+<p>This guide helps you to connect to gBridge with you Node-RED instance.</p>
+<p>Place a new MQTT input node. Enter the action topic of a device you’ve created in the gBridge device dashboard. Create a new MQTT server connection by following the next chapter (or choose the previously configured one).</p>
+<div class="section" id="mqtt-broker-setup">
+<h2>MQTT broker setup<a class="headerlink" href="#mqtt-broker-setup" title="Permalink to this headline">¶</a></h2>
+<div class="align-center figure" id="id1">
+<a class="reference internal image-reference" href="../_images/nodered-mqtt.png"><img alt="Node-RED MQTT setup." src="../_images/nodered-mqtt.png" style="width: 100%;" /></a>
+<p class="caption"><span class="caption-text">Use <code class="code docutils literal notranslate"><span class="pre">mqtt.gbridge.kappelt.net</span></code> as the MQTT server, 8883 as the MQTT port. Enable legacy MQTT v3.1. Enable the usage of a secure TLS connection and create a new TLS profile.</span></p>
+</div>
+<div class="align-center figure" id="id2">
+<a class="reference internal image-reference" href="../_images/nodered-mqtt-tls.png"><img alt="Node-RED MQTT TLS setup." src="../_images/nodered-mqtt-tls.png" style="width: 100%;" /></a>
+<p class="caption"><span class="caption-text">Use <code class="code docutils literal notranslate"><span class="pre">mqtt.gbridge.kappelt.net</span></code> as the server name, check “Verify server certificate”. Choose a name you like (e.g. “gbridge-tls”). You don’t need to upload any custom certificates here.</span></p>
+</div>
+<div class="align-center figure" id="id3">
+<a class="reference internal image-reference" href="../_images/nodered-mqtt-auth.png"><img alt="Node-RED MQTT authentication." src="../_images/nodered-mqtt-auth.png" style="width: 100%;" /></a>
+<p class="caption"><span class="caption-text">Go back to the broker setting, into the tab “Security”. Enter your gBridge MQTT username (it is listed in your account’s dashboard in “My Account”) and password. Your MQTT password is you account’s password by default, but may be changed independently.</span></p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last"><a class="reference external" href="https://github.com/kservices/gBridge/issues/13">Some users</a> have discovered that Node-RED won’t connect to the gBridge MQTT broker if you password contains certain special characters. <code class="code docutils literal notranslate"><span class="pre">$</span></code> is known to cause issues. Try changing your password if Node-RED won’t connect.</p>
+</div>
+</div>
+<div class="section" id="test-it">
+<h2>Test it<a class="headerlink" href="#test-it" title="Permalink to this headline">¶</a></h2>
+<p>I’ve just created a new device called “Ceiling Light” in my gBridge dashboard. After setting it up on Node-RED, I connected it to a debug node in order to see the messages.</p>
+<div class="align-center figure" id="id4">
+<a class="reference internal image-reference" href="../_images/nodered-success-command.png"><img alt="Node-RED Google Assistant command." src="../_images/nodered-success-command.png" style="width: 100%;" /></a>
+<p class="caption"><span class="caption-text">I’ve asked Google to turn the device on.</span></p>
+</div>
+<div class="align-center figure" id="id5">
+<a class="reference internal image-reference" href="../_images/nodered-success.png"><img alt="Node-RED MQTT input connected to debug." src="../_images/nodered-success.png" style="width: 100%;" /></a>
+<p class="caption"><span class="caption-text">A MQTT message is received when Google issues a command.</span></p>
+</div>
 </div>
 </div>
 
@@ -192,10 +217,10 @@ Please note the part about “Topic translation” is not necessary anymore, sin
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../developers/api.html" class="btn btn-neutral float-right" title="User API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="fhem.html" class="btn btn-neutral float-right" title="FHEM integration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="domoticz.html" class="btn btn-neutral" title="Domoticz integration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="tasmota.html" class="btn btn-neutral" title="Sonoff Tasmota integration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -208,7 +233,7 @@ Please note the part about “Topic translation” is not necessary anymore, sin
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. <jinja2.runtime.BlockReference object at 0x2b1e71066390> 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. <jinja2.runtime.BlockReference object at 0x2b1e711b8828> 
 
 <br>
 <a href="https://github.com/kservices/gBridge">gBridge on Github</a><br>

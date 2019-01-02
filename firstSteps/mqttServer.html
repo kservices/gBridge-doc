@@ -8,10 +8,12 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Hosted MQTT server &mdash; Kappelt gBridge 1.0.0 documentation</title>
+  <title>Hosted MQTT server &mdash; gBridge.io 1.0.0 documentation</title>
   
 
   
+  
+    <link rel="shortcut icon" href="../_static/kappelt.ico"/>
   
   
   
@@ -48,9 +50,12 @@
           
 
           
-            <a href="../index.html" class="icon icon-home"> Kappelt gBridge
+            <a href="../index.html" class="icon icon-home"> gBridge.io
           
 
+          
+            
+            <img src="../_static/kappelt-round-border.svg" class="logo" alt="Logo"/>
           
           </a>
 
@@ -101,8 +106,15 @@
 </ul>
 <p class="caption"><span class="caption-text">Integration</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../integration/tasmota.html">Sonoff Tasmota integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/nodered.html">Node-RED integration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../integration/fhem.html">FHEM integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/domoticz.html">Domoticz integration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../integration/communityManuals.html">Community Manuals</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../developers/api.html">User API</a></li>
 </ul>
 
             
@@ -117,14 +129,14 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">Kappelt gBridge</a>
+          <a href="../index.html">gBridge.io</a>
         
       </nav>
 
 
       <div class="wy-nav-content">
         
-        <div class="rst-content">
+        <div class="rst-content style-external-links">
         
           
 
@@ -202,7 +214,10 @@
 </tbody>
 </table>
 <p>The server uses certificates signed by Let’s Encrypt. This CA is trusted by most systems, your shouldn’t need to do anything more than specifying your system’s CA directory.</p>
-<p>For many linux-based systems, trusted certificates are located under <code class="code docutils literal notranslate"><span class="pre">/etc/ssl/certs/</span></code>. For example, when using <code class="code docutils literal notranslate"><span class="pre">mosquitto_sub</span></code>  or <code class="code docutils literal notranslate"><span class="pre">mosquitto_pub</span></code>, you just need to give the parameter <code class="code docutils literal notranslate"><span class="pre">--capath</span> <span class="pre">/etc/ssl/certs/</span></code></p>
+<div class="line-block">
+<div class="line">For many linux-based systems, trusted certificates are located under <code class="code docutils literal notranslate"><span class="pre">/etc/ssl/certs/</span></code>. For example, when using <code class="code docutils literal notranslate"><span class="pre">mosquitto_sub</span></code>  or <code class="code docutils literal notranslate"><span class="pre">mosquitto_pub</span></code>, you just need to give the parameter <code class="code docutils literal notranslate"><span class="pre">--capath</span> <span class="pre">/etc/ssl/certs/</span></code>.</div>
+<div class="line">Certificate directories on other distributions might be <code class="code docutils literal notranslate"><span class="pre">/usr/local/share/certs</span></code>, <code class="code docutils literal notranslate"><span class="pre">/etc/pki/tls/certs</span></code>, <code class="code docutils literal notranslate"><span class="pre">/etc/openssl/certs</span></code></div>
+</div>
 </div>
 <div class="section" id="mqtt-over-secure-websockets">
 <h3>MQTT over secure websockets<a class="headerlink" href="#mqtt-over-secure-websockets" title="Permalink to this headline">¶</a></h3>
@@ -292,6 +307,7 @@
 <span class="nb">topic</span> gBridge/u{gbridge-userid}/+/+ both <span class="m">0</span> <span class="s2">&quot;&quot;</span> <span class="s2">&quot;&quot;</span>
 <span class="nb">topic</span> gBridge/u{gbridge-userid}/+/+/set both <span class="m">0</span> <span class="s2">&quot;&quot;</span> <span class="s2">&quot;&quot;</span>
 <span class="c">#you might need to change the path of the CA files</span>
+<span class="c">#This one is valid for most Debian based systems</span>
 <span class="nb">bridge_capath</span> <span class="sx">/etc/ssl/certs/</span>
 <span class="nb">bridge_tls_version</span> tlsv1.2
 </pre></div>
@@ -333,11 +349,11 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Peter Kappelt
+        &copy; Copyright 2019, Kappelt kServices
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. <jinja2.runtime.BlockReference object at 0x2b2174e3a080> 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. <jinja2.runtime.BlockReference object at 0x2b1e7114cda0> 
 
 <br>
 <a href="https://github.com/kservices/gBridge">gBridge on Github</a><br>

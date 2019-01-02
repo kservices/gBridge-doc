@@ -24,18 +24,15 @@ Light
 --------------
 
 Recommended Traits
-............................
-On and Off, Brightness
-
+    On and Off, Brightness
 Example Commands
-.....................
-* Turn on/ off {light name}
-* Dim {light name}
-* Brighten (the) {light name}
-* Set {light name} to x %
-* Brighten/ Dim {light name} by x %
-* Turn on/ off lights in {room name}
-* Is {light name} turned on?
+    * Turn on/ off {light name}
+    * Dim {light name}
+    * Brighten (the) {light name}
+    * Set {light name} to x %
+    * Brighten/ Dim {light name} by x %
+    * Turn on/ off lights in {room name}
+    * Is {light name} turned on?
 
 
 
@@ -45,13 +42,11 @@ Outlet
 --------------
 
 Recommended Trait
-............................
-On and Off
+    On and Off
 
 Example Commands
-.....................
-* Turn on/ off {plug/ outlet name}
-* Is {plug/ outlet name} turned on?
+    * Turn on/ off {plug/ outlet name}
+    * Is {plug/ outlet name} turned on?
 
 Switch
 --------------
@@ -61,25 +56,21 @@ Scene
 -------------------
 
 Recommended Trait
-............................
-Scene
+    Scene
 
 Example Commands
-.....................
-* Activate/ Start {scene name}
+    * Activate/ Start {scene name}
 
 Thermostat
 -------------------
 
 Recommended Trait
-............................
-Temperature Setting
+    Temperature Setting
 
 Example Commands
-.....................
-* Make it warmer/ cooler
-* Raise/ lower the Temperature
-* Raise/ lower the temp x degrees
-* Set the temperature to x degrees
-* How warm is it in here?
-* What's the humidity of {thermostat name} (*if humidity is enabled*)
+    * Make it warmer/ cooler
+    * Raise/ lower the Temperature
+    * Raise/ lower the temp x degrees
+    * Set the temperature to x degrees
+    * How warm is it in here?
+    * What's the humidity of {thermostat name} (*if humidity is enabled*)

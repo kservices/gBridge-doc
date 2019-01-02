@@ -8,10 +8,12 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Introduction &mdash; Kappelt gBridge 1.0.0 documentation</title>
+  <title>Introduction &mdash; gBridge.io 1.0.0 documentation</title>
   
 
   
+  
+    <link rel="shortcut icon" href="_static/kappelt.ico"/>
   
   
   
@@ -47,9 +49,12 @@
           
 
           
-            <a href="#" class="icon icon-home"> Kappelt gBridge
+            <a href="#" class="icon icon-home"> gBridge.io
           
 
+          
+            
+            <img src="_static/kappelt-round-border.svg" class="logo" alt="Logo"/>
           
           </a>
 
@@ -89,8 +94,15 @@
 </ul>
 <p class="caption"><span class="caption-text">Integration</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="integration/tasmota.html">Sonoff Tasmota integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="integration/nodered.html">Node-RED integration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="integration/fhem.html">FHEM integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="integration/domoticz.html">Domoticz integration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="integration/communityManuals.html">Community Manuals</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="developers/api.html">User API</a></li>
 </ul>
 
             
@@ -105,14 +117,14 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="#">Kappelt gBridge</a>
+          <a href="#">gBridge.io</a>
         
       </nav>
 
 
       <div class="wy-nav-content">
         
-        <div class="rst-content">
+        <div class="rst-content style-external-links">
         
           
 
@@ -164,17 +176,28 @@
 <p><em>gBridge.io</em> allows you to control (almost) every smart home device with Google Assistant. It provides a bridge between Google Assistant and MQTT.</p>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
-<p><em>gBridge.io</em> is an open source application. However, I provide an inexpensive hosted appliance of gBridge.
-<strong>This is a great way of supporting my work</strong> - and you don’t have to care about installation, debugging and maintenance.</p>
+<p><em>gBridge.io</em> is an open source application. However, we provide an inexpensive hosted appliance of gBridge.
+<strong>This is a great way of supporting our work</strong> - and you don’t have to care about installation, debugging and maintenance.</p>
 <p class="last">Interested? Have a look at <a class="reference external" href="https://about.gbridge.kappelt.net">https://about.gbridge.kappelt.net</a>.</p>
 </div>
 <p>It acts like a smart home device provider, that is listed in the Google Home app. But there are no real devices by gBridge.io - there are virtual devices defined by you in your user account’s dashboard.
 When you interact with a virtual device you’ve defined (“Hey Google, turn on the lights in the living room”), gBridge will publish an MQTT message.</p>
 <p>This MQTT message can finally be handled by most smart home applications and might be further processed there.</p>
-<p>All set? <a class="reference internal" href="firstSteps/gettingStarted.html"><span class="doc">Let’s get started</span></a></p>
+<p>Do you want to know <a class="reference internal" href="#why-gbridge"><span class="std std-ref">what makes gBridge unique?</span></a>.</p>
+<p>All set? <a class="reference internal" href="firstSteps/gettingStarted.html"><span class="doc">Let’s get started!</span></a></p>
 <div class="align-center figure">
 <a class="reference internal image-reference" href="_images/works-with-assistant.png"><img alt="Works with Assistant" src="_images/works-with-assistant.png" style="width: 50%;" /></a>
 </div>
+<div class="section" id="why-gbridge">
+<span id="id1"></span><h2>Why gBridge?<a class="headerlink" href="#why-gbridge" title="Permalink to this headline">¶</a></h2>
+<p>There are several reasons why one should prefer gBridge over other services/ mechanisms.</p>
+<ul class="simple">
+<li>The hosted version is <strong>officially listed in the Google Actions directory</strong>. You won’t need to fiddle around with the setup of projects, account linking, etc.</li>
+<li>gBridge is <strong>secure</strong>. You don’t need to open any ports in your router/ firewall and expose webpages or webhooks. MQTT messages are encrypted with TLS 1.2.</li>
+<li>gBridge <strong>integrates natively</strong> into the Google smart home ecosystem. Devices are listed in the Google home app, where you can manage and control them. You can use all supported voice commands, not only limited and self-chosen ones.</li>
+<li>gBridge is <strong>simple to use</strong> with all sorts of devices and many smart home programs. Everything inbetween a <strong>simple, plain ESP8266</strong> and a <strong>fully featured smart home software</strong> (like Home-Assistant) can be controlled by gBridge.</li>
+<li>gBridge is <strong>open-source software</strong>. You can verify the code and contribute to the scripts or documentation if you like.</li>
+</ul>
 <div class="toctree-wrapper compound">
 <p class="caption"><span class="caption-text">First steps</span></p>
 <ul class="current">
@@ -225,13 +248,36 @@ When you interact with a virtual device you’ve defined (“Hey Google, turn on
 <div class="toctree-wrapper compound">
 <p class="caption"><span class="caption-text">Integration</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="integration/tasmota.html">Sonoff Tasmota integration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="integration/tasmota.html#configure-local-broker">Configure Local Broker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integration/tasmota.html#configure-your-tasmota-device">Configure your Tasmota device</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integration/tasmota.html#create-a-gbridge-virtual-device">Create a gBridge virtual device</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integration/tasmota.html#done">Done</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="integration/nodered.html">Node-RED integration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="integration/nodered.html#mqtt-broker-setup">MQTT broker setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integration/nodered.html#test-it">Test it</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="integration/fhem.html">FHEM integration</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="integration/fhem.html#mqtt-server-connection">MQTT server connection</a></li>
 <li class="toctree-l2"><a class="reference internal" href="integration/fhem.html#basic-on-off-and-brightness">Basic On/Off and Brightness</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="integration/domoticz.html">Domoticz integration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="integration/domoticz.html#setup">Setup</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="integration/communityManuals.html">Community Manuals</a></li>
 </ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">Developers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="developers/api.html">User API</a></li>
+</ul>
+</div>
 </div>
 </div>
 
@@ -253,11 +299,11 @@ When you interact with a virtual device you’ve defined (“Hey Google, turn on
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Peter Kappelt
+        &copy; Copyright 2019, Kappelt kServices
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. <jinja2.runtime.BlockReference object at 0x2b2174d37588> 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. <jinja2.runtime.BlockReference object at 0x2b1e71059518> 
 
 <br>
 <a href="https://github.com/kservices/gBridge">gBridge on Github</a><br>
