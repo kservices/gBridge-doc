@@ -393,9 +393,11 @@ Navigate to :code:`https://YOUR-WEBSERVER'S-ADDRESS/gbridge/gapi/auth` with your
    :alt: Account linking login page.
    :figclass: align-center
 
-   You should see the page used for account linking.
+   You should see the page used for account linking. Do not login here! This step is just to make sure that you are able to access the login page.
 
 Congratulations
 ~~~~~~~~~~~~~~~~~
 
-**Your gBridge instance should now work a treat!**. You can continue with logging in in your Google Home account, have a look at the :ref:`getting started chapter <gettingStarted>`.
+**Your gBridge instance should now work a treat!**. You can continue with logging in in your Google Home account, have a look at the :ref:`getting started chapter <gettingStarted>`. 
+
+When opening the Google Home app, you should see your newly configured smart home provider, prefixed with :code:`[test]`. When you click on your provider, you should see the login screen, where you might enter your credentials for linking.
