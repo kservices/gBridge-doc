@@ -1,0 +1,309 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Fan Speed &mdash; gBridge.io 1.0.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/kappelt.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Start and Stop" href="startstop.html" />
+    <link rel="prev" title="Temperature Setting" href="temperaturesetting.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> gBridge.io
+          
+
+          
+            
+            <img src="../_static/kappelt-round-border.svg" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">First steps</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../firstSteps/supportGuidelines.html">Support Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../firstSteps/gettingStarted.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../firstSteps/deviceMechanism.html">Device Mechanism</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../firstSteps/deviceTypes.html">Device Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../firstSteps/mqttServer.html">Hosted MQTT server</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../firstSteps/twofa.html">Security confirmation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../selfHosted/hostItYourself.html">Self-Hosted gBridge</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Traits</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="about.html">About device traits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="onoff.html">On and Off</a></li>
+<li class="toctree-l1"><a class="reference internal" href="brightness.html">Brightness</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scene.html">Scene</a></li>
+<li class="toctree-l1"><a class="reference internal" href="temperaturesetting.html">Temperature Setting</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Fan Speed</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#fitting-device-types">Fitting device types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#trait-settings">Trait Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#action-topics">Action topics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#status-topics">Status topics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#other-commands">Other commands</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="startstop.html">Start and Stop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="openclose.html">Open and Close</a></li>
+<li class="toctree-l1"><a class="reference internal" href="camerastream.html">Camera Stream</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Integration</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../integration/tasmota.html">Sonoff Tasmota integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/nodered.html">Node-RED integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/fhem.html">FHEM integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/domoticz.html">Domoticz integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/communityManuals.html">Community Manuals</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../developers/api.html">User API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">gBridge.io</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Fan Speed</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/traits/fanspeed.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="fan-speed">
+<h1>Fan Speed<a class="headerlink" href="#fan-speed" title="Permalink to this headline">¶</a></h1>
+<p>The trait “Fan Speed” allows you to set a device to one of a certain speed value. You can define the possible speed values and alias names as you like.</p>
+<div class="section" id="fitting-device-types">
+<h2>Fitting device types<a class="headerlink" href="#fitting-device-types" title="Permalink to this headline">¶</a></h2>
+<p>These device types could be combined well with this trait:</p>
+<ul class="simple">
+<li>AC units (possibly combined with On and Off)</li>
+<li>Air purifiers (possibly combined with On and Off)</li>
+<li>Fans (possibly combined with On and Off)</li>
+</ul>
+</div>
+<div class="section" id="trait-settings">
+<h2>Trait Settings<a class="headerlink" href="#trait-settings" title="Permalink to this headline">¶</a></h2>
+<p>When editing a device that supports this trait, you can specify the speeds this device supports.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The definition of fan speeds is a bit complicated for the moment, you need to follow this guide exactly. The interface will eventually be improved to make this easier.</p>
+</div>
+<p>The definition of fan speeds is done in a generic text field, that has to be formatted according to the following rules.</p>
+<p>Each line contains one possible fan speed. There should be no empty lines.</p>
+<p>Each line for the fan speed is formatted like that: <code class="code docutils literal notranslate"><span class="pre">{speed_value}:{speed_name1},{speed_name2},...,{speed_name_n}</span></code>.
+The speed value is the value that is sent or received on MQTT topics. You can specify one or more names for that speed (that might be a duplicate of the speed value), Google will listen to those speed names.</p>
+<p><strong>Example 1:</strong> The line <code class="code docutils literal notranslate"><span class="pre">S1:Low,Speed</span> <span class="pre">1</span></code> defines a speed with the value <code class="code docutils literal notranslate"><span class="pre">S1</span></code>. When you say <em>Set the fan to low</em> or <em>Set the fan to speed 1</em>, the value <code class="code docutils literal notranslate"><span class="pre">S1</span></code> will be published on the action topic.</p>
+<p><strong>Example 2:</strong> The line <code class="code docutils literal notranslate"><span class="pre">S2:Medium</span></code> defines a speed with the value <code class="code docutils literal notranslate"><span class="pre">S2</span></code>. Google will only listen to the command <em>Set the fan to medium</em>, then <code class="code docutils literal notranslate"><span class="pre">S2</span></code> will be published on the action topic.</p>
+<p>For the following examples, this speed specification is used:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>S1:Low,Speed 1
+S2:Medium,Speed 2
+S3:High,Speed 3
+</pre></div>
+</div>
+</div>
+<div class="section" id="action-topics">
+<h2>Action topics<a class="headerlink" href="#action-topics" title="Permalink to this headline">¶</a></h2>
+<p>The gBridge service publishes one of the specified speed values, when you say a voice command.</p>
+<p><strong>Example:</strong> <em>Hey Google, Set the {device name} to slow</em> -&gt; <code class="code docutils literal notranslate"><span class="pre">gBridge/ux/dy/fanspeed</span></code>: <code class="code docutils literal notranslate"><span class="pre">S1</span></code></p>
+</div>
+<div class="section" id="status-topics">
+<h2>Status topics<a class="headerlink" href="#status-topics" title="Permalink to this headline">¶</a></h2>
+<p>Your application should publish the current fan speed to the status topic everytime it changes.
+Data from the status topic is cached and used to response to questions about the device state from Google.</p>
+<p>You may publish one of the speed values (but <em>not</em> the names) that are specified (case sensitive).</p>
+<p><strong>Example:</strong> <code class="code docutils literal notranslate"><span class="pre">gBridge/ux/dy/fanspeed/set</span></code>: <code class="code docutils literal notranslate"><span class="pre">S2</span></code> -&gt;  <em>Hey Google, what speed is the fan set to? The fan is set to medium.</em></p>
+</div>
+<div class="section" id="other-commands">
+<h2>Other commands<a class="headerlink" href="#other-commands" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>What speed is {device name} set to?</li>
+<li>Set {device name} to {speed name}.</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="startstop.html" class="btn btn-neutral float-right" title="Start and Stop" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="temperaturesetting.html" class="btn btn-neutral" title="Temperature Setting" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Kappelt kServices
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. <jinja2.runtime.BlockReference object at 0x2b71c7734978> 
+
+<br>
+<a href="https://github.com/kservices/gBridge">gBridge on Github</a><br>
+Learn more about gBridge.io? See <a href="https://about.gbridge.io" target="_blank">https://about.gbridge.io</a>
+
+ 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

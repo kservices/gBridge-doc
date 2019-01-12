@@ -8,6 +8,20 @@ The following **device types** are currently supported by gBridge:
 :Switch: A general definition for all kinds of switching devices
 :Scene: Triggers pre-configured settings for various lights/ thermostats/ etc., e.g. for different moods
 :Thermostat: Device that controls the heating, ventilation or an air conditioner.
+:Fan: Ventilation and fan devices
+:AC Units:
+:Air Purifier: Air purifying devices
+:Sprinkler: Garden Sprinklers and watering devices
+:Door: Doors that can be opened/ closed
+:Shutter and Blinds: Darkening systems
+:Dishwasher:
+:Dryer:
+:Vacuum: e.g. vacuum robots that can be started/ stopped
+:Washer: Generic washing machine
+:Camera: Device that can be played back on a streaming device (e.g. a Chromecast)
+
+Device types only provide specific vocabulary and semantics for controlling a device, but do not define any features/ abilities.
+
 
 Each device supports one or more so called **traits**. Those are feature sets that the device supports.
 
@@ -19,58 +33,9 @@ These traits are supported:
 :Brightness: Set the brightness percentage of a device
 :Scene: Trait, that allows this device to be triggered
 :Temperature Control: Enables features that are typical for thermostats and alike
+:Fan Speed: Ability to set a device to a certain speed setting with a specified name.
+:Start and Stop: Start and stop a device or a run cycle of it
+:Open and Close: Open/ close devices to a certain percentage
+:Camera Stream: Corresponding trait for the camera device. Allows your own stream URL to be viewed on a streaming device (e.g. Chromecast)
 
-Light
---------------
-
-Recommended Traits
-    On and Off, Brightness
-Example Commands
-    * Turn on/ off {light name}
-    * Dim {light name}
-    * Brighten (the) {light name}
-    * Set {light name} to x %
-    * Brighten/ Dim {light name} by x %
-    * Turn on/ off lights in {room name}
-    * Is {light name} turned on?
-
-
-
-.. _DeviceTypeOutlet:
-
-Outlet
---------------
-
-Recommended Trait
-    On and Off
-
-Example Commands
-    * Turn on/ off {plug/ outlet name}
-    * Is {plug/ outlet name} turned on?
-
-Switch
---------------
-See `Outlet`_.
-
-Scene
--------------------
-
-Recommended Trait
-    Scene
-
-Example Commands
-    * Activate/ Start {scene name}
-
-Thermostat
--------------------
-
-Recommended Trait
-    Temperature Setting
-
-Example Commands
-    * Make it warmer/ cooler
-    * Raise/ lower the Temperature
-    * Raise/ lower the temp x degrees
-    * Set the temperature to x degrees
-    * How warm is it in here?
-    * What's the humidity of {thermostat name} (*if humidity is enabled*)
+Have a look at the individual trait documentation pages for further information about settings and usage.

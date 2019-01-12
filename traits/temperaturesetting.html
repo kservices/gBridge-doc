@@ -1,0 +1,338 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Temperature Setting &mdash; gBridge.io 1.0.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/kappelt.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Fan Speed" href="fanspeed.html" />
+    <link rel="prev" title="Scene" href="scene.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> gBridge.io
+          
+
+          
+            
+            <img src="../_static/kappelt-round-border.svg" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">First steps</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../firstSteps/supportGuidelines.html">Support Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../firstSteps/gettingStarted.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../firstSteps/deviceMechanism.html">Device Mechanism</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../firstSteps/deviceTypes.html">Device Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../firstSteps/mqttServer.html">Hosted MQTT server</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../firstSteps/twofa.html">Security confirmation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../selfHosted/hostItYourself.html">Self-Hosted gBridge</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Traits</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="about.html">About device traits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="onoff.html">On and Off</a></li>
+<li class="toctree-l1"><a class="reference internal" href="brightness.html">Brightness</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scene.html">Scene</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Temperature Setting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#fitting-device-types">Fitting device types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#trait-settings">Trait Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#action-topics">Action topics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#action-topic-for-mode">Action topic for mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#action-topic-for-temperature-setpoint">Action topic for temperature setpoint</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#status-topics">Status topics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#status-topic-for-mode">Status topic for mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#status-topic-for-temperature-setpoint">Status topic for temperature setpoint</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#status-topic-for-ambient-temperature">Status topic for ambient temperature</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#status-topic-for-ambient-humidity">Status topic for ambient humidity</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#other-commands">Other commands</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="fanspeed.html">Fan Speed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="startstop.html">Start and Stop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="openclose.html">Open and Close</a></li>
+<li class="toctree-l1"><a class="reference internal" href="camerastream.html">Camera Stream</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Integration</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../integration/tasmota.html">Sonoff Tasmota integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/nodered.html">Node-RED integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/fhem.html">FHEM integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/domoticz.html">Domoticz integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/communityManuals.html">Community Manuals</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../developers/api.html">User API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">gBridge.io</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Temperature Setting</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/traits/temperaturesetting.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="temperature-setting">
+<h1>Temperature Setting<a class="headerlink" href="#temperature-setting" title="Permalink to this headline">¶</a></h1>
+<p>The trait “Temperature Setting” allows you to control features that are typical for thermostats.</p>
+<div class="section" id="fitting-device-types">
+<h2>Fitting device types<a class="headerlink" href="#fitting-device-types" title="Permalink to this headline">¶</a></h2>
+<p>These device types could be combined well with this trait:</p>
+<ul class="simple">
+<li>Thermostats</li>
+<li>Air conditioners</li>
+</ul>
+</div>
+<div class="section" id="trait-settings">
+<h2>Trait Settings<a class="headerlink" href="#trait-settings" title="Permalink to this headline">¶</a></h2>
+<p>When editing a device that supports this trait, you can specify additional settings.</p>
+<ul class="simple">
+<li>You can specify one or more modes that are supported by your device: Off, Heating, Cooling, On, Automatic, Fan Only, Purifying, Energy Saving, Dry mode</li>
+<li>You can select whether your device is able to report the measured humidity.</li>
+</ul>
+</div>
+<div class="section" id="action-topics">
+<h2>Action topics<a class="headerlink" href="#action-topics" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="action-topic-for-mode">
+<h3>Action topic for mode<a class="headerlink" href="#action-topic-for-mode" title="Permalink to this headline">¶</a></h3>
+<p>When you change the mode of the device, the gBridge services publishes one of the following strings that represents one of the modes you’ve selected your device to support: <code class="code docutils literal notranslate"><span class="pre">off</span></code>, <code class="code docutils literal notranslate"><span class="pre">heat</span></code>, <code class="code docutils literal notranslate"><span class="pre">cool</span></code>, <code class="code docutils literal notranslate"><span class="pre">on</span></code>, <code class="code docutils literal notranslate"><span class="pre">auto</span></code>, <code class="code docutils literal notranslate"><span class="pre">fan-only</span></code>, <code class="code docutils literal notranslate"><span class="pre">purifier</span></code>, <code class="code docutils literal notranslate"><span class="pre">eco</span></code>, <code class="code docutils literal notranslate"><span class="pre">dry</span></code></p>
+<p><strong>Example:</strong> <em>Hey Google, Set the thermostat to automatic mode</em> -&gt; <code class="code docutils literal notranslate"><span class="pre">gBridge/ux/dy/tempset-mode</span></code>: <code class="code docutils literal notranslate"><span class="pre">auto</span></code></p>
+</div>
+<div class="section" id="action-topic-for-temperature-setpoint">
+<h3>Action topic for temperature setpoint<a class="headerlink" href="#action-topic-for-temperature-setpoint" title="Permalink to this headline">¶</a></h3>
+<p>When you change the temperature setpoint of your device, the desired temperature setpoint value is published (unit: degrees celsius). It is formatted as a decimal number with exactly one decimal place, using the dot (<code class="code docutils literal notranslate"><span class="pre">.</span></code>) as the decimal separator.</p>
+<p><strong>Example:</strong> <em>Hey Google, Set the thermostat to 20 degrees</em> -&gt; <code class="code docutils literal notranslate"><span class="pre">gBridge/ux/dy/tempset-setpoint</span></code>: <code class="code docutils literal notranslate"><span class="pre">20.0</span></code></p>
+</div>
+</div>
+<div class="section" id="status-topics">
+<h2>Status topics<a class="headerlink" href="#status-topics" title="Permalink to this headline">¶</a></h2>
+<p>In order for Google to respond properly to questions, you need to write values to the status topics for the setpoint, the ambient temperature and the humidity (if supported) that are different than 0 at least once.</p>
+<p>Your smart home system should report the new thermostat data everytime some state changes.</p>
+<div class="section" id="status-topic-for-mode">
+<h3>Status topic for mode<a class="headerlink" href="#status-topic-for-mode" title="Permalink to this headline">¶</a></h3>
+<p>Your application should publish the current mode of your thermostat. The valid values depend on the modes you’ve chosen for your device to be supported.</p>
+<p>These values must be used to represent the modes: <code class="code docutils literal notranslate"><span class="pre">off</span></code>, <code class="code docutils literal notranslate"><span class="pre">heat</span></code>, <code class="code docutils literal notranslate"><span class="pre">cool</span></code>, <code class="code docutils literal notranslate"><span class="pre">on</span></code>, <code class="code docutils literal notranslate"><span class="pre">auto</span></code>, <code class="code docutils literal notranslate"><span class="pre">fan-only</span></code>, <code class="code docutils literal notranslate"><span class="pre">purifier</span></code>, <code class="code docutils literal notranslate"><span class="pre">eco</span></code>, <code class="code docutils literal notranslate"><span class="pre">dry</span></code> (case-insensitive)</p>
+<p><strong>Example:</strong> (assuming Fan-only is an enabled supported mode) <code class="code docutils literal notranslate"><span class="pre">gBridge/ux/dy/tempset-mode/set</span></code>: <code class="code docutils literal notranslate"><span class="pre">fan-only</span></code> -&gt;  <em>Hey Google, what mode is the thermostat in? The thermostat is set to fan-only.</em></p>
+</div>
+<div class="section" id="status-topic-for-temperature-setpoint">
+<h3>Status topic for temperature setpoint<a class="headerlink" href="#status-topic-for-temperature-setpoint" title="Permalink to this headline">¶</a></h3>
+<p>Your application should publish the temperature setpoint (in °C) of your thermostat. It must be formatted as a decimal number with one decimal place, using a dot as the decimal separator. Google will round this number to half a degree.</p>
+<p><strong>Example:</strong> <code class="code docutils literal notranslate"><span class="pre">gBridge/ux/dy/tempset-setpoint/set</span></code>: <code class="code docutils literal notranslate"><span class="pre">21.0</span></code> -&gt;  <em>Hey Google, what is the thermostat set to? Heating is set to 21 degrees.</em></p>
+</div>
+<div class="section" id="status-topic-for-ambient-temperature">
+<h3>Status topic for ambient temperature<a class="headerlink" href="#status-topic-for-ambient-temperature" title="Permalink to this headline">¶</a></h3>
+<p>Your app should publish data once a change in the actual room temperature (in °C) is observed. It should be formatted like the value for the temperature setpoint.</p>
+<p><strong>Example:</strong> <code class="code docutils literal notranslate"><span class="pre">gBridge/ux/dy/tempset-ambient/set</span></code>: <code class="code docutils literal notranslate"><span class="pre">19.0</span></code> -&gt;  <em>Hey Google, how warm is it in {room name}? Heating is set to 21, with a current temperature of 19</em></p>
+</div>
+<div class="section" id="status-topic-for-ambient-humidity">
+<h3>Status topic for ambient humidity<a class="headerlink" href="#status-topic-for-ambient-humidity" title="Permalink to this headline">¶</a></h3>
+<p>Your app should publish data once a change in the ambient humidity is observed, but only if the checkbox “Device is able to report humidity” is checked. It’s unit is % (relative humidity).</p>
+<p>It should be formatted as a decimal number with exactly one decimal place, inbetween 0 and 100 (including those).</p>
+<p><strong>Example:</strong> <code class="code docutils literal notranslate"><span class="pre">gBridge/ux/dy/tempset-humidity/set</span></code>: <code class="code docutils literal notranslate"><span class="pre">57.0</span></code> -&gt;  <em>Hey Google, what’s the humidity at {thermostat name}? {Thermostat name} has a current humidity reading of 57%</em></p>
+</div>
+</div>
+<div class="section" id="other-commands">
+<h2>Other commands<a class="headerlink" href="#other-commands" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Make it warmer/ cooler</li>
+<li>Raise/ lower the Temperature</li>
+<li>Raise/ lower the temp x degrees</li>
+<li>Set the temperature to x degrees</li>
+<li>How warm is it in here?</li>
+<li>What’s the humidity of {thermostat name} (<em>if humidity is enabled</em>)</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="fanspeed.html" class="btn btn-neutral float-right" title="Fan Speed" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="scene.html" class="btn btn-neutral" title="Scene" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Kappelt kServices
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. <jinja2.runtime.BlockReference object at 0x2b71c76416a0> 
+
+<br>
+<a href="https://github.com/kservices/gBridge">gBridge on Github</a><br>
+Learn more about gBridge.io? See <a href="https://about.gbridge.io" target="_blank">https://about.gbridge.io</a>
+
+ 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

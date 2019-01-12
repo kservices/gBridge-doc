@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>User API &mdash; gBridge.io 1.0.0 documentation</title>
+  <title>On and Off &mdash; gBridge.io 1.0.0 documentation</title>
   
 
   
@@ -30,7 +30,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="prev" title="Community Manuals" href="../integration/communityManuals.html" /> 
+    <link rel="next" title="Brightness" href="brightness.html" />
+    <link rel="prev" title="About device traits" href="about.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -94,16 +95,21 @@
 <li class="toctree-l1"><a class="reference internal" href="../selfHosted/hostItYourself.html">Self-Hosted gBridge</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Traits</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../traits/about.html">About device traits</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../traits/onoff.html">On and Off</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../traits/brightness.html">Brightness</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../traits/scene.html">Scene</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../traits/temperaturesetting.html">Temperature Setting</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../traits/fanspeed.html">Fan Speed</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../traits/startstop.html">Start and Stop</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../traits/openclose.html">Open and Close</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../traits/camerastream.html">Camera Stream</a></li>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="about.html">About device traits</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">On and Off</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#fitting-device-types">Fitting device types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#action-topics">Action topics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#status-topics">Status topics</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="brightness.html">Brightness</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scene.html">Scene</a></li>
+<li class="toctree-l1"><a class="reference internal" href="temperaturesetting.html">Temperature Setting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fanspeed.html">Fan Speed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="startstop.html">Start and Stop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="openclose.html">Open and Close</a></li>
+<li class="toctree-l1"><a class="reference internal" href="camerastream.html">Camera Stream</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Integration</span></p>
 <ul>
@@ -114,8 +120,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../integration/communityManuals.html">Community Manuals</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Developers</span></p>
-<ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">User API</a></li>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../developers/api.html">User API</a></li>
 </ul>
 
             
@@ -161,13 +167,13 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>User API</li>
+      <li>On and Off</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/developers/api.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/traits/onoff.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -180,10 +186,50 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="user-api">
-<h1>User API<a class="headerlink" href="#user-api" title="Permalink to this headline">¶</a></h1>
-<p>An User-API is currently in development.</p>
-<p>A preliminary version (that isn’t yet fully tested and doesn’t cover all features) is available, but not yet documented. Have a look at the <a class="reference external" href="https://github.com/giejay/domoticz-gbridge-plugin">Domoticz gBridge Plugin</a> for a reference code that uses this API.</p>
+  <div class="section" id="on-and-off">
+<h1>On and Off<a class="headerlink" href="#on-and-off" title="Permalink to this headline">¶</a></h1>
+<p>The trait “On and Off” allows you to, well, turn devices on or off (rather easy, isn’t it?).</p>
+<div class="section" id="fitting-device-types">
+<h2>Fitting device types<a class="headerlink" href="#fitting-device-types" title="Permalink to this headline">¶</a></h2>
+<p>These device types could be combined well with this trait:</p>
+<ul class="simple">
+<li>Air Conditioners</li>
+<li>Outlets</li>
+<li>Switches</li>
+<li>Lights</li>
+<li>Air Purifiers</li>
+<li>Dishwashers</li>
+<li>Dryers</li>
+<li>Fans</li>
+<li>Vacuums</li>
+<li>Washers</li>
+</ul>
+</div>
+<div class="section" id="action-topics">
+<h2>Action topics<a class="headerlink" href="#action-topics" title="Permalink to this headline">¶</a></h2>
+<div class="sidebar">
+<p class="first sidebar-title">Example</p>
+<p><em>Hey Google, turn {device name} on</em></p>
+<p class="last"><code class="code docutils literal notranslate"><span class="pre">gBridge/ux/dy/onoff</span></code>: <code class="code docutils literal notranslate"><span class="pre">1</span></code></p>
+</div>
+<p>The gBridge service publishes either <code class="code docutils literal notranslate"><span class="pre">0</span></code> (device should be turned off) or <code class="code docutils literal notranslate"><span class="pre">1</span></code> (device should be turned on) when you say a voice command.</p>
+<br><br><br><br><br><br><br></div>
+<div class="section" id="status-topics">
+<h2>Status topics<a class="headerlink" href="#status-topics" title="Permalink to this headline">¶</a></h2>
+<div class="sidebar">
+<p class="first sidebar-title">Example</p>
+<p><code class="code docutils literal notranslate"><span class="pre">gBridge/ux/dy/onoff/set</span></code>: <code class="code docutils literal notranslate"><span class="pre">FALSE</span></code></p>
+<p class="last"><em>Hey Google, is {device name} turned on?</em>: <em>{Device name} is off.</em></p>
+</div>
+<p>Your application should publish the current device state to the status topic everytime the device is turned on or off.
+Data from the status topic is cached and used to response to questions about the device state from Google.</p>
+<p>You may publish these values on the status topic:</p>
+<ul class="simple">
+<li>One of <code class="code docutils literal notranslate"><span class="pre">0</span></code>, <code class="code docutils literal notranslate"><span class="pre">off</span></code>, <code class="code docutils literal notranslate"><span class="pre">false</span></code> means the device is off.</li>
+<li>One of <code class="code docutils literal notranslate"><span class="pre">1</span></code>, <code class="code docutils literal notranslate"><span class="pre">on</span></code>, <code class="code docutils literal notranslate"><span class="pre">true</span></code> means the device is turned on.</li>
+</ul>
+<p>These values are case-insensitive.</p>
+</div>
 </div>
 
 
@@ -194,8 +240,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
+        <a href="brightness.html" class="btn btn-neutral float-right" title="Brightness" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
-        <a href="../integration/communityManuals.html" class="btn btn-neutral" title="Community Manuals" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+        <a href="about.html" class="btn btn-neutral" title="About device traits" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -208,7 +256,7 @@
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. <jinja2.runtime.BlockReference object at 0x2b71c7470550> 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. <jinja2.runtime.BlockReference object at 0x2b71c76fb208> 
 
 <br>
 <a href="https://github.com/kservices/gBridge">gBridge on Github</a><br>

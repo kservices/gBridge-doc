@@ -90,7 +90,20 @@
 <li class="toctree-l1"><a class="reference internal" href="firstSteps/deviceMechanism.html">Device Mechanism</a></li>
 <li class="toctree-l1"><a class="reference internal" href="firstSteps/deviceTypes.html">Device Types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="firstSteps/mqttServer.html">Hosted MQTT server</a></li>
+<li class="toctree-l1"><a class="reference internal" href="firstSteps/twofa.html">Security confirmation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="selfHosted/hostItYourself.html">Self-Hosted gBridge</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Traits</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="traits/about.html">About device traits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="traits/onoff.html">On and Off</a></li>
+<li class="toctree-l1"><a class="reference internal" href="traits/brightness.html">Brightness</a></li>
+<li class="toctree-l1"><a class="reference internal" href="traits/scene.html">Scene</a></li>
+<li class="toctree-l1"><a class="reference internal" href="traits/temperaturesetting.html">Temperature Setting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="traits/fanspeed.html">Fan Speed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="traits/startstop.html">Start and Stop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="traits/openclose.html">Open and Close</a></li>
+<li class="toctree-l1"><a class="reference internal" href="traits/camerastream.html">Camera Stream</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Integration</span></p>
 <ul>
@@ -178,7 +191,7 @@
 <p class="first admonition-title">Tip</p>
 <p><em>gBridge.io</em> is an open source application. However, we provide an inexpensive hosted appliance of gBridge.
 <strong>This is a great way of supporting our work</strong> - and you don’t have to care about installation, debugging and maintenance.</p>
-<p class="last">Interested? Have a look at <a class="reference external" href="https://about.gbridge.kappelt.net">https://about.gbridge.kappelt.net</a>.</p>
+<p class="last">Interested? Have a look at <a class="reference external" href="https://about.gbridge.io">https://about.gbridge.io</a>.</p>
 </div>
 <p>It acts like a smart home device provider, that is listed in the Google Home app. But there are no real devices by gBridge.io - there are virtual devices defined by you in your user account’s dashboard.
 When you interact with a virtual device you’ve defined (“Hey Google, turn on the lights in the living room”), gBridge will publish an MQTT message.</p>
@@ -198,6 +211,9 @@ When you interact with a virtual device you’ve defined (“Hey Google, turn on
 <li>gBridge is <strong>simple to use</strong> with all sorts of devices and many smart home programs. Everything inbetween a <strong>simple, plain ESP8266</strong> and a <strong>fully featured smart home software</strong> (like Home-Assistant) can be controlled by gBridge.</li>
 <li>gBridge is <strong>open-source software</strong>. You can verify the code and contribute to the scripts or documentation if you like.</li>
 </ul>
+</div>
+<div class="section" id="contents">
+<h2>Contents<a class="headerlink" href="#contents" title="Permalink to this headline">¶</a></h2>
 <div class="toctree-wrapper compound">
 <p class="caption"><span class="caption-text">First steps</span></p>
 <ul class="current">
@@ -221,18 +237,17 @@ When you interact with a virtual device you’ve defined (“Hey Google, turn on
 <li class="toctree-l2"><a class="reference internal" href="firstSteps/deviceMechanism.html#valid-values-for-messages">Valid values for messages</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="firstSteps/deviceTypes.html">Device Types</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="firstSteps/deviceTypes.html#light">Light</a></li>
-<li class="toctree-l2"><a class="reference internal" href="firstSteps/deviceTypes.html#outlet">Outlet</a></li>
-<li class="toctree-l2"><a class="reference internal" href="firstSteps/deviceTypes.html#switch">Switch</a></li>
-<li class="toctree-l2"><a class="reference internal" href="firstSteps/deviceTypes.html#scene">Scene</a></li>
-<li class="toctree-l2"><a class="reference internal" href="firstSteps/deviceTypes.html#thermostat">Thermostat</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="firstSteps/deviceTypes.html">Device Types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="firstSteps/mqttServer.html">Hosted MQTT server</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="firstSteps/mqttServer.html#authentication">Authentication</a></li>
 <li class="toctree-l2"><a class="reference internal" href="firstSteps/mqttServer.html#available-protocols">Available protocols</a></li>
 <li class="toctree-l2"><a class="reference internal" href="firstSteps/mqttServer.html#using-own-mosquitto-as-a-bridge">Using own Mosquitto as a Bridge</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="firstSteps/twofa.html">Security confirmation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="firstSteps/twofa.html#no-confirmation">No confirmation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="firstSteps/twofa.html#acknowledgement">Acknowledgement</a></li>
+<li class="toctree-l2"><a class="reference internal" href="firstSteps/twofa.html#pin-code">PIN code</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="selfHosted/hostItYourself.html">Self-Hosted gBridge</a><ul>
@@ -241,6 +256,67 @@ When you interact with a virtual device you’ve defined (“Hey Google, turn on
 <li class="toctree-l2"><a class="reference internal" href="selfHosted/hostItYourself.html#set-up-gbridge-in-docker">Set up gBridge in Docker</a></li>
 <li class="toctree-l2"><a class="reference internal" href="selfHosted/hostItYourself.html#configure-your-webserver">Configure your webserver</a></li>
 <li class="toctree-l2"><a class="reference internal" href="selfHosted/hostItYourself.html#test-it">Test it</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">Traits</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="traits/about.html">About device traits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="traits/onoff.html">On and Off</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="traits/onoff.html#fitting-device-types">Fitting device types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="traits/onoff.html#action-topics">Action topics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="traits/onoff.html#status-topics">Status topics</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="traits/brightness.html">Brightness</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="traits/brightness.html#fitting-device-types">Fitting device types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="traits/brightness.html#action-topics">Action topics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="traits/brightness.html#status-topics">Status topics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="traits/brightness.html#other-commands">Other commands</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="traits/scene.html">Scene</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="traits/scene.html#fitting-device-types">Fitting device types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="traits/scene.html#action-topics">Action topics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="traits/scene.html#status-topics">Status topics</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="traits/temperaturesetting.html">Temperature Setting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="traits/temperaturesetting.html#fitting-device-types">Fitting device types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="traits/temperaturesetting.html#trait-settings">Trait Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="traits/temperaturesetting.html#action-topics">Action topics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="traits/temperaturesetting.html#status-topics">Status topics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="traits/temperaturesetting.html#other-commands">Other commands</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="traits/fanspeed.html">Fan Speed</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="traits/fanspeed.html#fitting-device-types">Fitting device types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="traits/fanspeed.html#trait-settings">Trait Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="traits/fanspeed.html#action-topics">Action topics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="traits/fanspeed.html#status-topics">Status topics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="traits/fanspeed.html#other-commands">Other commands</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="traits/startstop.html">Start and Stop</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="traits/startstop.html#fitting-device-types">Fitting device types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="traits/startstop.html#action-topics">Action topics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="traits/startstop.html#status-topics">Status topics</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="traits/openclose.html">Open and Close</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="traits/openclose.html#fitting-device-types">Fitting device types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="traits/openclose.html#action-topics">Action topics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="traits/openclose.html#status-topics">Status topics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="traits/openclose.html#other-commands">Other commands</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="traits/camerastream.html">Camera Stream</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="traits/camerastream.html#fitting-device-types">Fitting device types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="traits/camerastream.html#trait-settings">Trait settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="traits/camerastream.html#action-topics">Action topics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="traits/camerastream.html#status-topics">Status topics</a></li>
 </ul>
 </li>
 </ul>
@@ -303,11 +379,11 @@ When you interact with a virtual device you’ve defined (“Hey Google, turn on
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. <jinja2.runtime.BlockReference object at 0x2b1e71059518> 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. <jinja2.runtime.BlockReference object at 0x2b71c75f3208> 
 
 <br>
 <a href="https://github.com/kservices/gBridge">gBridge on Github</a><br>
-Learn more about gBridge.io? See <a href="https://about.gbridge.kappelt.net" target="_blank">https://about.gbridge.kappelt.net</a>
+Learn more about gBridge.io? See <a href="https://about.gbridge.io" target="_blank">https://about.gbridge.io</a>
 
  
 

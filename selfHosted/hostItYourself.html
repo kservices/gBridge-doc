@@ -30,8 +30,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Sonoff Tasmota integration" href="../integration/tasmota.html" />
-    <link rel="prev" title="Hosted MQTT server" href="../firstSteps/mqttServer.html" /> 
+    <link rel="next" title="About device traits" href="../traits/about.html" />
+    <link rel="prev" title="Security confirmation" href="../firstSteps/twofa.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -91,6 +91,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../firstSteps/deviceMechanism.html">Device Mechanism</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../firstSteps/deviceTypes.html">Device Types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../firstSteps/mqttServer.html">Hosted MQTT server</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../firstSteps/twofa.html">Security confirmation</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Self-Hosted gBridge</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#set-up-google-action">Set up Google Action</a><ul>
@@ -124,6 +125,18 @@
 </li>
 </ul>
 </li>
+</ul>
+<p class="caption"><span class="caption-text">Traits</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../traits/about.html">About device traits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../traits/onoff.html">On and Off</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../traits/brightness.html">Brightness</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../traits/scene.html">Scene</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../traits/temperaturesetting.html">Temperature Setting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../traits/fanspeed.html">Fan Speed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../traits/startstop.html">Start and Stop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../traits/openclose.html">Open and Close</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../traits/camerastream.html">Camera Stream</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Integration</span></p>
 <ul>
@@ -500,12 +513,13 @@ Migrating: 2014_10_12_000000_create_users_table
 <p>Navigate to <code class="code docutils literal notranslate"><span class="pre">https://YOUR-WEBSERVER'S-ADDRESS/gbridge/gapi/auth</span></code> with your webbrowser. You should see the account linking page:</p>
 <div class="align-center figure" id="id16">
 <a class="reference internal image-reference" href="../_images/googlehome-link-account1.png"><img alt="Account linking login page." src="../_images/googlehome-link-account1.png" style="width: 50%;" /></a>
-<p class="caption"><span class="caption-text">You should see the page used for account linking.</span></p>
+<p class="caption"><span class="caption-text">You should see the page used for account linking. Do not login here! This step is just to make sure that you are able to access the login page.</span></p>
 </div>
 </div>
 <div class="section" id="congratulations">
 <h3>Congratulations<a class="headerlink" href="#congratulations" title="Permalink to this headline">¶</a></h3>
 <p><strong>Your gBridge instance should now work a treat!</strong>. You can continue with logging in in your Google Home account, have a look at the <a class="reference internal" href="../firstSteps/gettingStarted.html#gettingstarted"><span class="std std-ref">getting started chapter</span></a>.</p>
+<p>When opening the Google Home app, you should see your newly configured smart home provider, prefixed with <code class="code docutils literal notranslate"><span class="pre">[test]</span></code>. When you click on your provider, you should see the login screen, where you might enter your credentials for linking.</p>
 </div>
 </div>
 </div>
@@ -518,10 +532,10 @@ Migrating: 2014_10_12_000000_create_users_table
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../integration/tasmota.html" class="btn btn-neutral float-right" title="Sonoff Tasmota integration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../traits/about.html" class="btn btn-neutral float-right" title="About device traits" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../firstSteps/mqttServer.html" class="btn btn-neutral" title="Hosted MQTT server" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../firstSteps/twofa.html" class="btn btn-neutral" title="Security confirmation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -534,11 +548,11 @@ Migrating: 2014_10_12_000000_create_users_table
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. <jinja2.runtime.BlockReference object at 0x2b1e712149e8> 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. <jinja2.runtime.BlockReference object at 0x2b71c77312b0> 
 
 <br>
 <a href="https://github.com/kservices/gBridge">gBridge on Github</a><br>
-Learn more about gBridge.io? See <a href="https://about.gbridge.kappelt.net" target="_blank">https://about.gbridge.kappelt.net</a>
+Learn more about gBridge.io? See <a href="https://about.gbridge.io" target="_blank">https://about.gbridge.io</a>
 
  
 

@@ -89,16 +89,22 @@
 <li class="toctree-l1"><a class="reference internal" href="supportGuidelines.html">Support Guidelines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gettingStarted.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="deviceMechanism.html">Device Mechanism</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Device Types</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#light">Light</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#outlet">Outlet</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#switch">Switch</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#scene">Scene</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#thermostat">Thermostat</a></li>
-</ul>
-</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Device Types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mqttServer.html">Hosted MQTT server</a></li>
+<li class="toctree-l1"><a class="reference internal" href="twofa.html">Security confirmation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../selfHosted/hostItYourself.html">Self-Hosted gBridge</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Traits</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../traits/about.html">About device traits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../traits/onoff.html">On and Off</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../traits/brightness.html">Brightness</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../traits/scene.html">Scene</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../traits/temperaturesetting.html">Temperature Setting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../traits/fanspeed.html">Fan Speed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../traits/startstop.html">Start and Stop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../traits/openclose.html">Open and Close</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../traits/camerastream.html">Camera Stream</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Integration</span></p>
 <ul>
@@ -192,8 +198,32 @@
 </tr>
 <tr class="field-odd field"><th class="field-name">Thermostat:</th><td class="field-body">Device that controls the heating, ventilation or an air conditioner.</td>
 </tr>
+<tr class="field-even field"><th class="field-name">Fan:</th><td class="field-body">Ventilation and fan devices</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">AC Units:</th><td class="field-body"></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Air Purifier:</th><td class="field-body">Air purifying devices</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Sprinkler:</th><td class="field-body">Garden Sprinklers and watering devices</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Door:</th><td class="field-body">Doors that can be opened/ closed</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">Shutter and Blinds:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body">Darkening systems</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Dishwasher:</th><td class="field-body"></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Dryer:</th><td class="field-body"></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Vacuum:</th><td class="field-body">e.g. vacuum robots that can be started/ stopped</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Washer:</th><td class="field-body">Generic washing machine</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Camera:</th><td class="field-body">Device that can be played back on a streaming device (e.g. a Chromecast)</td>
+</tr>
 </tbody>
 </table>
+<p>Device types only provide specific vocabulary and semantics for controlling a device, but do not define any features/ abilities.</p>
 <p>Each device supports one or more so called <strong>traits</strong>. Those are feature sets that the device supports.</p>
 <p>In theory, every kind of device could be combined with each kind of trait. However, not every combination is meaningfull and controllable by voice commands.</p>
 <p>These traits are supported:</p>
@@ -210,72 +240,17 @@
 <tr class="field-even field"><th class="field-name" colspan="2">Temperature Control:</th></tr>
 <tr class="field-even field"><td>&#160;</td><td class="field-body">Enables features that are typical for thermostats and alike</td>
 </tr>
+<tr class="field-odd field"><th class="field-name">Fan Speed:</th><td class="field-body">Ability to set a device to a certain speed setting with a specified name.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Start and Stop:</th><td class="field-body">Start and stop a device or a run cycle of it</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Open and Close:</th><td class="field-body">Open/ close devices to a certain percentage</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Camera Stream:</th><td class="field-body">Corresponding trait for the camera device. Allows your own stream URL to be viewed on a streaming device (e.g. Chromecast)</td>
+</tr>
 </tbody>
 </table>
-<div class="section" id="light">
-<h2>Light<a class="headerlink" href="#light" title="Permalink to this headline">¶</a></h2>
-<dl class="docutils">
-<dt>Recommended Traits</dt>
-<dd>On and Off, Brightness</dd>
-<dt>Example Commands</dt>
-<dd><ul class="first last simple">
-<li>Turn on/ off {light name}</li>
-<li>Dim {light name}</li>
-<li>Brighten (the) {light name}</li>
-<li>Set {light name} to x %</li>
-<li>Brighten/ Dim {light name} by x %</li>
-<li>Turn on/ off lights in {room name}</li>
-<li>Is {light name} turned on?</li>
-</ul>
-</dd>
-</dl>
-</div>
-<div class="section" id="outlet">
-<span id="devicetypeoutlet"></span><h2>Outlet<a class="headerlink" href="#outlet" title="Permalink to this headline">¶</a></h2>
-<dl class="docutils">
-<dt>Recommended Trait</dt>
-<dd>On and Off</dd>
-<dt>Example Commands</dt>
-<dd><ul class="first last simple">
-<li>Turn on/ off {plug/ outlet name}</li>
-<li>Is {plug/ outlet name} turned on?</li>
-</ul>
-</dd>
-</dl>
-</div>
-<div class="section" id="switch">
-<h2>Switch<a class="headerlink" href="#switch" title="Permalink to this headline">¶</a></h2>
-<p>See <a class="reference internal" href="#outlet">Outlet</a>.</p>
-</div>
-<div class="section" id="scene">
-<h2>Scene<a class="headerlink" href="#scene" title="Permalink to this headline">¶</a></h2>
-<dl class="docutils">
-<dt>Recommended Trait</dt>
-<dd>Scene</dd>
-<dt>Example Commands</dt>
-<dd><ul class="first last simple">
-<li>Activate/ Start {scene name}</li>
-</ul>
-</dd>
-</dl>
-</div>
-<div class="section" id="thermostat">
-<h2>Thermostat<a class="headerlink" href="#thermostat" title="Permalink to this headline">¶</a></h2>
-<dl class="docutils">
-<dt>Recommended Trait</dt>
-<dd>Temperature Setting</dd>
-<dt>Example Commands</dt>
-<dd><ul class="first last simple">
-<li>Make it warmer/ cooler</li>
-<li>Raise/ lower the Temperature</li>
-<li>Raise/ lower the temp x degrees</li>
-<li>Set the temperature to x degrees</li>
-<li>How warm is it in here?</li>
-<li>What’s the humidity of {thermostat name} (<em>if humidity is enabled</em>)</li>
-</ul>
-</dd>
-</dl>
-</div>
+<p>Have a look at the individual trait documentation pages for further information about settings and usage.</p>
 </div>
 
 
@@ -302,11 +277,11 @@
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. <jinja2.runtime.BlockReference object at 0x2b1e71224748> 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. <jinja2.runtime.BlockReference object at 0x2b71c7375b70> 
 
 <br>
 <a href="https://github.com/kservices/gBridge">gBridge on Github</a><br>
-Learn more about gBridge.io? See <a href="https://about.gbridge.kappelt.net" target="_blank">https://about.gbridge.kappelt.net</a>
+Learn more about gBridge.io? See <a href="https://about.gbridge.io" target="_blank">https://about.gbridge.io</a>
 
  
 

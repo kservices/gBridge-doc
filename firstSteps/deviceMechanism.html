@@ -96,7 +96,20 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="deviceTypes.html">Device Types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mqttServer.html">Hosted MQTT server</a></li>
+<li class="toctree-l1"><a class="reference internal" href="twofa.html">Security confirmation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../selfHosted/hostItYourself.html">Self-Hosted gBridge</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Traits</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../traits/about.html">About device traits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../traits/onoff.html">On and Off</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../traits/brightness.html">Brightness</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../traits/scene.html">Scene</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../traits/temperaturesetting.html">Temperature Setting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../traits/fanspeed.html">Fan Speed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../traits/startstop.html">Start and Stop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../traits/openclose.html">Open and Close</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../traits/camerastream.html">Camera Stream</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Integration</span></p>
 <ul>
@@ -220,31 +233,7 @@
 <div class="section" id="valid-values-for-messages">
 <h2>Valid values for messages<a class="headerlink" href="#valid-values-for-messages" title="Permalink to this headline">¶</a></h2>
 <p>Only certain values are valid for MQTT messages on the topics described above. Publishing other values than allowed may cause undefined behaviour.</p>
-<p>Allowed values are specified per trait:</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">OnOff:</th><td class="field-body">Valid values are <code class="code docutils literal notranslate"><span class="pre">0</span></code> (Device is off) and <code class="code docutils literal notranslate"><span class="pre">1</span></code> (Device is on). When publishing on a status topic, the values <code class="code docutils literal notranslate"><span class="pre">false</span></code>, <code class="code docutils literal notranslate"><span class="pre">off</span></code> (Device is off) and <code class="code docutils literal notranslate"><span class="pre">true</span></code>, <code class="code docutils literal notranslate"><span class="pre">on</span></code> (Device is on) are valid too (case insensitive).</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Brightness:</th><td class="field-body">Valid values are integer numbers from 0 to 100, including 0 and 100 themselves. They represent the brightness in percent.</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Scene:</th><td class="field-body">Scenes only consists of a action topic. <code class="code docutils literal notranslate"><span class="pre">1</span></code> is published on the action topic once the scene gets activated.</td>
-</tr>
-<tr class="field-even field"><th class="field-name" colspan="2">Temperature Setting - Mode:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body">Valid values are, depending on the configured supported modes, one of: <code class="code docutils literal notranslate"><span class="pre">off</span></code>, <code class="code docutils literal notranslate"><span class="pre">heat</span></code>, <code class="code docutils literal notranslate"><span class="pre">cool</span></code>, <code class="code docutils literal notranslate"><span class="pre">on</span></code>, <code class="code docutils literal notranslate"><span class="pre">auto</span></code>, <code class="code docutils literal notranslate"><span class="pre">fan-only</span></code>, <code class="code docutils literal notranslate"><span class="pre">purifier</span></code>, <code class="code docutils literal notranslate"><span class="pre">eco</span></code>, <code class="code docutils literal notranslate"><span class="pre">dry</span></code> (case insensitive).</td>
-</tr>
-<tr class="field-odd field"><th class="field-name" colspan="2">Temperature Setting - Setpoint:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body">The temperature (in °C) that is set for the thermostat. Valid values are decimal fractions with (up to) one decimal place. The decimal separator is a dot (<code class="code docutils literal notranslate"><span class="pre">.</span></code>). Example: <code class="code docutils literal notranslate"><span class="pre">15.3</span></code>. Note that Google will round this number to 0.5 °C.</td>
-</tr>
-<tr class="field-even field"><th class="field-name" colspan="2">Temperature Setting - Ambient:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body">The actual room temperature (in °C) that was observed by the thermostat. Only consists of status topic. Valid values are the same like for the Setpoint. Google won’t round this number.</td>
-</tr>
-<tr class="field-odd field"><th class="field-name" colspan="2">Temperature Setting - Humidity:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body">The relative humidity (in %) that was observed by the thermostat, optional. Only consists of status topic. Valid values are the same like for the Setpoint, but in the range inbetween <code class="code docutils literal notranslate"><span class="pre">0.0</span></code> and <code class="code docutils literal notranslate"><span class="pre">100.0</span></code>. Google won’t round this number.</td>
-</tr>
-</tbody>
-</table>
+<p>Allowed values are specified per trait. Have a look of the individual trait pages for more information about possible values and examples.</p>
 </div>
 </div>
 
@@ -272,11 +261,11 @@
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. <jinja2.runtime.BlockReference object at 0x2b1e7123e668> 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. <jinja2.runtime.BlockReference object at 0x2b71c7393c50> 
 
 <br>
 <a href="https://github.com/kservices/gBridge">gBridge on Github</a><br>
-Learn more about gBridge.io? See <a href="https://about.gbridge.kappelt.net" target="_blank">https://about.gbridge.kappelt.net</a>
+Learn more about gBridge.io? See <a href="https://about.gbridge.io" target="_blank">https://about.gbridge.io</a>
 
  
 
