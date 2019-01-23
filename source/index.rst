@@ -61,6 +61,7 @@ Contents
    firstSteps/mqttServer
    firstSteps/twofa
    selfHosted/hostItYourself
+   firstSteps/mqttMigration
 
 .. toctree::
     :maxdepth: 2
