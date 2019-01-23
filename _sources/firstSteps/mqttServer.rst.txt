@@ -10,7 +10,13 @@ Of course, the gBridge MQTT servers requires authentication.
 
 **Username:** :code:`gbridge-{userid}`. Your full username is shown in your account's dashboard under "My Account". *Example:* :code:`gbridge-u4`
 
-**Password:** Your account's password is the default MQTT password. You may change the MQTT password independently from your account's password in the dashboard. This password must be at least 8 characters long, while containing both upper- and lowercase letters, a number and a special character. A new password will (almost) instantly apply for any new MQTT connections.
+**Password:** Your account's password is the default MQTT password. You may change the MQTT password independently from your account's password in the dashboard. This password must be at least 8 characters long, while containing both upper- and lowercase letters and a number. A new password will (almost) instantly apply for any new MQTT connections.
+
+Topic Restriction
+-------------------
+Pur hosted server limits your client's subscriptions and publishes to topics starting with :code:`gBridge/u{userid}`.
+
+**Example:** Subscription to the topic :code:`gBridge/#` will *fail*, because it doesn't start with your user prefix. Subscriptions to the topics :code:`gBridge/u{userid}/#`, :code:`gBridge/u{userid}/+/+` and :code:`gBridge/u{userid}/device/onoff` will all succeed.
 
 Available protocols
 ---------------------
@@ -19,11 +25,11 @@ The hosted gBridge MQTT servers can be reached over many ways.
 
 MQTT over TLS
 ~~~~~~~~~~~~~~~~
-MQTT over TLS can be reached by :code:`mqtts://mqtt.gbridge.kappelt.net`
+MQTT over TLS can be reached by :code:`mqtts://mqtt.gbridge.io`
 
-:Server: mqtt.gbridge.kappelt.net
+:Server: mqtt.gbridge.io
 :Port: 8883
-:MQTT Protocol: Version 3.1
+:MQTT Protocol: Version 3.1.1 and 3.1 supported
 :TLS: TLS V1.2 is required
 :Authentication: required, as described above
 
@@ -34,11 +40,12 @@ The server uses certificates signed by Let's Encrypt. This CA is trusted by most
 
 MQTT over secure websockets
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-MQTT over secure websockets can be reached by :code:`wss://mqtt.gbridge.kappelt.net`
+MQTT over secure websockets can be reached by :code:`wss://mqtt.gbridge.io/mqtt`
 
-:Server: mqtt.gbridge.kappelt.net
+:Server: mqtt.gbridge.io
+:Path: /mqtt
 :Port: 443
-:MQTT Protocol: Version 3.1
+:MQTT Protocol: Version 3.1.1 and 3.1 supported
 :TLS: TLS V1.2 is required
 :Authentication: required, as described above
 
@@ -49,11 +56,11 @@ Plain MQTT
 .. WARNING::
    Unencrypted MQTT, especially over the (public, bad) internet, should *never* be used by any means. Support for plain MQTT can be canceled at any time, without any notice.
 
-Plain, unsecure MQTT can be reached by :code:`mqtt://mqtt.gbridge.kappelt.net`
+Plain, unsecure MQTT can be reached by :code:`mqtt://mqtt.gbridge.io`
 
-:Server: mqtt.gbridge.kappelt.net
+:Server: mqtt.gbridge.io
 :Port: 1883
-:MQTT Protocol: Version 3.1
+:MQTT Protocol: Version 3.1.1 and 3.1 supported 
 :Authentication: required, as described above
 
 MQTT over websockets
@@ -61,11 +68,12 @@ MQTT over websockets
 .. WARNING::
    Unencrypted MQTT, especially over the (public, bad) internet, should *never* be used by any means. Support for MQTT over (unsecured) websockets can be canceled at any time, without any notice.
 
-Plain, unsecure MQTT can be reached by :code:`ws://mqtt.gbridge.kappelt.net`
+Plain, unsecure MQTT can be reached by :code:`ws://mqtt.gbridge.io/mqtt`
 
-:Server: mqtt.gbridge.kappelt.net
+:Server: mqtt.gbridge.io
+:Path: /mqtt
 :Port: 80
-:MQTT Protocol: Version 3.1
+:MQTT Protocol: Version 3.1.1 and 3.1 supported 
 :Authentication: required, as described above
 
 .. _mqttServer-mosquittoBridge:
@@ -92,9 +100,9 @@ The following configuration works with Mosquitto. Place it at the end of your Mo
 .. code-block:: aconf
 
     connection kappelt-gbridge
-    address mqtt.gbridge.kappelt.net:8883
+    address mqtt.gbridge.io:8883
     bridge_attempt_unsubscribe true
-    bridge_protocol_version mqttv31
+    bridge_protocol_version mqttv311
     cleansession true
     remote_username {gbridge-mqtt-username}
     remote_password {gbridge-mqtt-password}
@@ -116,11 +124,11 @@ Restart your mosquitto instance. Have a look in its log file. It should show no 
     1532876260: Config loaded from /etc/mosquitto/mosquitto.conf.
     1532876260: Opening ipv4 listen socket on port 1883.
     1532876260: Opening ipv6 listen socket on port 1883.
-    1532876260: Connecting bridge kappelt-gbridge (mqtt.gbridge.kappelt.net:8883)
+    1532876260: Connecting bridge kappelt-gbridge (mqtt.gbridge.io:8883)
     1532876260: New connection from 192.168.2.151 on port 1883.
     1532876260: New client connected from 192.168.2.151 as KH102_BC73E4 (c1, k15, u'DVES_USER').
     [...]
 
-Now, subscribe to a device topic of gBridge (like :code:`gBridge/u1/d1/onoff`), but do *not* connect to the gBridge MQTT server (:code:`mqtt.gbridge.kappelt.net`), connect to your local MQTT server instead.
+Now, subscribe to a device topic of gBridge (like :code:`gBridge/u1/d1/onoff`), but do *not* connect to the gBridge MQTT server (:code:`mqtt.gbridge.io`), connect to your local MQTT server instead.
 
 If everything is OK, you should now receive messages from your local server as you would from the gBridge server.

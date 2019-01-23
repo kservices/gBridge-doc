@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Device Mechanism &mdash; gBridge.io 1.0.0 documentation</title>
+  <title>MQTT Server Migration &mdash; gBridge.io 1.0.0 documentation</title>
   
 
   
@@ -30,8 +30,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Device Types" href="deviceTypes.html" />
-    <link rel="prev" title="Getting Started" href="gettingStarted.html" /> 
+    <link rel="next" title="About device traits" href="../traits/about.html" />
+    <link rel="prev" title="Self-Hosted gBridge" href="../selfHosted/hostItYourself.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -88,17 +88,17 @@
 <li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="supportGuidelines.html">Support Guidelines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gettingStarted.html">Getting Started</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Device Mechanism</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#action-topics">Action topics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#status-topics">Status topics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#valid-values-for-messages">Valid values for messages</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="deviceMechanism.html">Device Mechanism</a></li>
 <li class="toctree-l1"><a class="reference internal" href="deviceTypes.html">Device Types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mqttServer.html">Hosted MQTT server</a></li>
 <li class="toctree-l1"><a class="reference internal" href="twofa.html">Security confirmation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../selfHosted/hostItYourself.html">Self-Hosted gBridge</a></li>
-<li class="toctree-l1"><a class="reference internal" href="mqttMigration.html">MQTT Server Migration</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">MQTT Server Migration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#mqtt-topic-restriction">MQTT topic restriction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#mqtt-protocol">MQTT protocol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#websocket-path">Websocket Path</a></li>
+</ul>
+</li>
 </ul>
 <p class="caption"><span class="caption-text">Traits</span></p>
 <ul>
@@ -168,13 +168,13 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>Device Mechanism</li>
+      <li>MQTT Server Migration</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/firstSteps/deviceMechanism.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/firstSteps/mqttMigration.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -187,54 +187,27 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="device-mechanism">
-<h1>Device Mechanism<a class="headerlink" href="#device-mechanism" title="Permalink to this headline">¶</a></h1>
-<p>Kappelt gBridge provides virtual devices. Each action by Google Assistant is transparently mapped to MQTT topics.</p>
-<div class="section" id="action-topics">
-<h2>Action topics<a class="headerlink" href="#action-topics" title="Permalink to this headline">¶</a></h2>
-<p>Kappelt gBridge publishes on those action topics, once an action request is made via Google Assistant.</p>
-<p>Your device/ software should subscribe to those topics and trigger the appropriate actions once a message is received.</p>
-<p>By default, action topics are formatted as shown. You might change them as you like.</p>
-<div class="line-block">
-<div class="line"><code class="code docutils literal notranslate"><span class="pre">gBridge/u{userid}/d{deviceid}/{trait}</span></code></div>
-<div class="line"><strong>Example:</strong> <code class="code docutils literal notranslate"><span class="pre">gBridge/u1/d4/onoff</span></code></div>
+  <div class="section" id="mqtt-server-migration">
+<h1>MQTT Server Migration<a class="headerlink" href="#mqtt-server-migration" title="Permalink to this headline">¶</a></h1>
+<p>Along with the domain move, we moved our MQTT server, too. A new server cluster is available under <code class="code docutils literal notranslate"><span class="pre">mqtt.gbridge.io</span></code>. It is designed as a drop-in replacement for the existing server, theoretically you just need to change the server’s address.</p>
+<p>The new server uses a more scalable software, ensuring good performance with growing user count.</p>
+<p>The old server (mqtt.gbridge.kappelt.net) is going to stay online for at least a couple more months. Afterwards, it is going to be eventually an alias to our new server (mqtt.gbridge.io). However, we want to grant our users a period for soft migration (rather than just switching servers without any notice), so that possible problems and incompatibilites can be addressed.</p>
+<p>Please read and note the following changes! We kindly ask all users to quickly move to the new server.</p>
+<p><strong>Feel free to contact us using the community forum or the contact form if you are experiencing any issues while migrating</strong>.</p>
+<div class="section" id="mqtt-topic-restriction">
+<h2>MQTT topic restriction<a class="headerlink" href="#mqtt-topic-restriction" title="Permalink to this headline">¶</a></h2>
+<p>The new server restricts subscribable topics.</p>
+<p><strong>Old behaviour:</strong> Your client could subscribe to <em>any</em> topic (even the global wildcard <code class="code docutils literal notranslate"><span class="pre">#</span></code>), but you were only going to receive topics starting with <code class="code docutils literal notranslate"><span class="pre">gBridge/u{userid}/</span></code>.</p>
+<p><strong>New behaviour:</strong> Your client is only able to subscribe to topics starting with <code class="code docutils literal notranslate"><span class="pre">gBridge/u{userid}/</span></code>. Subscriptions outside this scope (like <code class="code docutils literal notranslate"><span class="pre">#</span></code>, <code class="code docutils literal notranslate"><span class="pre">gBridge/#</span></code>) will now fail.</p>
+<p>This is due the new broker handling access restrictions differently. This problem isn’t relevant when you are using the Domoticz plugin for gBridge.</p>
 </div>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">userid:</th><td class="field-body">This is an integer number that identifies your gBridge account. It is the same for all devices of your account.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">deviceid:</th><td class="field-body">This is an integer number that identifies devices you’ve created. A device id is unique.</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">trait:</th><td class="field-body">The trait declares, as the name says, the feature that is called. Currently, it is either <code class="code docutils literal notranslate"><span class="pre">onoff</span></code> (for turning a device on or off) or <code class="code docutils literal notranslate"><span class="pre">brightness</span></code> (for setting the brightness of a device).</td>
-</tr>
-</tbody>
-</table>
-<div class="align-center figure" id="id1">
-<a class="reference internal image-reference" href="../_images/mechanism-action.png"><img alt="Scheme for actions requested by Google, that are published on the MQTT server." src="../_images/mechanism-action.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-text">Once an action is requested via Google Assistant, data will be published to the belonging topic.</span></p>
+<div class="section" id="mqtt-protocol">
+<h2>MQTT protocol<a class="headerlink" href="#mqtt-protocol" title="Permalink to this headline">¶</a></h2>
+<p>MQTT V3.1.1 is now used by default and fully supported. The broker should provive backward-compatibility to MQTT V3.1</p>
 </div>
-</div>
-<div class="section" id="status-topics">
-<h2>Status topics<a class="headerlink" href="#status-topics" title="Permalink to this headline">¶</a></h2>
-<p>The current state of your device shall be published to status topics, so gBridge can cache them. Once a query is made via Google Assistant (like “Hey Google, is device xyz turned on?”), the last value that was published to the status topic will be returned.</p>
-<p>Your device/ software should publish the current states of your devices every time something changes (e.g. they are turned on or off). <strong>It must publish the new states even if the change was triggered by an action topic by gBridge itself.</strong></p>
-<p>By default, status topics are formatted as shown. You can identify them by the suffix “set”. You might change them as you like.</p>
-<div class="line-block">
-<div class="line"><code class="code docutils literal notranslate"><span class="pre">gBridge/u{userid}/d{deviceid}/{trait}/set</span></code></div>
-<div class="line"><strong>Example:</strong> <code class="code docutils literal notranslate"><span class="pre">gBridge/u1/d4/onoff/set</span></code></div>
-</div>
-<p>The parameters (userid, deviceid, trait) have the same meanings as for action topics.</p>
-<div class="align-center figure" id="id2">
-<a class="reference internal image-reference" href="../_images/mechanism-status.png"><img alt="Scheme for queries by Google Assistant." src="../_images/mechanism-status.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-text">Device states will be cached and sent to Google once a query is made.</span></p>
-</div>
-</div>
-<div class="section" id="valid-values-for-messages">
-<h2>Valid values for messages<a class="headerlink" href="#valid-values-for-messages" title="Permalink to this headline">¶</a></h2>
-<p>Only certain values are valid for MQTT messages on the topics described above. Publishing other values than allowed may cause undefined behaviour.</p>
-<p>Allowed values are specified per trait. Have a look of the individual trait pages for more information about possible values and examples.</p>
+<div class="section" id="websocket-path">
+<h2>Websocket Path<a class="headerlink" href="#websocket-path" title="Permalink to this headline">¶</a></h2>
+<p>When using MQTT over websockets, the URL is now <code class="code docutils literal notranslate"><span class="pre">ws(s)://mqtt.gbridge.io/mqtt</span></code> (insted of the old websocket server using the root path: <code class="code docutils literal notranslate"><span class="pre">ws(s)://mqtt.gbridge.kappelt.net/</span></code>)</p>
 </div>
 </div>
 
@@ -246,10 +219,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="deviceTypes.html" class="btn btn-neutral float-right" title="Device Types" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../traits/about.html" class="btn btn-neutral float-right" title="About device traits" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="gettingStarted.html" class="btn btn-neutral" title="Getting Started" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../selfHosted/hostItYourself.html" class="btn btn-neutral" title="Self-Hosted gBridge" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -262,7 +235,7 @@
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. <jinja2.runtime.BlockReference object at 0x2b436a2f6a58> 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. <jinja2.runtime.BlockReference object at 0x2b436a4c0048> 
 
 <br>
 <a href="https://github.com/kservices/gBridge">gBridge on Github</a><br>
