@@ -78,7 +78,7 @@ Test it
 ---------
 Everything is ready now! Messages will now be available on gBridge's public MQTT server. You can connect to it:
 
-:Hostname: mqtt.gbridge.kappelt.net
+:Hostname: mqtt.gbridge.io
 :Port: 8883
 :Username: Shown in your account's dashboard under "My Account"
 :Password: Is your account's password by default, but can be changed independently.
@@ -86,7 +86,7 @@ Everything is ready now! Messages will now be available on gBridge's public MQTT
 
 **About TLS:** The Server uses an certificate that is signed by Let's Encrypt. 
 The Let's Encrypt CA is trusted by most systems nowadays, you shouldn't really need to install a certificate. 
-`Only download the prepared CA certificates <https://about.gbridge.kappelt.net/static/LetsEncrypt-AllCAs.pem>`_ if your system doesn't support them natively. 
+`Only download the prepared CA certificates <https://about.gbridge.io/static/LetsEncrypt-AllCAs.pem>`_ if your system doesn't support them natively. 
 
 Subscribe now to the MQTT topic that belongs to your device, for example with *mosquitto_sub*:
 
@@ -95,7 +95,7 @@ Subscribe now to the MQTT topic that belongs to your device, for example with *m
    mosquitto_sub --username your-mqtt-username \
       --pw your-mqtt-password \
       --capath /etc/ssl/certs/ \
-      --host mqtt.gbridge.kappelt.net \
+      --host mqtt.gbridge.io \
       --port 8883 \
       --topic gBridge/u2/d4/onoff
 
@@ -111,6 +111,6 @@ Going further
 ----------------
 Now you're all set! There is more information in this documentation.
 
-Have a look at https://status.gbridge.kappelt.net, too. You can subscribe to notifications about planned updates or possible service outages.
+Have a look at https://status.gbridge.io, too. You can subscribe to notifications about planned updates or possible service outages.
 
 If you like, you can follow us on Twitter: https://twitter.com/Kappelt_gBridge

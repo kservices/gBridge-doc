@@ -247,7 +247,7 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Hostname:</th><td class="field-body">mqtt.gbridge.kappelt.net</td>
+<tr class="field-odd field"><th class="field-name">Hostname:</th><td class="field-body">mqtt.gbridge.io</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Port:</th><td class="field-body">8883</td>
 </tr>
@@ -261,12 +261,12 @@
 </table>
 <p><strong>About TLS:</strong> The Server uses an certificate that is signed by Let’s Encrypt.
 The Let’s Encrypt CA is trusted by most systems nowadays, you shouldn’t really need to install a certificate.
-<a class="reference external" href="https://about.gbridge.kappelt.net/static/LetsEncrypt-AllCAs.pem">Only download the prepared CA certificates</a> if your system doesn’t support them natively.</p>
+<a class="reference external" href="https://about.gbridge.io/static/LetsEncrypt-AllCAs.pem">Only download the prepared CA certificates</a> if your system doesn’t support them natively.</p>
 <p>Subscribe now to the MQTT topic that belongs to your device, for example with <em>mosquitto_sub</em>:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mosquitto_sub --username your-mqtt-username <span class="se">\</span>
    --pw your-mqtt-password <span class="se">\</span>
    --capath /etc/ssl/certs/ <span class="se">\</span>
-   --host mqtt.gbridge.kappelt.net <span class="se">\</span>
+   --host mqtt.gbridge.io <span class="se">\</span>
    --port <span class="m">8883</span> <span class="se">\</span>
    --topic gBridge/u2/d4/onoff
 </pre></div>
@@ -279,7 +279,7 @@ The Let’s Encrypt CA is trusted by most systems nowadays, you shouldn’t real
 <div class="section" id="going-further">
 <h2>Going further<a class="headerlink" href="#going-further" title="Permalink to this headline">¶</a></h2>
 <p>Now you’re all set! There is more information in this documentation.</p>
-<p>Have a look at <a class="reference external" href="https://status.gbridge.kappelt.net">https://status.gbridge.kappelt.net</a>, too. You can subscribe to notifications about planned updates or possible service outages.</p>
+<p>Have a look at <a class="reference external" href="https://status.gbridge.io">https://status.gbridge.io</a>, too. You can subscribe to notifications about planned updates or possible service outages.</p>
 <p>If you like, you can follow us on Twitter: <a class="reference external" href="https://twitter.com/Kappelt_gBridge">https://twitter.com/Kappelt_gBridge</a></p>
 </div>
 </div>
@@ -308,7 +308,7 @@ The Let’s Encrypt CA is trusted by most systems nowadays, you shouldn’t real
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. <jinja2.runtime.BlockReference object at 0x2b436a28ff28> 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. <jinja2.runtime.BlockReference object at 0x2b5e686a7a20> 
 
 <br>
 <a href="https://github.com/kservices/gBridge">gBridge on Github</a><br>

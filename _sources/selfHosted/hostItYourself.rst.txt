@@ -168,7 +168,7 @@ Install both :code:`docker` and :code:`docker-compose` on your server, e.g. with
 Generate Docker-Compose-File
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-A small script for generating individual Docker-Compose-Files for gBridge is available under `https://about.gbridge.kappelt.net/dockergen <https://about.gbridge.kappelt.net/dockergen>`_.
+A small script for generating individual Docker-Compose-Files for gBridge is available under `https://about.gbridge.io/dockergen <https://about.gbridge.io/dockergen>`_.
 
 Fill in your information. Since a webserver is probably already running on your server, make sure to select a webserver port that is free.
 

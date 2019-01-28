@@ -196,7 +196,7 @@
 <p class="last">Sadly, MQTT over TLS does not yet work in FHEM. This example shows a direct, insecure connection to the gBridge MQTT server <strong>that should never be done on a production system</strong>.
 The only way to currently do it properly is the usage of <a class="reference internal" href="../firstSteps/mqttServer.html#mqttserver-mosquittobridge"><span class="std std-ref">a local Mosquitto instance as a bridge/ proxy</span></a>. If you’ve setup your local broker to act as a bridge, you can just specify it here for the MQTT connection.</p>
 </div>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>define Connections.gBridge MQTT mqtt.gbridge.kappelt.net:1883 {gbridge-mqtt-username} {gbridge-mqtt-password}
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>define Connections.gBridge MQTT mqtt.gbridge.io:1883 {gbridge-mqtt-username} {gbridge-mqtt-password}
 </pre></div>
 </div>
 </div>
@@ -244,7 +244,7 @@ attr {devicename}.gBridge subscribeSet_pct gBridge/u{userid}/d{deviceid}/brightn
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. <jinja2.runtime.BlockReference object at 0x2b436a6215c0> 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. <jinja2.runtime.BlockReference object at 0x2b5e68a1d518> 
 
 <br>
 <a href="https://github.com/kservices/gBridge">gBridge on Github</a><br>
