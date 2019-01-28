@@ -19,7 +19,7 @@ Currently, you need to follow these steps:
 * Add a new "gBridge" item in the hardware page. Enter these settings for the hosted gBridge service:
 
 
-:MQTT server address: mqtt.gbridge.kappelt.net:8883
+:MQTT server address: mqtt.gbridge.io:8883
 :MQTT username: gbridge-u{userid} *(Shown in "My Account" in your accounts dashboard)*
 :MQTT password: As set. Is your gBridge account's password by default, but may be set independently in your account's dashboard.
 :MQTT base topic: gBridge/u{userid}

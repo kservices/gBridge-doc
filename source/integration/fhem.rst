@@ -12,7 +12,7 @@ MQTT server connection
 
 .. code-block:: text
 
-   define Connections.gBridge MQTT mqtt.gbridge.kappelt.net:1883 {gbridge-mqtt-username} {gbridge-mqtt-password}
+   define Connections.gBridge MQTT mqtt.gbridge.io:1883 {gbridge-mqtt-username} {gbridge-mqtt-password}
 
 Basic On/Off and Brightness
 -------------------------------

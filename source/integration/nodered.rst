@@ -14,7 +14,7 @@ MQTT broker setup
    :alt: Node-RED MQTT setup.
    :figclass: align-center
 
-   Use :code:`mqtt.gbridge.kappelt.net` as the MQTT server, 8883 as the MQTT port. Enable legacy MQTT v3.1. Enable the usage of a secure TLS connection and create a new TLS profile.
+   Use :code:`mqtt.gbridge.io` as the MQTT server, 8883 as the MQTT port. Enable legacy MQTT v3.1. Enable the usage of a secure TLS connection and create a new TLS profile.
 
 .. figure:: ../_static/nodered-mqtt-tls.png
    :width: 100%
@@ -22,7 +22,7 @@ MQTT broker setup
    :alt: Node-RED MQTT TLS setup.
    :figclass: align-center
 
-   Use :code:`mqtt.gbridge.kappelt.net` as the server name, check "Verify server certificate". Choose a name you like (e.g. "gbridge-tls"). You don't need to upload any custom certificates here.
+   Use :code:`mqtt.gbridge.io` as the server name, check "Verify server certificate". Choose a name you like (e.g. "gbridge-tls"). You don't need to upload any custom certificates here.
 
 .. figure:: ../_static/nodered-mqtt-auth.png
    :width: 100%

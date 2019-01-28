@@ -26,7 +26,7 @@ The following config is an example for the user gbridge-u7 with the local Tasmot
 .. code-block:: aconf
 
     connection kappelt-gbridge
-    address mqtt.gbridge.kappelt.net:8883
+    address mqtt.gbridge.io:8883
     bridge_attempt_unsubscribe true
     bridge_protocol_version mqttv31
     cleansession true
