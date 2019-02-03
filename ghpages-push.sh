@@ -17,6 +17,8 @@ fi
 
 cp -R ../$REPO/_build/html/* ./
 
+cp -R ../$REPO/apidoc ./
+
 git add -A .
 git commit -m "[CI] Sphinx commit for $COMMIT."
 if [ "$1" != "dry" ]; then

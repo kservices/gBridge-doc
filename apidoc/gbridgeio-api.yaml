@@ -1,0 +1,556 @@
+openapi: 3.0.0
+# Added by API Auto Mocking Plugin
+servers:
+  - description: Hosted gBridge.io API Server
+    url: https://gbridge.kappelt.net/api/v2
+info:
+  version: "1.0.0"
+  title: gBridge.io Management API
+  description: >-
+    **IMPORTANT**: This API is yet in development and shall not be used
+
+
+    This document describes the management API used for gBridge.io management (device creation and editing, etc.)
+  contact:
+    email: gbridge@kappelt.net
+security:
+  - application:
+      - default
+paths:
+  /device:
+    get:
+      tags:
+        - device
+      summary: Get all created devices
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    device_id:
+                      type: integer
+                      description: This device's id
+                    name:
+                      type: string
+                      description: Name of this device
+    post:
+      tags:
+        - device
+      summary: Create a new device
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: '#/components/schemas/Device'
+                - type: object
+                  required:
+                    - name
+                    - type
+                    - traits
+      responses:
+        '200':
+          description: OK, device has been created and returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Device'
+        '400':
+          description: >
+            * Malformed JSON in request
+
+            * Data validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBasic'
+  /device/{device_id}:
+    get:
+      tags:
+        - device
+      summary: Get the information about the specified device
+      responses:
+        '200':
+          description: OK, resource has been sent
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/Device'
+                  - type: object
+                    required:
+                      - name
+                      - type
+                      - traits
+        '400':
+          description: >
+            Invalid ID supplied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBasic'
+        '404':
+          description: >
+            Device not found
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/ErrorBasic'
+                  - type: object
+                    properties:
+                      error_code:
+                        type: string
+                        enum:
+                          - device_not_found
+      parameters:
+        - name: device_id
+          in: path
+          description: Device ID
+          required: true
+          schema:
+            type: integer
+    patch:
+      tags:
+        - device
+      summary: Update an existing device
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: '#/components/schemas/Device'
+                - type: object
+                  required: traits
+      responses:
+        '200':
+          description: OK, resource has updated and sent back
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Device'
+        '400':
+          description: >
+            * Malformed JSON in request
+
+            * Data validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBasic'
+        '404':
+          description: >
+            Device not found
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/ErrorBasic'
+                  - type: object
+                    properties:
+                      error_code:
+                        type: string
+                        enum:
+                          - device_not_found
+      parameters:
+        - name: device_id
+          in: path
+          description: Device ID
+          required: true
+          schema:
+            type: integer
+    delete:
+      tags:
+        - device
+      summary: Delete the specified device
+      responses:
+        '200':
+          description: OK, device has been deleted
+        '400':
+          description: >
+            Invalid ID supplied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBasic'
+        '404':
+          description: >
+            Device not found
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/ErrorBasic'
+                  - type: object
+                    properties:
+                      error_code:
+                        type: string
+                        enum:
+                          - device_not_found
+      parameters:
+        - name: device_id
+          in: path
+          description: Device ID
+          required: true
+          schema:
+            type: integer
+components:
+  schemas:
+    ErrorBasic:
+      type: object
+      properties:
+        error_code:
+          type: string
+          description: >
+            Unique processable code for the error that has happened
+          enum:
+            - device_not_found
+            - generic
+        error_message:
+          type: string
+          description: Human readable message of error that has been thrown
+    TraitType:
+      type: object
+      properties:
+        requiresActionTopic:
+          type: boolean
+          description: False, if this device does not support action topics (e.g. TempSet.Ambient)
+          readOnly: true
+        requiresStatusTopic:
+          type: boolean
+          description: False, if this device does not support status topics (e.g. Scenes)
+          readOnly: true
+      discriminator:
+        propertyName: type
+        mapping:
+          OnOff: '#/components/schemas/TraitOnOff'
+          Brightness: '#/components/schemas/TraitBrightness'
+          Scene: '#/components/schemas/TraitScene'
+          TempSet.Mode: '#/components/schemas/TraitTempSet.Mode'
+          TempSet.Setpoint: '#/components/schemas/TraitTempSet.Setpoint'
+          TempSet.Ambient: '#/components/schemas/TraitTempSet.Ambient'
+          TempSet.Humidity: '#/components/schemas/TraitTempSet.Humidity'
+          FanSpeed: '#/components/schemas/TraitFanSpeed'
+          StartStop: '#/components/schemas/TraitStartStop'
+          OpenClose: '#/components/schemas/TraitOpenClose'
+          CameraStream: '#/components/schemas/TraitCameraStream'
+      required: 
+        - type
+    TraitOnOff:
+      allOf:
+        - $ref: '#/components/schemas/TraitType'
+        - type: object
+          properties:
+            type:
+              type: string
+              enum:
+                - OnOff
+            actionTopic:
+              type: string
+              description: >
+                Optional. Trait's action topic. Can be prefixed with `gBridge/u{user_id}/` (but not necessary, is prepended by default)
+              default: gBridge/u{user_id}/d{device_id}/onoff
+            statusTopic:
+              type: string
+              default: gBridge/u{user_id}/d{device_id}/onoff/set
+              description: >
+                Optional. Trait's status topic. Can be prefixed with `gBridge/u{user_id}/` (but not necessary, is prepended by default)
+    TraitBrightness:
+      allOf:
+        - $ref: '#/components/schemas/TraitType'
+        - type: object
+          properties:
+            type:
+              type: string
+              enum:
+                - Brightness
+            actionTopic:
+              type: string
+              default: gBridge/u{user_id}/d{device_id}/brightness
+              description: >
+                Optional. Trait's action topic. Can be prefixed with `gBridge/u{user_id}/` (but not necessary, is prepended by default)
+            statusTopic:
+              type: string
+              default: gBridge/u{user_id}/d{device_id}/brightness/set
+              description: >
+                Optional. Trait's status topic. Can be prefixed with `gBridge/u{user_id}/` (but not necessary, is prepended by default)
+    TraitScene:
+      allOf:
+        - $ref: '#/components/schemas/TraitType'
+        - type: object
+          properties:
+            type:
+              type: string
+              enum:
+                - Scene
+            actionTopic:
+              type: string
+              default: gBridge/u{user_id}/d{device_id}/scene
+              description: >
+                Optional. Trait's action topic. Can be prefixed with `gBridge/u{user_id}/` (but not necessary, is prepended by default)
+    TraitTempSet.Mode:
+      allOf:
+        - $ref: '#/components/schemas/TraitType'
+        - type: object
+          properties:
+            type:
+              type: string
+              enum:
+                - TempSet.Mode
+            actionTopic:
+              type: string
+              default: gBridge/u{user_id}/d{device_id}/tempset-mode
+              description: >
+                Optional. Trait's action topic. Can be prefixed with `gBridge/u{user_id}/` (but not necessary, is prepended by default)
+            statusTopic:
+              type: string
+              default: gBridge/u{user_id}/d{device_id}/tempset-mode/set
+              description: >
+                Optional. Trait's status topic. Can be prefixed with `gBridge/u{user_id}/` (but not necessary, is prepended by default)
+            modesSupported:
+              type: array
+              minItems: 1
+              default:
+                - off
+                - heat
+                - on
+                - auto
+              items:
+                type: string
+                enum: 
+                  - off
+                  - heat
+                  - cool
+                  - on
+                  - auto
+                  - fan-only
+                  - purifier
+                  - eco
+                  - dry
+                description: One or more available thermostat modes the device supports
+    TraitTempSet.Setpoint:
+      allOf:
+        - $ref: '#/components/schemas/TraitType'
+        - type: object
+          properties:
+            type:
+              type: string
+              enum:
+                - TempSet.Setpoint
+            actionTopic:
+              default: gBridge/u{user_id}/d{device_id}/tempset-setpoint
+              type: string
+              description: >
+                Optional. Trait's action topic. Can be prefixed with `gBridge/u{user_id}/` (but not necessary, is prepended by default)
+            statusTopic:
+              type: string
+              default: gBridge/u{user_id}/d{device_id}/tempset-setpoint/set
+              description: >
+                Optional. Trait's status topic. Can be prefixed with `gBridge/u{user_id}/` (but not necessary, is prepended by default)
+    TraitTempSet.Ambient:
+      allOf:
+        - $ref: '#/components/schemas/TraitType'
+        - type: object
+          properties:
+            type:
+              type: string
+              enum:
+                - TempSet.Ambient
+            statusTopic:
+              type: string
+              default: gBridge/u{user_id}/d{device_id}/tempset-ambient/set
+              description: >
+                Optional. Trait's status topic. Can be prefixed with `gBridge/u{user_id}/` (but not necessary, is prepended by default)
+    TraitTempSet.Humidity:
+      allOf:
+        - $ref: '#/components/schemas/TraitType'
+        - type: object
+          properties:
+            type:
+              type: string
+              enum:
+                - TempSet.Humidity
+            statusTopic:
+              type: string
+              default: gBridge/u{user_id}/d{device_id}/tempset-humidity/set
+              description: >
+                Optional. Trait's status topic. Can be prefixed with `gBridge/u{user_id}/` (but not necessary, is prepended by default)
+            humiditySupported:
+              type: boolean
+              default: false
+              description: Describes, whether this device actually supports the reporting of humidity.
+    TraitFanSpeed:
+      allOf:
+        - $ref: '#/components/schemas/TraitType'
+        - type: object
+          properties:
+            type:
+              type: string
+              enum:
+                - FanSpeed
+            actionTopic:
+              type: string
+              default: gBridge/u{user_id}/d{device_id}/fanspeed
+              description: >
+                Optional. Trait's action topic. Can be prefixed with `gBridge/u{user_id}/` (but not necessary, is prepended by default)
+            statusTopic:
+              type: string
+              default: gBridge/u{user_id}/d{device_id}/fanspeed/set
+              description: >
+                Optional. Trait's status topic. Can be prefixed with `gBridge/u{user_id}/` (but not necessary, is prepended by default)
+            fanSpeeds:
+              description: All available fan speeds
+              default:
+                S1: 
+                  - Speed 1
+                  - Slow
+                S2: 
+                  - Speed 2
+                  - Medium
+                S3: 
+                  - Speed 3
+                  - Fast
+              type: array
+              items:
+                type: object
+                additionalProperties:
+                  type: array
+                  minItems: 1
+                  items:
+                    type: string
+    TraitStartStop:
+      allOf:
+        - $ref: '#/components/schemas/TraitType'
+        - type: object
+          properties:
+            type:
+              type: string
+              enum:
+                - StartStop
+            actionTopic:
+              type: string
+              default: gBridge/u{user_id}/d{device_id}/startstop
+              description: >
+                Optional. Trait's action topic. Can be prefixed with `gBridge/u{user_id}/` (but not necessary, is prepended by default)
+            statusTopic:
+              type: string
+              default: gBridge/u{user_id}/d{device_id}/startstop/set
+              description: >
+                Optional. Trait's status topic. Can be prefixed with `gBridge/u{user_id}/` (but not necessary, is prepended by default)
+    TraitOpenClose:
+      allOf:
+        - $ref: '#/components/schemas/TraitType'
+        - type: object
+          properties:
+            type:
+              type: string
+              enum:
+                - OpenClose
+            actionTopic:
+              type: string
+              default: gBridge/u{user_id}/d{device_id}/openclose
+              description: >
+                Optional. Trait's action topic. Can be prefixed with `gBridge/u{user_id}/` (but not necessary, is prepended by default)
+            statusTopic:
+              type: string
+              default: gBridge/u{user_id}/d{device_id}/openclose/set
+              description: >
+                Optional. Trait's status topic. Can be prefixed with `gBridge/u{user_id}/` (but not necessary, is prepended by default)
+    TraitCameraStream:
+      allOf:
+        - $ref: '#/components/schemas/TraitType'
+        - type: object
+          properties:
+            type:
+                type: string
+                enum:
+                  - CameraStream
+            actionTopic:
+              type: string
+              default: gBridge/u{user_id}/d{device_id}/camerastream
+              description: >
+                Optional. Trait's action topic. Can be prefixed with `gBridge/u{user_id}/` (but not necessary, is prepended by default)
+            statusTopic:
+              type: string
+              default: gBridge/u{user_id}/d{device_id}/camerastream/set
+              description: >
+                Optional. Trait's status topic. Can be prefixed with `gBridge/u{user_id}/` (but not necessary, is prepended by default)
+            streamFormat:
+              type: string
+              description: Data/ Media format of stream
+              default: progressive_mp4
+              enum:
+                - progressive_mp4
+                - hls
+                - dash
+                - smooth_stream
+            streamDefaultUrl:
+              type: string
+              description: Default URL to use if no other one is sent via MQTT status topic
+    Device:
+      properties:
+        id:
+          type: integer
+          readOnly: true
+          description: Unique device id, assigned by gBridge
+        name:
+          type: string
+          description: Human readable name, used for voice commands
+        type:
+          type: string
+          enum:
+            - Light
+            - Outlet
+            - Switch
+            - Scene
+            - Thermostat
+            - Fan
+            - AC
+            - Purifier
+            - Sprinkler
+            - Door
+            - Blinds
+            - Shutter
+            - Dishwasher
+            - Dryer
+            - Vacuum
+            - Washer
+            - Camera
+        traits:
+          type: array
+          minItems: 1
+          items:
+            oneOf:
+              - $ref: '#/components/schemas/TraitType'
+          description: >
+            Traits/ Features the device supports. Choose at least one.
+             * Note: When using `TempSet.*`: These traits may only be specified in combination with each other. E.g., if you are using `TempSet.Mode`, you need to add `.Setpoint`, `.Ambient` and `.Humidity`, too.
+        twofa:
+          type: string
+          nullable: true
+          enum:
+            - ack
+            - pin
+          description: Two-step confirmation or PIN-Code verification. `null` means no further confirmation is used.
+        twofa_pin:
+          type: string
+          nullable: true
+          description: PIN code for two step authorization. Necessary if `twofa` is set to `pin`. The PIN code is usually a 4 to 8 digit number.
+  securitySchemes:
+    application:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: 'https://gbridge.kappelt.net/oauth/token'
+          scopes:
+            default: Allows all operations
+externalDocs:
+  url: https://doc.gbridge.io
+  description: General gBridge documentation and user guides
