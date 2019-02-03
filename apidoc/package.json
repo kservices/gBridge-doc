@@ -1,0 +1,15 @@
+{
+  "name": "gbridgeio-apidoc",
+  "version": "1.0.0",
+  "description": "Documentation for gBridge.io Management API",
+  "main": "http-server -p 8081",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node_modules/.bin/http-server .. -o -p 8081"
+  },
+  "author": "Kappelt kServices",
+  "license": "MIT",
+  "dependencies": {
+    "http-server": "^0.11.1"
+  }
+}
