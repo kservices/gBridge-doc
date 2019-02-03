@@ -17,6 +17,25 @@ security:
   - application:
       - default
 paths:
+  /requestsync:
+    get:
+      summary: Request Google to sync your devices
+      description: >
+        This operation asks Google to resynchronize your devices, thus updating its cache and applying new changes
+
+
+        It is the same as saying `Hey Google, synchronize my devices`
+      responses:
+        '200':
+          description: OK, update has been requested
+
+        '500':
+          description: >
+            Internal error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBasic'
   /device:
     get:
       tags:
