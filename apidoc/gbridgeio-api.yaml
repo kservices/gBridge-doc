@@ -7,16 +7,89 @@ info:
   version: "1.0.0"
   title: gBridge.io Management API
   description: >-
-    **IMPORTANT**: This API is yet in development and shall not be used
+    **IMPORTANT**: *This API is yet in the beta phase. Please report any errors or issues in the community forum or under gbridge@kappelt.net*
 
 
     This document describes the management API used for gBridge.io management (device creation and editing, etc.)
   contact:
     email: gbridge@kappelt.net
+
 security:
-  - application:
-      - default
+  - bearerAuth: []
+
 paths:
+  /auth/token:
+    post:
+      tags:
+        - Authentication
+      summary: Obtain an access token using an API key
+      description: >
+        Get an access token that allows access to all API resources. Therefore, you need an API key.
+
+        The access token is only valid for a limited period.
+
+        When making a request, the access token has to be included in the header "Authorization" in the format "Bearer {access-token}"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - apikey
+              example:
+                apikey: eGd6YWFUbzR0ZmlTV0hyeldmcExxQ0FkT0d4U29qYnpFUDQ1SGlBVzRxT0NXSU5aMXF0SGllSERSRnFJb2Y2N0xSU005RVlNYU9RMVpkR21lVzNCUXFmNHBYcm9hYjA2YVBBenA5d3dVbDZFbHJLa1FncEtHWUdyYnpWbU5LZmc=
+              properties:
+                apikey:
+                  type: string
+                  description: An API key you've created in your account's dashboard
+                login_username:
+                  type: string
+                  description: This option is reserved for gBridge resellers
+                password:
+                  type: string
+                  description: This option is reserved for gBridge resellers
+      responses:
+        '200':
+          description: OK, your access token has been generated 
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  access_token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvZGV2LmdicmlkZ2Uua2FwcGVsdC5uZXRcL2FwaVwvdjJcL2F1dGhcL3Rva2VuIiwiaWF0IjoxNTUzMzc4MDk1LCJleHAiOjE1NTMzODE2OTUsIm5iZiI6MTU1MzM3ODA5NSwianRpIjoiNWJhUTNsYkhONGlVbWhjcyIsInN1YiI6MiwicHJ2IjoiODdlMGFmMWVmOWZkMTU4MTJmZGVjOTcxNTNhMTRlMGIwNDc1NDZhYSIsInByaXZpbGVnZV91c2VyIjp0cnVlfQ.lILieBJTQo38z8BBJk0BtWJXN69j14MG_NYjjjCi5Eo
+                  token_type: bearer
+                  expires_in: 3600
+                  privilege: standard,user
+                properties:
+                  access_token:
+                    type: string
+                    description: Your new access token
+                  token_type:
+                    type: string
+                    description: Currently, the fixed value "bearer"
+                  expires_in:
+                    type: integer
+                    description: The number of seconds this token is valid from the time of its creation on. Is usually 3600 seconds.
+                  privilege:
+                    type: string
+                    description: The privileges that this access token has. Is currently either "standard" (access to most device-related endpoints) or "standard,user" (access to user password management, too)
+        '401':
+          description: >
+            Wrong API Key
+  /auth/logout:
+    post:
+      tags:
+        - Authentication
+      summary: Invalidate the access token
+      description: >
+        Invalidate the access token you've specified in the "Auth" header.
+      responses:
+        '200':
+          description: OK, your access token is now disabled
+        '401':
+          description: >
+            The access token given in the headers is currently not valid
   /requestsync:
     get:
       summary: Request Google to sync your devices
@@ -25,10 +98,14 @@ paths:
 
 
         It is the same as saying `Hey Google, synchronize my devices`
+
+        
+        You need to request to synchronize your devices after editing them (e.g. via this API).
       responses:
         '200':
           description: OK, update has been requested
-
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
         '500':
           description: >
             Internal error
@@ -39,7 +116,7 @@ paths:
   /device:
     get:
       tags:
-        - device
+        - Device
       summary: Get all created devices
       responses:
         '200':
@@ -57,9 +134,11 @@ paths:
                     name:
                       type: string
                       description: Name of this device
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
     post:
       tags:
-        - device
+        - Device
       summary: Create a new device
       requestBody:
         required: true
@@ -74,7 +153,7 @@ paths:
                     - type
                     - traits
       responses:
-        '200':
+        '201':
           description: OK, device has been created and returned
           content:
             application/json:
@@ -89,10 +168,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorBasic'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
   /device/{device_id}:
     get:
       tags:
-        - device
+        - Device
       summary: Get the information about the specified device
       responses:
         '200':
@@ -114,6 +195,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorBasic'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
         '404':
           description: >
             Device not found
@@ -137,7 +220,7 @@ paths:
             type: integer
     patch:
       tags:
-        - device
+        - Device
       summary: Update an existing device
       requestBody:
         required: true
@@ -164,6 +247,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorBasic'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
         '404':
           description: >
             Device not found
@@ -187,10 +272,10 @@ paths:
             type: integer
     delete:
       tags:
-        - device
+        - Device
       summary: Delete the specified device
       responses:
-        '200':
+        '204':
           description: OK, device has been deleted
         '400':
           description: >
@@ -199,6 +284,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorBasic'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
         '404':
           description: >
             Device not found
@@ -220,7 +307,91 @@ paths:
           required: true
           schema:
             type: integer
+  /user:
+    get:
+      tags:
+        - User
+      summary: Get information about your user account
+      description: Get information about your user account. This operation requires API authentication with the privilege "user"
+      responses:
+        '200':
+          description: OK, resource has been sent
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  userId:
+                    type: string
+                    description: >
+                      The user id of your account used in internal processing.
+
+                      Please note that this is currently an integer number, but should be treated as a string. The user numbering scheme might be changed at some point, without prior notice.
+                  displayName:
+                    type: string
+                    description: The current display name for your account. Is mainly used in communication (in emails etc.)
+                  email:
+                    type: string
+                    description: Your account's email address
+                  mqttUsername:
+                    type: string
+                    description: Username for the public MQTT server
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+  /user/password:
+    post:
+      tags:
+        - User
+      summary: Update your account's password
+      description: Update your account's password. This operation requires API authentication with the privilege "user"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - password
+              properties:
+                password:
+                  type: string
+                  description: Your new account password. The password must be at least 8 characters long and must contain at least one number (0-9), letters, and at least one special char.
+      responses:
+        '200':
+          description: OK, your password has been updated
+        '400':
+          description: Your password doesn't match the required criteria
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+  /user/mqtt/password:
+    post:
+      tags:
+        - User
+      summary: Update the password for the public MQTT server
+      description: Update the password for the public MQTT server (mqtt.gbridge.io). This operation requires API authentication with the privilege "user"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - mqttPassword
+              properties:
+                mqttPassword:
+                  type: string
+                  description: Your new account password. The password must be at least 8 characters long (required) and should contain at least one number (0-9), letters, and at least one special char (optional).
+      responses:
+        '200':
+          description: OK, your password has been updated
+        '400':
+          description: Your password doesn't match the required criteria
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
 components:
+  responses:
+    UnauthorizedError:
+      description: Authorization token is either missing, invalid, expired or has insufficient privileges
   schemas:
     ErrorBasic:
       type: object
@@ -230,7 +401,18 @@ components:
           description: >
             Unique processable code for the error that has happened
           enum:
+            - trait_type_unknown
+            - trait_type_unspecified
+            - traits_required
+            - twofa_invalid_type
+            - twofa_pin_code_required
+            - device_invalid_type
+            - device_invalid_id
             - device_not_found
+            - device_name_required
+            - password_weak
+            - mqtt_topic_invalid
+            - internal_error
             - generic
         error_message:
           type: string
@@ -512,6 +694,7 @@ components:
                 - smooth_stream
             streamDefaultUrl:
               type: string
+              nullable: true
               description: Default URL to use if no other one is sent via MQTT status topic
     Device:
       properties:
@@ -558,18 +741,16 @@ components:
             - ack
             - pin
           description: Two-step confirmation or PIN-Code verification. `null` means no further confirmation is used.
-        twofa_pin:
+        twofaPin:
           type: string
           nullable: true
           description: PIN code for two step authorization. Necessary if `twofa` is set to `pin`. The PIN code is usually a 4 to 8 digit number.
   securitySchemes:
-    application:
-      type: oauth2
-      flows:
-        clientCredentials:
-          tokenUrl: 'https://gbridge.kappelt.net/oauth/token'
-          scopes:
-            default: Allows all operations
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
 externalDocs:
   url: https://doc.gbridge.io
   description: General gBridge documentation and user guides

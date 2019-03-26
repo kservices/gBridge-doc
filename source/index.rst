@@ -91,4 +91,6 @@ Contents
    :maxdepth: 2
    :caption: Developers
 
+   developers/apiV2
    developers/api
+   
