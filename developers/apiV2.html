@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>MQTT Server Migration &mdash; gBridge.io 1.0.0 documentation</title>
+  <title>gBridge.io Management API &mdash; gBridge.io 1.0.0 documentation</title>
   
 
   
@@ -37,8 +37,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="About device traits" href="../traits/about.html" />
-    <link rel="prev" title="Self-Hosted gBridge" href="../selfHosted/hostItYourself.html" /> 
+    <link rel="next" title="Legacy User API" href="api.html" />
+    <link rel="prev" title="Community Manuals" href="../integration/communityManuals.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -86,21 +86,16 @@
             
             
               <p class="caption"><span class="caption-text">First steps</span></p>
-<ul class="current">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="supportGuidelines.html">Support Guidelines</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gettingStarted.html">Getting Started</a></li>
-<li class="toctree-l1"><a class="reference internal" href="deviceMechanism.html">Device Mechanism</a></li>
-<li class="toctree-l1"><a class="reference internal" href="deviceTypes.html">Device Types</a></li>
-<li class="toctree-l1"><a class="reference internal" href="mqttServer.html">Hosted MQTT server</a></li>
-<li class="toctree-l1"><a class="reference internal" href="twofa.html">Security confirmation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../firstSteps/supportGuidelines.html">Support Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../firstSteps/gettingStarted.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../firstSteps/deviceMechanism.html">Device Mechanism</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../firstSteps/deviceTypes.html">Device Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../firstSteps/mqttServer.html">Hosted MQTT server</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../firstSteps/twofa.html">Security confirmation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../selfHosted/hostItYourself.html">Self-Hosted gBridge</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">MQTT Server Migration</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#mqtt-topic-restriction">MQTT topic restriction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#mqtt-protocol">MQTT protocol</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#websocket-path">Websocket Path</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../firstSteps/mqttMigration.html">MQTT Server Migration</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Traits</span></p>
 <ul>
@@ -123,9 +118,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../integration/communityManuals.html">Community Manuals</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Developers</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../developers/apiV2.html">gBridge.io Management API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../developers/api.html">Legacy User API</a></li>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">gBridge.io Management API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">Legacy User API</a></li>
 </ul>
 
             
@@ -171,13 +166,13 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>MQTT Server Migration</li>
+      <li>gBridge.io Management API</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/firstSteps/mqttMigration.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/developers/apiV2.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -190,28 +185,11 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="mqtt-server-migration">
-<h1>MQTT Server Migration<a class="headerlink" href="#mqtt-server-migration" title="Permalink to this headline">¶</a></h1>
-<p>Along with the domain move, we moved our MQTT server, too. A new server cluster is available under <code class="code docutils literal notranslate"><span class="pre">mqtt.gbridge.io</span></code>. It is designed as a drop-in replacement for the existing server, theoretically you just need to change the server’s address.</p>
-<p>The new server uses a more scalable software, ensuring good performance with growing user count.</p>
-<p>The old server (mqtt.gbridge.kappelt.net) is going to stay online for at least a couple more months. Afterwards, it is going to be eventually an alias to our new server (mqtt.gbridge.io). However, we want to grant our users a period for soft migration (rather than just switching servers without any notice), so that possible problems and incompatibilites can be addressed.</p>
-<p>Please read and note the following changes! We kindly ask all users to quickly move to the new server.</p>
-<p><strong>Feel free to contact us using the community forum or the contact form if you are experiencing any issues while migrating</strong>.</p>
-<div class="section" id="mqtt-topic-restriction">
-<h2>MQTT topic restriction<a class="headerlink" href="#mqtt-topic-restriction" title="Permalink to this headline">¶</a></h2>
-<p>The new server restricts subscribable topics.</p>
-<p><strong>Old behaviour:</strong> Your client could subscribe to <em>any</em> topic (even the global wildcard <code class="code docutils literal notranslate"><span class="pre">#</span></code>), but you were only going to receive topics starting with <code class="code docutils literal notranslate"><span class="pre">gBridge/u{userid}/</span></code>.</p>
-<p><strong>New behaviour:</strong> Your client is only able to subscribe to topics starting with <code class="code docutils literal notranslate"><span class="pre">gBridge/u{userid}/</span></code>. Subscriptions outside this scope (like <code class="code docutils literal notranslate"><span class="pre">#</span></code>, <code class="code docutils literal notranslate"><span class="pre">gBridge/#</span></code>) will now fail.</p>
-<p>This is due the new broker handling access restrictions differently. This problem isn’t relevant when you are using the Domoticz plugin for gBridge.</p>
-</div>
-<div class="section" id="mqtt-protocol">
-<h2>MQTT protocol<a class="headerlink" href="#mqtt-protocol" title="Permalink to this headline">¶</a></h2>
-<p>MQTT V3.1.1 is now used by default and fully supported. The broker should provive backward-compatibility to MQTT V3.1</p>
-</div>
-<div class="section" id="websocket-path">
-<h2>Websocket Path<a class="headerlink" href="#websocket-path" title="Permalink to this headline">¶</a></h2>
-<p>When using MQTT over websockets, the URL is now <code class="code docutils literal notranslate"><span class="pre">ws(s)://mqtt.gbridge.io/mqtt</span></code> (insted of the old websocket server using the root path: <code class="code docutils literal notranslate"><span class="pre">ws(s)://mqtt.gbridge.kappelt.net/</span></code>)</p>
-</div>
+  <div class="section" id="gbridge-io-management-api">
+<h1>gBridge.io Management API<a class="headerlink" href="#gbridge-io-management-api" title="Permalink to this headline">¶</a></h1>
+<p>A fully featured API for your account is available. You can create individual API keys in your account’s dashboard under “My Account”.</p>
+<p>There is an extensive API endpoint documentation available: <a class="reference external" href="https://doc.gbridge.io/apidoc">https://doc.gbridge.io/apidoc</a></p>
+<p>Please mind that the examples of this documentation aren’t fully up-to-date and propably won’t work “out of the box”. However, the object and endpoint documentation covers all endpoints and objects.</p>
 </div>
 
 
@@ -222,10 +200,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../traits/about.html" class="btn btn-neutral float-right" title="About device traits" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="api.html" class="btn btn-neutral float-right" title="Legacy User API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../selfHosted/hostItYourself.html" class="btn btn-neutral float-left" title="Self-Hosted gBridge" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../integration/communityManuals.html" class="btn btn-neutral float-left" title="Community Manuals" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -238,7 +216,7 @@
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. <jinja2.runtime.BlockReference object at 0x2b0f2d4cd7f0> 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. <jinja2.runtime.BlockReference object at 0x2b0f2d2a3ef0> 
 
 <br>
 <a href="https://github.com/kservices/gBridge">gBridge on Github</a><br>
