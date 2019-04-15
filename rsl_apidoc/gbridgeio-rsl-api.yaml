@@ -1,0 +1,333 @@
+openapi: 3.0.0
+
+servers:
+  - description: gBridge.io Reseller API V1
+    url: https://gbridge.io/rsl/api
+info:
+  version: "1.0.0"
+  title: gBridge.io Reseller API
+  description: >-
+    **IMPORTANT**: *This API is yet in the beta phase. Please report any errors or issues under gbridge@kappelt.net*
+
+
+    This document describes the management API used for gBridge.io resellers (account creation, billing information, etc.)
+
+
+    Please note that the examples shown on this page are not representative and may contain errors/ invalid data.
+
+
+    **API Endpoint:** https://gbridge.io/rsl/api
+  contact:
+    email: gbridge@kappelt.net
+
+security:
+  - bearerAuth: []
+
+paths:
+  /user:
+    get:
+      summary: Get all users belonging to your reseller account
+      responses:
+        '200':
+          description: OK, resource has been sent
+          content:
+            application/json:
+              schema:
+                type: array
+                minItems: 0
+                readOnly: true
+                description: All associated users
+                items:
+                  allOf:
+                    - $ref: '#/components/schemas/User'
+                    - type: object
+                      required:
+                        - user_id
+                        - email
+                        - name
+                        - device_limit
+                        - login_username
+                        - created_at
+                        - updated_at
+                        - apikeys
+                      properties:
+                        apikeys:
+                          type: array
+                          writeOnly: true
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+    post:
+      summary: Create a new user
+      description: >
+        Create a new user that is billed via your reseller account. Please note that this action might create costs depending on your billing model.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: '#/components/schemas/User'
+                - type: object
+                  required:
+      responses:
+        '200':
+          description: OK, account has been created and parsed data has been sent back
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/User'
+                  - type: object
+                    required:
+                      - user_id
+                      - email
+                      - name
+                      - device_limit
+                      - login_username
+                      - created_at
+                      - updated_at
+                      - apikeys
+        '400':
+          description: >
+            Invalid data supplied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBasic'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+  /user/{user_id}:
+    get:
+      summary: Get information about a specified user
+      responses:
+        '200':
+          description: OK, resource has been sent
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/User'
+                  - type: object
+                    required:
+                      - user_id
+                      - email
+                      - name
+                      - device_limit
+                      - login_username
+                      - created_at
+                      - updated_at
+                      - apikeys
+        '400':
+          description: >
+            Invalid ID supplied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBasic'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '404':
+          description: >
+            User not found or not attached to your reseller account
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/ErrorBasic'
+                  - type: object
+                    properties:
+                      error_code:
+                        type: string
+                        enum:
+                          - user_not_found
+      parameters:
+        - name: user_id
+          in: path
+          description: User ID
+          required: true
+          schema:
+            type: integer
+  /user/{user_id}/apikey:
+    post:
+      summary: Create a new API key for the user
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: '#/components/schemas/ApiKey'
+      responses:
+        '200':
+          description: OK, API key has been generated
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/ApiKey'
+                  - type: object
+                    required:
+                      - privilege_user
+        '400':
+          description: >
+            Invalid ID or data supplied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBasic'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '404':
+          description: >
+            User not found or not attached to your reseller account
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/ErrorBasic'
+                  - type: object
+                    properties:
+                      error_code:
+                        type: string
+                        enum:
+                          - user_not_found
+      parameters:
+        - name: user_id
+          in: path
+          description: User ID
+          required: true
+          schema:
+            type: integer
+  /user/{user_id}/apikey/{apikey_id}:
+    delete:
+      summary: Delete an API key
+      description: >
+        Delete the API key for the specified user. 
+        Note that access tokens that were generated using this API key will still be usable until they expire. 
+        However, no new access token can be obtained using the API key after it has been deleted.
+      responses:
+        '200':
+          description: OK, API key has been deleted
+        '400':
+          description: >
+            Invalid ID supplied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBasic'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '404':
+          description: >
+            User/ API key not found or not attached to your reseller account
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/ErrorBasic'
+                  - type: object
+                    properties:
+                      error_code:
+                        type: string
+                        enum:
+                          - user_not_found
+                          - apikey_not_found
+      parameters:
+        - name: user_id
+          in: path
+          description: User ID
+          required: true
+          schema:
+            type: integer
+components:
+  responses:
+    UnauthorizedError:
+      description: Authorization token is either missing, invalid, expired, has insufficient privileges or your account is not marked as a reseller.
+  schemas:
+    ErrorBasic:
+      type: object
+      properties:
+        error_code:
+          type: string
+          description: >
+            Unique processable code for the error that has happened
+          enum:
+            - user_not_found
+            - apikey_not_found
+            - generic
+        error_message:
+          type: string
+          description: Human readable message of error that has been thrown
+    User:
+      properties:
+        user_id:
+          type: integer
+          readOnly: true
+          description: Unique user id, assigned by gBridge
+        email:
+          type: string
+          description: User's email, optional but recommended. User can reset his account password using this mail. If no mail is provided, a gBridge dummy mail (that is not accessible) is used.
+        name:
+          type: string
+          description: Display name of user. Used in communication and the dashboard. If not given, the user's mail address is used.
+        device_limit:
+          type: integer
+          description: Number of devices the user can create befor communication with Google is blocked. Default value is 10000 (=> unlimited) for account's using the standard plan or accounts generated by resellers.
+        login_username:
+          type: string
+          nullable: true
+          description: A user name (that may only contain alphanumeric characters, underscores and dashes) that the user can utilize in Google's account linking dialog (rather than his email)
+        apikeys:
+          type: array
+          minItems: 0
+          readOnly: true
+          description: API Keys that are available for the management of the user's devices via the normal gBridge.io management API
+          items:
+            allOf:
+              - $ref: '#/components/schemas/ApiKey'
+              - type: object
+                required:
+                  - privilege_user
+        created_at:
+          type: string
+          readOnly: true
+          description: Timestamp of the creation of the account
+        updated_at:
+          type: string
+          readOnly: true
+          description: Timestamp of the last update of the user in the database
+    ApiKey:
+      properties:
+        apikey_id:
+          type: integer
+          readOnly: true
+          description: Unique id for this API key, generated by gBridge
+        key:
+          type: string
+          readOnly: true
+          description: The actual key that can be used to obtain access tokens via the management API
+        privilege_user:
+          type: boolean
+          description: Indicated whether this key has the "user" privilege, e.g. can be used to update user account details (password etc.)
+        created_at:
+          type: string
+          readOnly: true
+          description: Timestamp of the creation of the key
+        updated_at:
+          type: string
+          readOnly: true
+          description: Timestamp of the last update of the key in the database
+      required:
+        - apikey_id
+        - key
+        - created_at
+        - updated_at
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+externalDocs:
+  url: https://doc.gbridge.io
+  description: General gBridge documentation and user guides
