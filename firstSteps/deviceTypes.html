@@ -188,72 +188,83 @@
   <div class="section" id="device-types">
 <h1>Device Types<a class="headerlink" href="#device-types" title="Permalink to this headline">¶</a></h1>
 <p>The following <strong>device types</strong> are currently supported by gBridge:</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Light:</th><td class="field-body">A smart lightbulb, for instance</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Outlet:</th><td class="field-body">A switchable outlet</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Switch:</th><td class="field-body">A general definition for all kinds of switching devices</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Scene:</th><td class="field-body">Triggers pre-configured settings for various lights/ thermostats/ etc., e.g. for different moods</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Thermostat:</th><td class="field-body">Device that controls the heating, ventilation or an air conditioner.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Fan:</th><td class="field-body">Ventilation and fan devices</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">AC Units:</th><td class="field-body"></td>
-</tr>
-<tr class="field-even field"><th class="field-name">Air Purifier:</th><td class="field-body">Air purifying devices</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Sprinkler:</th><td class="field-body">Garden Sprinklers and watering devices</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Door:</th><td class="field-body">Doors that can be opened/ closed</td>
-</tr>
-<tr class="field-odd field"><th class="field-name" colspan="2">Shutter and Blinds:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body">Darkening systems</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Dishwasher:</th><td class="field-body"></td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Dryer:</th><td class="field-body"></td>
-</tr>
-<tr class="field-even field"><th class="field-name">Vacuum:</th><td class="field-body">e.g. vacuum robots that can be started/ stopped</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Washer:</th><td class="field-body">Generic washing machine</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Camera:</th><td class="field-body">Device that can be played back on a streaming device (e.g. a Chromecast)</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Light</dt>
+<dd class="field-odd"><p>A smart lightbulb, for instance</p>
+</dd>
+<dt class="field-even">Outlet</dt>
+<dd class="field-even"><p>A switchable outlet</p>
+</dd>
+<dt class="field-odd">Switch</dt>
+<dd class="field-odd"><p>A general definition for all kinds of switching devices</p>
+</dd>
+<dt class="field-even">Scene</dt>
+<dd class="field-even"><p>Triggers pre-configured settings for various lights/ thermostats/ etc., e.g. for different moods</p>
+</dd>
+<dt class="field-odd">Thermostat</dt>
+<dd class="field-odd"><p>Device that controls the heating, ventilation or an air conditioner.</p>
+</dd>
+<dt class="field-even">Fan</dt>
+<dd class="field-even"><p>Ventilation and fan devices</p>
+</dd>
+<dt class="field-odd">AC Units</dt>
+<dd class="field-odd"><p></p></dd>
+<dt class="field-even">Air Purifier</dt>
+<dd class="field-even"><p>Air purifying devices</p>
+</dd>
+<dt class="field-odd">Sprinkler</dt>
+<dd class="field-odd"><p>Garden Sprinklers and watering devices</p>
+</dd>
+<dt class="field-even">Door</dt>
+<dd class="field-even"><p>Doors that can be opened/ closed</p>
+</dd>
+<dt class="field-odd">Shutter and Blinds</dt>
+<dd class="field-odd"><p>Darkening systems</p>
+</dd>
+<dt class="field-even">Dishwasher</dt>
+<dd class="field-even"><p></p></dd>
+<dt class="field-odd">Dryer</dt>
+<dd class="field-odd"><p></p></dd>
+<dt class="field-even">Vacuum</dt>
+<dd class="field-even"><p>e.g. vacuum robots that can be started/ stopped</p>
+</dd>
+<dt class="field-odd">Washer</dt>
+<dd class="field-odd"><p>Generic washing machine</p>
+</dd>
+<dt class="field-even">Camera</dt>
+<dd class="field-even"><p>Device that can be played back on a streaming device (e.g. a Chromecast)</p>
+</dd>
+</dl>
 <p>Device types only provide specific vocabulary and semantics for controlling a device, but do not define any features/ abilities.</p>
 <p>Each device supports one or more so called <strong>traits</strong>. Those are feature sets that the device supports.</p>
 <p>In theory, every kind of device could be combined with each kind of trait. However, not every combination is meaningfull and controllable by voice commands.</p>
 <p>These traits are supported:</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">On and Off:</th><td class="field-body">Turns a device on or off, obviously</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Brightness:</th><td class="field-body">Set the brightness percentage of a device</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Scene:</th><td class="field-body">Trait, that allows this device to be triggered</td>
-</tr>
-<tr class="field-even field"><th class="field-name" colspan="2">Temperature Control:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body">Enables features that are typical for thermostats and alike</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Fan Speed:</th><td class="field-body">Ability to set a device to a certain speed setting with a specified name.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Start and Stop:</th><td class="field-body">Start and stop a device or a run cycle of it</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Open and Close:</th><td class="field-body">Open/ close devices to a certain percentage</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Camera Stream:</th><td class="field-body">Corresponding trait for the camera device. Allows your own stream URL to be viewed on a streaming device (e.g. Chromecast)</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">On and Off</dt>
+<dd class="field-odd"><p>Turns a device on or off, obviously</p>
+</dd>
+<dt class="field-even">Brightness</dt>
+<dd class="field-even"><p>Set the brightness percentage of a device</p>
+</dd>
+<dt class="field-odd">Scene</dt>
+<dd class="field-odd"><p>Trait, that allows this device to be triggered</p>
+</dd>
+<dt class="field-even">Temperature Control</dt>
+<dd class="field-even"><p>Enables features that are typical for thermostats and alike</p>
+</dd>
+<dt class="field-odd">Fan Speed</dt>
+<dd class="field-odd"><p>Ability to set a device to a certain speed setting with a specified name.</p>
+</dd>
+<dt class="field-even">Start and Stop</dt>
+<dd class="field-even"><p>Start and stop a device or a run cycle of it</p>
+</dd>
+<dt class="field-odd">Open and Close</dt>
+<dd class="field-odd"><p>Open/ close devices to a certain percentage</p>
+</dd>
+<dt class="field-even">Camera Stream</dt>
+<dd class="field-even"><p>Corresponding trait for the camera device. Allows your own stream URL to be viewed on a streaming device (e.g. Chromecast)</p>
+</dd>
+</dl>
 <p>Have a look at the individual trait documentation pages for further information about settings and usage.</p>
 </div>
 
@@ -281,7 +292,7 @@
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. <jinja2.runtime.BlockReference object at 0x2b0f2d2b9780> 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. <jinja2.runtime.BlockReference object at 0x2b707a246978> 
 
 <br>
 <a href="https://github.com/kservices/gBridge">gBridge on Github</a><br>

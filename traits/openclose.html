@@ -195,34 +195,34 @@
 <h1>Open and Close<a class="headerlink" href="#open-and-close" title="Permalink to this headline">¶</a></h1>
 <p>The trait “Open and Close” allows you to open devices to a certain percentage.</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
+<p class="admonition-title">Note</p>
 <p>This trait is currently not officially supported by Google, but seems to work in most languages.</p>
-<p class="last">This implementation might break anytime, but we are going to fix it then as soon as possible.</p>
+<p>This implementation might break anytime, but we are going to fix it then as soon as possible.</p>
 </div>
 <div class="section" id="fitting-device-types">
 <h2>Fitting device types<a class="headerlink" href="#fitting-device-types" title="Permalink to this headline">¶</a></h2>
 <p>These device types could be combined well with this trait:</p>
 <ul class="simple">
-<li>Doors</li>
-<li>Blinds</li>
-<li>Shutters</li>
+<li><p>Doors</p></li>
+<li><p>Blinds</p></li>
+<li><p>Shutters</p></li>
 </ul>
 </div>
 <div class="section" id="action-topics">
 <h2>Action topics<a class="headerlink" href="#action-topics" title="Permalink to this headline">¶</a></h2>
 <div class="sidebar">
-<p class="first sidebar-title">Example</p>
+<p class="sidebar-title">Example</p>
 <p><em>Hey Google, close {device name}</em></p>
-<p class="last"><code class="code docutils literal notranslate"><span class="pre">gBridge/ux/dy/openclose</span></code>: <code class="code docutils literal notranslate"><span class="pre">0</span></code></p>
+<p><code class="code docutils literal notranslate"><span class="pre">gBridge/ux/dy/openclose</span></code>: <code class="code docutils literal notranslate"><span class="pre">0</span></code></p>
 </div>
 <p>The gBridge service publishes an integer value inbetween <code class="code docutils literal notranslate"><span class="pre">0</span></code> and <code class="code docutils literal notranslate"><span class="pre">100</span></code> (inclusive). 0 represent the device being fully closed, 100 means fully open.</p>
 <br><br><br><br><br><br><br></div>
 <div class="section" id="status-topics">
 <h2>Status topics<a class="headerlink" href="#status-topics" title="Permalink to this headline">¶</a></h2>
 <div class="sidebar">
-<p class="first sidebar-title">Example</p>
+<p class="sidebar-title">Example</p>
 <p><code class="code docutils literal notranslate"><span class="pre">gBridge/ux/dy/openclose/set</span></code>: <code class="code docutils literal notranslate"><span class="pre">100</span></code></p>
-<p class="last"><em>Hey Google, is {device name} opened?</em>: <em>{Device name} is opened.</em></p>
+<p><em>Hey Google, is {device name} opened?</em>: <em>{Device name} is opened.</em></p>
 </div>
 <p>Your application should publish the current device state to the status topic everytime it is opened/ closed.
 Data from the status topic is cached and used to response to questions about the device state from Google.</p>
@@ -231,10 +231,10 @@ Data from the status topic is cached and used to response to questions about the
 <div class="section" id="other-commands">
 <h2>Other commands<a class="headerlink" href="#other-commands" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>Open {device name} half-way</li>
-<li>Open/ close {device name}</li>
-<li>Open {device name} to 42%</li>
-<li>Is {device name} opened?</li>
+<li><p>Open {device name} half-way</p></li>
+<li><p>Open/ close {device name}</p></li>
+<li><p>Open {device name} to 42%</p></li>
+<li><p>Is {device name} opened?</p></li>
 </ul>
 </div>
 </div>
@@ -263,7 +263,7 @@ Data from the status topic is cached and used to response to questions about the
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. <jinja2.runtime.BlockReference object at 0x2b0f2d628ba8> 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. <jinja2.runtime.BlockReference object at 0x2b707a48c128> 
 
 <br>
 <a href="https://github.com/kservices/gBridge">gBridge on Github</a><br>

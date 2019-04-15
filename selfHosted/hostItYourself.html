@@ -223,10 +223,10 @@
 <h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
 <p>The following points need to be satisfied in order to host your own instance of gBridge.</p>
 <ul class="simple">
-<li><strong>Availability of a (web-) server that is running constantly.</strong> Docker needs to be installed. A Raspberry Pi should have plenty of power for this purpose.</li>
-<li><strong>A webserver is running, available and configured,</strong> one needs to be available to access it publicly. A static domain (e.g. provided by a DDNS provider) has to be configured for your server, too.</li>
-<li><strong>Your webserver needs to be configured for HTTPS.</strong> A valid, signed certificate must be served via HTTPS. This should be no problem nowadays since one can get free certificates, e.g. from <a class="reference external" href="https://letsencrypt.org/">Let’s Encrypt</a>.</li>
-<li><strong>A MQTT server needs to available in your network.</strong></li>
+<li><p><strong>Availability of a (web-) server that is running constantly.</strong> Docker needs to be installed. A Raspberry Pi should have plenty of power for this purpose.</p></li>
+<li><p><strong>A webserver is running, available and configured,</strong> one needs to be available to access it publicly. A static domain (e.g. provided by a DDNS provider) has to be configured for your server, too.</p></li>
+<li><p><strong>Your webserver needs to be configured for HTTPS.</strong> A valid, signed certificate must be served via HTTPS. This should be no problem nowadays since one can get free certificates, e.g. from <a class="reference external" href="https://letsencrypt.org/">Let’s Encrypt</a>.</p></li>
+<li><p><strong>A MQTT server needs to available in your network.</strong></p></li>
 </ul>
 </div>
 <div class="section" id="set-up-google-action">
@@ -237,7 +237,7 @@
 <p>Navigate to the <a class="reference external" href="https://console.actions.google.com/">Google Actions Console</a>. Make sure you are logged in with the Google Account you are already using with Google Assistant.</p>
 <div class="align-center figure" id="id2">
 <a class="reference internal image-reference" href="../_images/gproject-projectoverview.png"><img alt="Project Overview in Google Actions Console." src="../_images/gproject-projectoverview.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-text">You’ll see this page after logging in to the Google Actions Console. Create a new project.</span></p>
+<p class="caption"><span class="caption-text">You’ll see this page after logging in to the Google Actions Console. Create a new project.</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 <div class="section" id="choose-a-name">
@@ -245,44 +245,44 @@
 <p>Choose a generic name. Create the new project and select it to be a “Home control” application.</p>
 <div class="align-center figure" id="id3">
 <a class="reference internal image-reference" href="../_images/gproject-newproject.png"><img alt="Setting the project's name." src="../_images/gproject-newproject.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-text">Choose the name for the project.</span></p>
+<p class="caption"><span class="caption-text">Choose the name for the project.</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
 </div>
 <div class="align-center figure" id="id4">
 <a class="reference internal image-reference" href="../_images/gproject-newproject-category.png"><img alt="Selecting application category for the new project." src="../_images/gproject-newproject-category.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-text">Select “Home control” as the application type.</span></p>
+<p class="caption"><span class="caption-text">Select “Home control” as the application type.</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
 </div>
 <div class="align-center figure" id="id5">
 <a class="reference internal image-reference" href="../_images/gproject-newproject-overview.png"><img alt="Step-by-step page for the project setup." src="../_images/gproject-newproject-overview.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-text">Set the name here again. Continue with the next step: Account linking</span></p>
+<p class="caption"><span class="caption-text">Set the name here again. Continue with the next step: Account linking</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 <div class="section" id="set-up-account-linking">
 <h3>Set up account linking<a class="headerlink" href="#set-up-account-linking" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>Do not allow users to register accounts via voice.</li>
-<li>Select OAuth only with Implicit grants.</li>
-<li>Generate a random password for the client id. Avoid special chars. This can be long and difficult to remember, since you only need to enter it once later on.</li>
-<li>Use the following URL: <code class="code docutils literal notranslate"><span class="pre">https://YOUR-WEBSERVER'S-ADDRESS/gbrigde/gapi/auth</span></code>. For example: <code class="code docutils literal notranslate"><span class="pre">https://dev.gbridge.kappelt.net/gbrigde/gapi/auth</span></code></li>
-<li>OAuth scopes are not required, leave them empty. You don’t need to add a useful instruction for account linking either.</li>
+<li><p>Do not allow users to register accounts via voice.</p></li>
+<li><p>Select OAuth only with Implicit grants.</p></li>
+<li><p>Generate a random password for the client id. Avoid special chars. This can be long and difficult to remember, since you only need to enter it once later on.</p></li>
+<li><p>Use the following URL: <code class="code docutils literal notranslate"><span class="pre">https://YOUR-WEBSERVER'S-ADDRESS/gbrigde/gapi/auth</span></code>. For example: <code class="code docutils literal notranslate"><span class="pre">https://dev.gbridge.kappelt.net/gbrigde/gapi/auth</span></code></p></li>
+<li><p>OAuth scopes are not required, leave them empty. You don’t need to add a useful instruction for account linking either.</p></li>
 </ul>
 <div class="align-center figure" id="id6">
 <a class="reference internal image-reference" href="../_images/gproject-accountlinking.png"><img alt="Set-up of account linking." src="../_images/gproject-accountlinking.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-text">Follow the steps above to set up account linking.</span></p>
+<p class="caption"><span class="caption-text">Follow the steps above to set up account linking.</span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 <div class="section" id="add-action-fulfillment">
 <h3>Add action fulfillment<a class="headerlink" href="#add-action-fulfillment" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>Go back to the overview page, select “Add Actions”.</li>
-<li>Enter the following URL as the fulfillment URL: <code class="code docutils literal notranslate"><span class="pre">https://YOUR-WEBSERVER'S-ADDRESS/gbrigde/gapi</span></code>. For example: <code class="code docutils literal notranslate"><span class="pre">https://dev.gbridge.kappelt.net/gbrigde/gapi</span></code></li>
+<li><p>Go back to the overview page, select “Add Actions”.</p></li>
+<li><p>Enter the following URL as the fulfillment URL: <code class="code docutils literal notranslate"><span class="pre">https://YOUR-WEBSERVER'S-ADDRESS/gbrigde/gapi</span></code>. For example: <code class="code docutils literal notranslate"><span class="pre">https://dev.gbridge.kappelt.net/gbrigde/gapi</span></code></p></li>
 </ul>
 <div class="align-center figure" id="id7">
 <a class="reference internal image-reference" href="../_images/gproject-addaction.png"><img alt="Add a new action to the project." src="../_images/gproject-addaction.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-text">Add a new action.</span></p>
+<p class="caption"><span class="caption-text">Add a new action.</span><a class="headerlink" href="#id7" title="Permalink to this image">¶</a></p>
 </div>
 <div class="align-center figure" id="id8">
 <a class="reference internal image-reference" href="../_images/gproject-addaction-fulfill.png"><img alt="Setting fulfillment URL of new action." src="../_images/gproject-addaction-fulfill.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-text">Set the fulfillment URL for the new action.</span></p>
+<p class="caption"><span class="caption-text">Set the fulfillment URL for the new action.</span><a class="headerlink" href="#id8" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 <div class="section" id="look-for-the-project-id">
@@ -290,7 +290,7 @@
 <p>Note the project id, since it’ll be necessary to known it later. It is shown in the project settings.</p>
 <div class="align-center figure" id="id9">
 <a class="reference internal image-reference" href="../_images/gproject-projectid.png"><img alt="The project id is shown in the project settings." src="../_images/gproject-projectid.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-text">The project id is shown in the project settings.</span></p>
+<p class="caption"><span class="caption-text">The project id is shown in the project settings.</span><a class="headerlink" href="#id9" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 <div class="section" id="start-simulator-for-synchronization">
@@ -300,28 +300,28 @@
 <div class="section" id="enable-the-homegraph-api">
 <h3>Enable the Homegraph API<a class="headerlink" href="#enable-the-homegraph-api" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>Navigate to the <a class="reference external" href="https://console.cloud.google.com/">Google Cloud Console</a></li>
-<li>Select your project in the top bar. Select “APIs and Services” in the left menu.</li>
-<li>Add a new API. Search for “Homegraph”, select it and enable it afterwards.</li>
-<li>Open the left menu, select “APIs and Services”, “Credentials” there.</li>
-<li>Select “Create credentials”, “API Key”. Note the new key.</li>
-<li>For safety reasons, select “Restrict key”. Choose “HomeGraph API” as the only API restriction and save.</li>
+<li><p>Navigate to the <a class="reference external" href="https://console.cloud.google.com/">Google Cloud Console</a></p></li>
+<li><p>Select your project in the top bar. Select “APIs and Services” in the left menu.</p></li>
+<li><p>Add a new API. Search for “Homegraph”, select it and enable it afterwards.</p></li>
+<li><p>Open the left menu, select “APIs and Services”, “Credentials” there.</p></li>
+<li><p>Select “Create credentials”, “API Key”. Note the new key.</p></li>
+<li><p>For safety reasons, select “Restrict key”. Choose “HomeGraph API” as the only API restriction and save.</p></li>
 </ul>
 <div class="align-center figure" id="id10">
 <a class="reference internal image-reference" href="../_images/gproject-homegraph.png"><img alt="Enable a new API for the project." src="../_images/gproject-homegraph.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-text">Enable a new API for the project.</span></p>
+<p class="caption"><span class="caption-text">Enable a new API for the project.</span><a class="headerlink" href="#id10" title="Permalink to this image">¶</a></p>
 </div>
 <div class="align-center figure" id="id11">
 <a class="reference internal image-reference" href="../_images/gproject-homegraph-select.png"><img alt="Select the Homegraph API." src="../_images/gproject-homegraph-select.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-text">Select the Homegraph API.</span></p>
+<p class="caption"><span class="caption-text">Select the Homegraph API.</span><a class="headerlink" href="#id11" title="Permalink to this image">¶</a></p>
 </div>
 <div class="align-center figure" id="id12">
 <a class="reference internal image-reference" href="../_images/gproject-homegraph-credentials.png"><img alt="Generate a new API Key." src="../_images/gproject-homegraph-credentials.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-text">Generate a new API key in the credentials menu.</span></p>
+<p class="caption"><span class="caption-text">Generate a new API key in the credentials menu.</span><a class="headerlink" href="#id12" title="Permalink to this image">¶</a></p>
 </div>
 <div class="align-center figure" id="id13">
 <a class="reference internal image-reference" href="../_images/gproject-homegraph-restrict.png"><img alt="Restrict the key to only work with the Homegraph API." src="../_images/gproject-homegraph-restrict.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-text">Restrict the key to only work with the Homegraph API.</span></p>
+<p class="caption"><span class="caption-text">Restrict the key to only work with the Homegraph API.</span><a class="headerlink" href="#id13" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 </div>
@@ -421,17 +421,17 @@ Migrating: 2014_10_12_000000_create_users_table
 <p>You should see the login screen:</p>
 <div class="align-center figure" id="id14">
 <a class="reference internal image-reference" href="../_images/webinterface-login.png"><img alt="Login screen of your gBridge instance." src="../_images/webinterface-login.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-text">Login screen of your gBridge instance.</span></p>
+<p class="caption"><span class="caption-text">Login screen of your gBridge instance.</span><a class="headerlink" href="#id14" title="Permalink to this image">¶</a></p>
 </div>
 <p>Log in using the mail you’ve entered during database setup and the password <code class="code docutils literal notranslate"><span class="pre">123456</span></code>.</p>
 <p>You should now see the empty account dashboard:</p>
 <div class="align-center figure" id="id15">
 <a class="reference internal image-reference" href="../_images/webinterface-firstpage.png"><img alt="The first page after logging in." src="../_images/webinterface-firstpage.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-text">The first page after logging in.</span></p>
+<p class="caption"><span class="caption-text">The first page after logging in.</span><a class="headerlink" href="#id15" title="Permalink to this image">¶</a></p>
 </div>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last"><strong>Immediately</strong> change your password under “Hi {YOUR-NAME}”, “My Account”.</p>
+<p class="admonition-title">Warning</p>
+<p><strong>Immediately</strong> change your password under “Hi {YOUR-NAME}”, “My Account”.</p>
 </div>
 </div>
 </div>
@@ -481,8 +481,8 @@ Migrating: 2014_10_12_000000_create_users_table
 <h3>NGINX<a class="headerlink" href="#nginx" title="Permalink to this headline">¶</a></h3>
 <p>Your NGINX-Config may look similar to this.</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">This configuration hasn’t been tested before, since I’m not using NGINX on my servers. I’d appreciate feedback, whether this config is OK.</p>
+<p class="admonition-title">Note</p>
+<p>This configuration hasn’t been tested before, since I’m not using NGINX on my servers. I’d appreciate feedback, whether this config is OK.</p>
 </div>
 <div class="highlight-NGINX notranslate"><div class="highlight"><pre><span></span><span class="k">server</span> <span class="p">{</span>
     <span class="kn">listen</span> <span class="mi">443</span> <span class="s">ssl</span><span class="p">;</span>
@@ -517,7 +517,7 @@ Migrating: 2014_10_12_000000_create_users_table
 <p>Navigate to <code class="code docutils literal notranslate"><span class="pre">https://YOUR-WEBSERVER'S-ADDRESS/gbridge/gapi/auth</span></code> with your webbrowser. You should see the account linking page:</p>
 <div class="align-center figure" id="id16">
 <a class="reference internal image-reference" href="../_images/googlehome-link-account1.png"><img alt="Account linking login page." src="../_images/googlehome-link-account1.png" style="width: 50%;" /></a>
-<p class="caption"><span class="caption-text">You should see the page used for account linking. Do not login here! This step is just to make sure that you are able to access the login page.</span></p>
+<p class="caption"><span class="caption-text">You should see the page used for account linking. Do not login here! This step is just to make sure that you are able to access the login page.</span><a class="headerlink" href="#id16" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 <div class="section" id="congratulations">
@@ -552,7 +552,7 @@ Migrating: 2014_10_12_000000_create_users_table
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. <jinja2.runtime.BlockReference object at 0x2b0f2d715080> 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. <jinja2.runtime.BlockReference object at 0x2b707a389128> 
 
 <br>
 <a href="https://github.com/kservices/gBridge">gBridge on Github</a><br>

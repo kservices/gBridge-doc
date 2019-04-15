@@ -202,21 +202,20 @@
 <div class="line"><code class="code docutils literal notranslate"><span class="pre">gBridge/u{userid}/d{deviceid}/{trait}</span></code></div>
 <div class="line"><strong>Example:</strong> <code class="code docutils literal notranslate"><span class="pre">gBridge/u1/d4/onoff</span></code></div>
 </div>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">userid:</th><td class="field-body">This is an integer number that identifies your gBridge account. It is the same for all devices of your account.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">deviceid:</th><td class="field-body">This is an integer number that identifies devices you’ve created. A device id is unique.</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">trait:</th><td class="field-body">The trait declares, as the name says, the feature that is called. Currently, it is either <code class="code docutils literal notranslate"><span class="pre">onoff</span></code> (for turning a device on or off) or <code class="code docutils literal notranslate"><span class="pre">brightness</span></code> (for setting the brightness of a device).</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">userid</dt>
+<dd class="field-odd"><p>This is an integer number that identifies your gBridge account. It is the same for all devices of your account.</p>
+</dd>
+<dt class="field-even">deviceid</dt>
+<dd class="field-even"><p>This is an integer number that identifies devices you’ve created. A device id is unique.</p>
+</dd>
+<dt class="field-odd">trait</dt>
+<dd class="field-odd"><p>The trait declares, as the name says, the feature that is called. Currently, it is either <code class="code docutils literal notranslate"><span class="pre">onoff</span></code> (for turning a device on or off) or <code class="code docutils literal notranslate"><span class="pre">brightness</span></code> (for setting the brightness of a device).</p>
+</dd>
+</dl>
 <div class="align-center figure" id="id1">
 <a class="reference internal image-reference" href="../_images/mechanism-action.png"><img alt="Scheme for actions requested by Google, that are published on the MQTT server." src="../_images/mechanism-action.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-text">Once an action is requested via Google Assistant, data will be published to the belonging topic.</span></p>
+<p class="caption"><span class="caption-text">Once an action is requested via Google Assistant, data will be published to the belonging topic.</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 <div class="section" id="status-topics">
@@ -231,7 +230,7 @@
 <p>The parameters (userid, deviceid, trait) have the same meanings as for action topics.</p>
 <div class="align-center figure" id="id2">
 <a class="reference internal image-reference" href="../_images/mechanism-status.png"><img alt="Scheme for queries by Google Assistant." src="../_images/mechanism-status.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-text">Device states will be cached and sent to Google once a query is made.</span></p>
+<p class="caption"><span class="caption-text">Device states will be cached and sent to Google once a query is made.</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 <div class="section" id="valid-values-for-messages">
@@ -265,7 +264,7 @@
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. <jinja2.runtime.BlockReference object at 0x2b0f2d2dbda0> 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. <jinja2.runtime.BlockReference object at 0x2b707a0fe860> 
 
 <br>
 <a href="https://github.com/kservices/gBridge">gBridge on Github</a><br>

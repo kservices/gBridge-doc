@@ -197,40 +197,40 @@
 <h2>Fitting device types<a class="headerlink" href="#fitting-device-types" title="Permalink to this headline">¶</a></h2>
 <p>These device types could be combined well with this trait:</p>
 <ul class="simple">
-<li>Air Conditioners</li>
-<li>Outlets</li>
-<li>Switches</li>
-<li>Lights</li>
-<li>Air Purifiers</li>
-<li>Dishwashers</li>
-<li>Dryers</li>
-<li>Fans</li>
-<li>Vacuums</li>
-<li>Washers</li>
+<li><p>Air Conditioners</p></li>
+<li><p>Outlets</p></li>
+<li><p>Switches</p></li>
+<li><p>Lights</p></li>
+<li><p>Air Purifiers</p></li>
+<li><p>Dishwashers</p></li>
+<li><p>Dryers</p></li>
+<li><p>Fans</p></li>
+<li><p>Vacuums</p></li>
+<li><p>Washers</p></li>
 </ul>
 </div>
 <div class="section" id="action-topics">
 <h2>Action topics<a class="headerlink" href="#action-topics" title="Permalink to this headline">¶</a></h2>
 <div class="sidebar">
-<p class="first sidebar-title">Example</p>
+<p class="sidebar-title">Example</p>
 <p><em>Hey Google, turn {device name} on</em></p>
-<p class="last"><code class="code docutils literal notranslate"><span class="pre">gBridge/ux/dy/onoff</span></code>: <code class="code docutils literal notranslate"><span class="pre">1</span></code></p>
+<p><code class="code docutils literal notranslate"><span class="pre">gBridge/ux/dy/onoff</span></code>: <code class="code docutils literal notranslate"><span class="pre">1</span></code></p>
 </div>
 <p>The gBridge service publishes either <code class="code docutils literal notranslate"><span class="pre">0</span></code> (device should be turned off) or <code class="code docutils literal notranslate"><span class="pre">1</span></code> (device should be turned on) when you say a voice command.</p>
 <br><br><br><br><br><br><br></div>
 <div class="section" id="status-topics">
 <h2>Status topics<a class="headerlink" href="#status-topics" title="Permalink to this headline">¶</a></h2>
 <div class="sidebar">
-<p class="first sidebar-title">Example</p>
+<p class="sidebar-title">Example</p>
 <p><code class="code docutils literal notranslate"><span class="pre">gBridge/ux/dy/onoff/set</span></code>: <code class="code docutils literal notranslate"><span class="pre">FALSE</span></code></p>
-<p class="last"><em>Hey Google, is {device name} turned on?</em>: <em>{Device name} is off.</em></p>
+<p><em>Hey Google, is {device name} turned on?</em>: <em>{Device name} is off.</em></p>
 </div>
 <p>Your application should publish the current device state to the status topic everytime the device is turned on or off.
 Data from the status topic is cached and used to response to questions about the device state from Google.</p>
 <p>You may publish these values on the status topic:</p>
 <ul class="simple">
-<li>One of <code class="code docutils literal notranslate"><span class="pre">0</span></code>, <code class="code docutils literal notranslate"><span class="pre">off</span></code>, <code class="code docutils literal notranslate"><span class="pre">false</span></code> means the device is off.</li>
-<li>One of <code class="code docutils literal notranslate"><span class="pre">1</span></code>, <code class="code docutils literal notranslate"><span class="pre">on</span></code>, <code class="code docutils literal notranslate"><span class="pre">true</span></code> means the device is turned on.</li>
+<li><p>One of <code class="code docutils literal notranslate"><span class="pre">0</span></code>, <code class="code docutils literal notranslate"><span class="pre">off</span></code>, <code class="code docutils literal notranslate"><span class="pre">false</span></code> means the device is off.</p></li>
+<li><p>One of <code class="code docutils literal notranslate"><span class="pre">1</span></code>, <code class="code docutils literal notranslate"><span class="pre">on</span></code>, <code class="code docutils literal notranslate"><span class="pre">true</span></code> means the device is turned on.</p></li>
 </ul>
 <p>These values are case-insensitive.</p>
 </div>
@@ -260,7 +260,7 @@ Data from the status topic is cached and used to response to questions about the
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. <jinja2.runtime.BlockReference object at 0x2b0f2d4ed6d8> 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. <jinja2.runtime.BlockReference object at 0x2b707a20f0b8> 
 
 <br>
 <a href="https://github.com/kservices/gBridge">gBridge on Github</a><br>

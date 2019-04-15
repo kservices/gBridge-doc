@@ -196,41 +196,38 @@
 <p>Always look in giejay’s repository for up-to-date setup instructions.</p>
 <p>Currently, you need to follow these steps:</p>
 <ul>
-<li><p class="first">Clone the repository in the plugin folder of your Domoticz instance:</p>
+<li><p>Clone the repository in the plugin folder of your Domoticz instance:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> domoticz/plugins
 git clone https://github.com/giejay/domoticz-gbridge-plugin.git
 </pre></div>
 </div>
 </li>
-<li><p class="first">Restart Domoticz</p>
-</li>
-<li><p class="first">Add a new “gBridge” item in the hardware page. Enter these settings for the hosted gBridge service:</p>
-</li>
+<li><p>Restart Domoticz</p></li>
+<li><p>Add a new “gBridge” item in the hardware page. Enter these settings for the hosted gBridge service:</p></li>
 </ul>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name" colspan="2">MQTT server address:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body">mqtt.gbridge.io:8883</td>
-</tr>
-<tr class="field-even field"><th class="field-name">MQTT username:</th><td class="field-body">gbridge-u{userid} <em>(Shown in “My Account” in your accounts dashboard)</em></td>
-</tr>
-<tr class="field-odd field"><th class="field-name">MQTT password:</th><td class="field-body">As set. Is your gBridge account’s password by default, but may be set independently in your account’s dashboard.</td>
-</tr>
-<tr class="field-even field"><th class="field-name" colspan="2">MQTT base topic:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body">gBridge/u{userid}</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">gBridge URL:</th><td class="field-body"><a class="reference external" href="https://gbridge.kappelt.net">https://gbridge.kappelt.net</a></td>
-</tr>
-<tr class="field-even field"><th class="field-name" colspan="2">gBridge Username:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body">Your account’s mail address</td>
-</tr>
-<tr class="field-odd field"><th class="field-name" colspan="2">gBridge Password:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body">Your account’s password</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">MQTT server address</dt>
+<dd class="field-odd"><p>mqtt.gbridge.io:8883</p>
+</dd>
+<dt class="field-even">MQTT username</dt>
+<dd class="field-even"><p>gbridge-u{userid} <em>(Shown in “My Account” in your accounts dashboard)</em></p>
+</dd>
+<dt class="field-odd">MQTT password</dt>
+<dd class="field-odd"><p>As set. Is your gBridge account’s password by default, but may be set independently in your account’s dashboard.</p>
+</dd>
+<dt class="field-even">MQTT base topic</dt>
+<dd class="field-even"><p>gBridge/u{userid}</p>
+</dd>
+<dt class="field-odd">gBridge URL</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://gbridge.kappelt.net">https://gbridge.kappelt.net</a></p>
+</dd>
+<dt class="field-even">gBridge Username</dt>
+<dd class="field-even"><p>Your account’s mail address</p>
+</dd>
+<dt class="field-odd">gBridge Password</dt>
+<dd class="field-odd"><p>Your account’s password</p>
+</dd>
+</dl>
 </div>
 </div>
 
@@ -258,7 +255,7 @@ git clone https://github.com/giejay/domoticz-gbridge-plugin.git
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. <jinja2.runtime.BlockReference object at 0x2b0f2d683748> 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. <jinja2.runtime.BlockReference object at 0x2b707a4ef6d8> 
 
 <br>
 <a href="https://github.com/kservices/gBridge">gBridge on Github</a><br>

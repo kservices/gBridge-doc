@@ -200,8 +200,8 @@
   <div class="section" id="hosted-mqtt-server">
 <h1>Hosted MQTT server<a class="headerlink" href="#hosted-mqtt-server" title="Permalink to this headline">¶</a></h1>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">This page is written for the hosted gBridge service.</p>
+<p class="admonition-title">Note</p>
+<p>This page is written for the hosted gBridge service.</p>
 </div>
 <div class="section" id="authentication">
 <h2>Authentication<a class="headerlink" href="#authentication" title="Permalink to this headline">¶</a></h2>
@@ -220,22 +220,23 @@
 <div class="section" id="mqtt-over-tls">
 <h3>MQTT over TLS<a class="headerlink" href="#mqtt-over-tls" title="Permalink to this headline">¶</a></h3>
 <p>MQTT over TLS can be reached by <code class="code docutils literal notranslate"><span class="pre">mqtts://mqtt.gbridge.io</span></code></p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Server:</th><td class="field-body">mqtt.gbridge.io</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Port:</th><td class="field-body">8883</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">MQTT Protocol:</th><td class="field-body">Version 3.1.1 and 3.1 supported</td>
-</tr>
-<tr class="field-even field"><th class="field-name">TLS:</th><td class="field-body">TLS V1.2 is required</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Authentication:</th><td class="field-body">required, as described above</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Server</dt>
+<dd class="field-odd"><p>mqtt.gbridge.io</p>
+</dd>
+<dt class="field-even">Port</dt>
+<dd class="field-even"><p>8883</p>
+</dd>
+<dt class="field-odd">MQTT Protocol</dt>
+<dd class="field-odd"><p>Version 3.1.1 and 3.1 supported</p>
+</dd>
+<dt class="field-even">TLS</dt>
+<dd class="field-even"><p>TLS V1.2 is required</p>
+</dd>
+<dt class="field-odd">Authentication</dt>
+<dd class="field-odd"><p>required, as described above</p>
+</dd>
+</dl>
 <p>The server uses certificates signed by Let’s Encrypt. This CA is trusted by most systems, your shouldn’t need to do anything more than specifying your system’s CA directory.</p>
 <div class="line-block">
 <div class="line">For many linux-based systems, trusted certificates are located under <code class="code docutils literal notranslate"><span class="pre">/etc/ssl/certs/</span></code>. For example, when using <code class="code docutils literal notranslate"><span class="pre">mosquitto_sub</span></code>  or <code class="code docutils literal notranslate"><span class="pre">mosquitto_pub</span></code>, you just need to give the parameter <code class="code docutils literal notranslate"><span class="pre">--capath</span> <span class="pre">/etc/ssl/certs/</span></code>.</div>
@@ -245,71 +246,74 @@
 <div class="section" id="mqtt-over-secure-websockets">
 <h3>MQTT over secure websockets<a class="headerlink" href="#mqtt-over-secure-websockets" title="Permalink to this headline">¶</a></h3>
 <p>MQTT over secure websockets can be reached by <code class="code docutils literal notranslate"><span class="pre">wss://mqtt.gbridge.io/mqtt</span></code></p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Server:</th><td class="field-body">mqtt.gbridge.io</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Path:</th><td class="field-body">/mqtt</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Port:</th><td class="field-body">443</td>
-</tr>
-<tr class="field-even field"><th class="field-name">MQTT Protocol:</th><td class="field-body">Version 3.1.1 and 3.1 supported</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">TLS:</th><td class="field-body">TLS V1.2 is required</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Authentication:</th><td class="field-body">required, as described above</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Server</dt>
+<dd class="field-odd"><p>mqtt.gbridge.io</p>
+</dd>
+<dt class="field-even">Path</dt>
+<dd class="field-even"><p>/mqtt</p>
+</dd>
+<dt class="field-odd">Port</dt>
+<dd class="field-odd"><p>443</p>
+</dd>
+<dt class="field-even">MQTT Protocol</dt>
+<dd class="field-even"><p>Version 3.1.1 and 3.1 supported</p>
+</dd>
+<dt class="field-odd">TLS</dt>
+<dd class="field-odd"><p>TLS V1.2 is required</p>
+</dd>
+<dt class="field-even">Authentication</dt>
+<dd class="field-even"><p>required, as described above</p>
+</dd>
+</dl>
 <p>The same certificates as for MQTT over TLS are used, so read the chapter above for more information.</p>
 </div>
 <div class="section" id="plain-mqtt">
 <h3>Plain MQTT<a class="headerlink" href="#plain-mqtt" title="Permalink to this headline">¶</a></h3>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">Unencrypted MQTT, especially over the (public, bad) internet, should <em>never</em> be used by any means. Support for plain MQTT can be canceled at any time, without any notice.</p>
+<p class="admonition-title">Warning</p>
+<p>Unencrypted MQTT, especially over the (public, bad) internet, should <em>never</em> be used by any means. Support for plain MQTT can be canceled at any time, without any notice.</p>
 </div>
 <p>Plain, unsecure MQTT can be reached by <code class="code docutils literal notranslate"><span class="pre">mqtt://mqtt.gbridge.io</span></code></p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Server:</th><td class="field-body">mqtt.gbridge.io</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Port:</th><td class="field-body">1883</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">MQTT Protocol:</th><td class="field-body">Version 3.1.1 and 3.1 supported</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Authentication:</th><td class="field-body">required, as described above</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Server</dt>
+<dd class="field-odd"><p>mqtt.gbridge.io</p>
+</dd>
+<dt class="field-even">Port</dt>
+<dd class="field-even"><p>1883</p>
+</dd>
+<dt class="field-odd">MQTT Protocol</dt>
+<dd class="field-odd"><p>Version 3.1.1 and 3.1 supported</p>
+</dd>
+<dt class="field-even">Authentication</dt>
+<dd class="field-even"><p>required, as described above</p>
+</dd>
+</dl>
 </div>
 <div class="section" id="mqtt-over-websockets">
 <h3>MQTT over websockets<a class="headerlink" href="#mqtt-over-websockets" title="Permalink to this headline">¶</a></h3>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">Unencrypted MQTT, especially over the (public, bad) internet, should <em>never</em> be used by any means. Support for MQTT over (unsecured) websockets can be canceled at any time, without any notice.</p>
+<p class="admonition-title">Warning</p>
+<p>Unencrypted MQTT, especially over the (public, bad) internet, should <em>never</em> be used by any means. Support for MQTT over (unsecured) websockets can be canceled at any time, without any notice.</p>
 </div>
 <p>Plain, unsecure MQTT can be reached by <code class="code docutils literal notranslate"><span class="pre">ws://mqtt.gbridge.io/mqtt</span></code></p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Server:</th><td class="field-body">mqtt.gbridge.io</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Path:</th><td class="field-body">/mqtt</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Port:</th><td class="field-body">80</td>
-</tr>
-<tr class="field-even field"><th class="field-name">MQTT Protocol:</th><td class="field-body">Version 3.1.1 and 3.1 supported</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Authentication:</th><td class="field-body">required, as described above</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Server</dt>
+<dd class="field-odd"><p>mqtt.gbridge.io</p>
+</dd>
+<dt class="field-even">Path</dt>
+<dd class="field-even"><p>/mqtt</p>
+</dd>
+<dt class="field-odd">Port</dt>
+<dd class="field-odd"><p>80</p>
+</dd>
+<dt class="field-even">MQTT Protocol</dt>
+<dd class="field-even"><p>Version 3.1.1 and 3.1 supported</p>
+</dd>
+<dt class="field-odd">Authentication</dt>
+<dd class="field-odd"><p>required, as described above</p>
+</dd>
+</dl>
 </div>
 </div>
 <div class="section" id="using-own-mosquitto-as-a-bridge">
@@ -319,7 +323,7 @@
 <p>When your own Mosquitto instance receives data from the gBridge servers, that match a certain pattern, it’ll be forwarded to the devices connected in your local network (and vice versa).</p>
 <div class="align-center figure" id="id1">
 <a class="reference internal image-reference" href="../_images/scheme-mosquitto-bridge.png"><img alt="Local request for gBridge are proxied through your local mosquitto server." src="../_images/scheme-mosquitto-bridge.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-text">Any data from gBridge is proxied by your local Mosquitto instance and then forwarded to your local devices. This works the other way around, too.</span></p>
+<p class="caption"><span class="caption-text">Any data from gBridge is proxied by your local Mosquitto instance and then forwarded to your local devices. This works the other way around, too.</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
 </div>
 <p>The following configuration works with Mosquitto. Place it at the end of your Mosquitto configuration (often under <code class="code docutils literal notranslate"><span class="pre">/etc/mosquitto/mosquitto.conf</span></code>) or in a separate file, that will be included. Replace the parameters in curly brackets with your appropriate information. Use a random combination of alphanumeric characters for “randomstring” - it doesn’t matter, as long as it is unique.</p>
 <div class="highlight-aconf notranslate"><div class="highlight"><pre><span></span><span class="nb">connection</span> kappelt-gbridge
@@ -380,7 +384,7 @@
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. <jinja2.runtime.BlockReference object at 0x2b0f2d545208> 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. <jinja2.runtime.BlockReference object at 0x2b707a2eb6d8> 
 
 <br>
 <a href="https://github.com/kservices/gBridge">gBridge on Github</a><br>
