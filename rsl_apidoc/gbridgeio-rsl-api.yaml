@@ -43,16 +43,20 @@ paths:
                         - login_username
                         - created_at
                         - updated_at
-                        - apikeys
                       properties:
                         apikeys:
+                          writeOnly: true
+                        mqtt:
                           writeOnly: true
         '401':
           $ref: '#/components/responses/UnauthorizedError'
     post:
       summary: Create a new user
-      description: |
-        Create a new user that is billed via your reseller account. Please note that this action might create costs depending on your billing model.
+      description: >
+        Create a new user that is billed via your reseller account. Please note that this action might create costs depending on your billing model. 
+        
+
+        **Caution**: Due to consistency requirements, users cannot be deleted via the API. If you need to delete a user in special cases, you need to contact gBridge's support
       requestBody:
         required: true
         content:
@@ -89,6 +93,7 @@ paths:
                       - created_at
                       - updated_at
                       - apikeys
+                      - mqtt
         '400':
           description: |
             Invalid data supplied
@@ -119,6 +124,7 @@ paths:
                       - created_at
                       - updated_at
                       - apikeys
+                      - mqtt
         '400':
           description: |
             Invalid ID supplied
@@ -168,8 +174,14 @@ paths:
                 allOf:
                   - $ref: '#/components/schemas/ApiKey'
                   - type: object
+                    properties:
+                      key:
+                        type: string
+                        readOnly: true
+                        description: The actual key that can be used to obtain access tokens via the management API
                     required:
                       - privilege_user
+                      - key
         '400':
           description: |
             Invalid ID or data supplied
@@ -274,7 +286,7 @@ components:
           type: string
           description: > 
             User's email, optional but recommended. User can reset his account password using this mail. If no mail is provided, a gBridge dummy mail (that is not accessible) is used.
-            When providing an own mail, you need to ensure that this mail exists and belongs to the user (e.g. by sending a verification mail)
+            When providing an own mail, you *are required* to ensure that this mail exists and belongs to the user (e.g. by sending a verification mail)
         name:
           type: string
           description: 'Display name of user. Used in communication and the dashboard. If not given, it is "gBridge User".'
@@ -296,6 +308,25 @@ components:
               - type: object
                 required:
                   - privilege_user
+        mqtt:
+          type: object
+          description: MQTT server setting details
+          readOnly: true
+          properties:
+            mqtt_users:
+              description: Users that are available to access the public MQTT server
+              type: array
+              minItems: 0
+              items:
+                type: object
+                properties:
+                  username:
+                    type: string
+                    description: Username for the MQTT server (mqtt.gbridge.io)
+                required:
+                  - username
+          required:
+            - mqtt_users
         created_at:
           type: string
           readOnly: true
@@ -314,13 +345,13 @@ components:
           type: integer
           readOnly: true
           description: ID of the user this key belongs to
-        key:
-          type: string
-          readOnly: true
-          description: The actual key that can be used to obtain access tokens via the management API
         privilege_user:
           type: boolean
           description: 'Indicated whether this key has the "user" privilege, e.g. can be used to update user account details (password etc.)'
+        identifier:
+          type: string
+          readOnly: true
+          description: An unique identifier for this key
         created_at:
           type: string
           readOnly: true
@@ -332,7 +363,7 @@ components:
       required:
         - apikey_id
         - user_id
-        - key
+        - identifier
         - created_at
         - updated_at
   securitySchemes:
