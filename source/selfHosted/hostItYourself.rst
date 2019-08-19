@@ -368,9 +368,25 @@ Your NGINX-Config may look similar to this.
         set $gbridge_port 8080
 
         location /gbridge/gapi/ {
-            #public access to the account dashboard is disabled for security reasons
+            # Public access to the account dashboard is disabled for security reasons
             proxy_pass http://$gbridge_host:$gbridge_port/gapi/;
+            # The following variables are set so Apache knows the real hostname and can redirect and resolve urls accordingly.
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Host $server_name;
         }
+        
+        # Uncomment to allow access to the web interface.
+        # When using this, uncomment the block above and adjust the URLs in Google's configuration to remove the /gbridge/ prefix.
+        # location / {
+        #    proxy_pass http://$gbridge_host:$gbridge_port/;
+        #    # The following variables are set so Apache knows the real hostname and can redirect and resolve urls accordingly.
+        #    proxy_set_header Host $host;
+        #    proxy_set_header X-Real-IP $remote_addr;
+        #    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        #    proxy_set_header X-Forwarded-Host $server_name;
+        # }
     }
 
 Test it
